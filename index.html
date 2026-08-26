@@ -31,40 +31,6 @@
             padding: 20px;
         }
 
-        /* Legal Disclaimer Overlay Modal */
-        #disclaimerModal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .disclaimer-card {
-            background: white;
-            max-width: 600px;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        .disclaimer-card h2 {
-            color: var(--primary);
-            margin-top: 0;
-        }
-
-        .disclaimer-card p {
-            text-align: left;
-            font-size: 14px;
-            color: #475569;
-        }
-
         .container {
             max-width: 800px;
             margin: 40px auto;
@@ -150,6 +116,40 @@
             color: #64748b;
             font-size: 14px;
             margin: 0;
+        }
+
+        .disclaimer-box {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            background-color: #ffffff;
+            margin-bottom: 25px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .disclaimer-box h3 {
+            margin-top: 0;
+            color: #1e293b;
+            font-size: 18px;
+        }
+
+        .disclaimer-box p {
+            color: #475569;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .disclaimer-box ol {
+            text-align: left;
+            color: #475569;
+            font-size: 14px;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .disclaimer-box li {
+            margin-bottom: 12px;
         }
 
         .upload-dropzone {
@@ -272,16 +272,6 @@
 </head>
 <body>
 
-    <!-- Legal Disclaimer Modal -->
-    <div id="disclaimerModal">
-        <div class="disclaimer-card">
-            <h2>Terms of Use & Disclaimer</h2>
-            <p><strong>Notice:</strong> Scam Detector is an educational, client-side analysis tool designed to help identify potential fraud patterns. It does not provide formal legal, financial, or law enforcement guarantees.</p>
-            <p>By clicking "I Agree", you acknowledge that this tool runs entirely within your browser session, does not store your personal inputs on external servers, and that you will verify suspicious activities through official agency channels.</p>
-            <button class="primary-btn" onclick="acceptDisclaimer()" style="width: 100%; margin-top: 15px;">I Agree & Enter Tool</button>
-        </div>
-    </div>
-
     <div class="container">
         <!-- Instructions Toggle Top Right -->
         <div class="header-top">
@@ -322,7 +312,21 @@
             <p class="subtitle">Instant Scam & Fraud Protection Analyzer</p>
         </div>
 
-        <main>
+        <!-- Exact Legal & Educational Disclaimer View -->
+        <div id="disclaimerView" class="disclaimer-box">
+            <h3>Legal & Educational Disclaimer and Terms of Use</h3>
+            <p>Please read this notice carefully before accessing the Senior Digital Safeguard tool:</p>
+            <ol>
+                <li><strong>Educational Purpose Only:</strong> This tool is provided for informational, educational, and awareness purposes only as part of the Senior Digital Safeguard and Operation Senior Shield initiatives.</li>
+                <li><strong>Automated Pattern Recognition:</strong> The tool uses automated keyword pattern matching and heuristic algorithms to assist in identifying common digital fraud indicators, phishing patterns, and social engineering pretexts. It does not provide formal legal, financial, or investigative assurance.</li>
+                <li><strong>No Guarantee of Authenticity:</strong> A result indicating "No Immediate Threat Detected" does not guarantee that a communication, text message, email, or attached document is entirely authentic, safe, or risk-free. Users must continue to exercise independent judgment and verify communications through official channels.</li>
+                <li><strong>Limitation of Liability:</strong> The Florida Department of Elder Affairs and project maintainers assume no legal liability or responsibility for any direct or indirect losses resulting from the use of this tool.</li>
+            </ol>
+            <button class="primary-btn" onclick="acceptDisclaimer()" style="width: 100%;">I Have Read and Agree — Enter Tool</button>
+        </div>
+
+        <!-- Main Tool View (Hidden Until Agreement) -->
+        <main id="toolView" style="display: none;">
             <div class="upload-dropzone">
                 <label for="imageUpload">📁 Select Screenshot or Email File</label>
                 <input type="file" id="imageUpload" accept="image/*,.pdf,.txt" onchange="updateFileName()">
@@ -350,7 +354,8 @@
 
     <script>
         function acceptDisclaimer() {
-            document.getElementById('disclaimerModal').style.display = 'none';
+            document.getElementById('disclaimerView').style.display = 'none';
+            document.getElementById('toolView').style.display = 'block';
         }
 
         function toggleInstructions() {
