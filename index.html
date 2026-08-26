@@ -66,7 +66,7 @@
             border: 1px solid #cbd5e1;
             border-radius: 6px;
             padding: 20px;
-            max-height: 300px;
+            max-height: 320px;
             overflow-y: auto;
             font-size: 13px;
             line-height: 1.6;
@@ -252,8 +252,12 @@
     <!-- DISCLAIMER ACCEPTANCE SCREEN -->
     <div id="disclaimerScreen">
         <div class="disclaimer-box">
-            <h3>Legal Disclaimer</h3>
-            <p>This tool is provided for informational and educational purposes only as part of the Senior Digital Safeguard and Operation Senior Shield initiatives. It uses automated pattern recognition to assist in identifying common digital fraud indicators and social engineering pretexts. This tool does not constitute formal legal or investigative advice, nor does a "No Immediate Threat Detected" result guarantee that a communication is authentic or risk-free.</p>
+            <h3>Legal & Educational Disclaimer and Terms of Use</h3>
+            <p>Please read this notice carefully before accessing the Senior Digital Safeguard tool:</p>
+            <p><strong>1. Educational Purpose Only:</strong> This tool is provided for informational, educational, and awareness purposes only as part of the Senior Digital Safeguard and Operation Senior Shield initiatives.</p>
+            <p><strong>2. Automated Pattern Recognition:</strong> The tool uses automated keyword pattern matching and heuristic algorithms to assist in identifying common digital fraud indicators, phishing patterns, and social engineering pretexts. It does not provide formal legal, financial, or investigative assurance.</p>
+            <p><strong>3. No Guarantee of Authenticity:</strong> A result indicating "No Immediate Threat Detected" does not guarantee that a communication, text message, email, or attached document is entirely authentic, safe, or risk-free. Users must continue to exercise independent judgment and verify communications through official channels.</p>
+            <p><strong>4. Limitation of Liability:</strong> The Florida Department of Elder Affairs and project maintainers assume no legal liability or responsibility for any direct or indirect losses resulting from the use of this tool.</p>
         </div>
         <button class="agree-btn" onclick="acceptDisclaimer()">I Have Read and Agree — Enter Tool</button>
     </div>
@@ -321,7 +325,6 @@
         let isScam = false;
         let matchedKeyword = "";
         
-        // Strictly evaluate standalone scam keywords using whole-word boundaries
         for (let kw of scamKeywords) {
             const kwParts = kw.split(" ");
             if (kwParts.length === 1) {
