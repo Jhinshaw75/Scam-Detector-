@@ -260,6 +260,36 @@
             display: block;
         }
 
+        .helpline-box {
+            margin-top: 20px;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .helpline-box h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .helpline-links a {
+            display: inline-block;
+            margin-right: 15px;
+            margin-top: 5px;
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .helpline-links a:hover {
+            text-decoration: underline;
+        }
+
+        .print-btn-container {
+            margin-top: 15px;
+        }
+
         .footer-note {
             margin-top: 35px;
             text-align: center;
@@ -267,6 +297,14 @@
             color: #64748b;
             border-top: 1px solid var(--border-color);
             padding-top: 15px;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 0; margin: 0; max-width: 100%; }
+            .header-top, .instructions-panel, .upload-dropzone, .form-group, .button-group, .disclaimer-box { display: none !important; }
+            .result-box { display: block !important; border: none !important; background: white !important; color: black !important; }
+            .print-btn-container { display: none !important; }
         }
     </style>
 </head>
@@ -344,6 +382,18 @@
 
             <div id="resultBox" class="result-box">
                 <div id="resultContent"></div>
+                <div class="helpline-box" id="helplineBox" style="display:none;">
+                    <h4>Verified State & Federal Resources</h4>
+                    <p>Do not call numbers listed in suspicious messages. Use official contacts below:</p>
+                    <div class="helpline-links">
+                        <a href="tel:18009635337">DOEA Elder Helpline: 1-800-96-ELDER</a>
+                        <a href="tel:18009622873">Florida Abuse Hotline</a>
+                        <a href="https://www.ftc.gov" target="_blank" rel="noopener">FTC Reporting Portal</a>
+                    </div>
+                </div>
+                <div class="print-btn-container" id="printBtnContainer" style="display:none;">
+                    <button class="secondary-btn" onclick="printGuide()" style="width: 100%; margin-top: 15px;">Print Reference Guide</button>
+                </div>
             </div>
         </main>
 
@@ -384,6 +434,8 @@
             const fileInput = document.getElementById('imageUpload');
             const resultBox = document.getElementById('resultBox');
             const resultContent = document.getElementById('resultContent');
+            const helplineBox = document.getElementById('helplineBox');
+            const printBtnContainer = document.getElementById('printBtnContainer');
 
             if (!text && fileInput.files.length === 0) {
                 alert('Please paste message text or upload a file to analyze.');
@@ -409,10 +461,14 @@
                     '1. Do NOT call any phone numbers listed in the message.<br>' +
                     '2. Do NOT click any links or download attachments.<br>' +
                     '3. Verify independently using official agency resources.';
+                helplineBox.style.display = 'block';
+                printBtnContainer.style.display = 'block';
             } else {
                 resultBox.className = 'result-box safe';
                 resultContent.innerHTML = '<strong>No Common Scam Patterns Detected.</strong><br>' +
                     'Always exercise caution with unfamiliar messages and verify through official channels if unsure.';
+                helplineBox.style.display = 'none';
+                printBtnContainer.style.display = 'none';
             }
         }
 
@@ -421,6 +477,10 @@
             document.getElementById('imageUpload').value = '';
             document.getElementById('fileInfo').textContent = "No file chosen (Supports Images, PDFs, Text files)";
             document.getElementById('resultBox').style.display = 'none';
+        }
+
+        function printGuide() {
+            window.print();
         }
 
         if ('serviceWorker' in navigator) {
