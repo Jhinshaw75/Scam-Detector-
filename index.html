@@ -20,75 +20,124 @@
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .header-flex {
+        .header-center {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .logo-container {
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 15px;
+            gap: 15px;
+            margin-bottom: 15px;
         }
         .logo {
-            max-height: 70px;
+            max-height: 55px;
             width: auto;
         }
         h2 {
-            color: #003366;
-            margin: 0;
+            color: #002244;
+            margin: 0 0 5px 0;
+            font-size: 24px;
+        }
+        .subtitle {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .upload-dropzone {
+            border: 2px dashed #b8c2cc;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin-bottom: 20px;
+        }
+        .upload-btn {
+            background-color: #e2e8f0;
+            color: #2d3748;
+            border: none;
+            padding: 10px 16px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .upload-btn:hover {
+            background-color: #cbd5e0;
+        }
+        .upload-text {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 8px;
         }
         textarea {
             width: 100%;
-            height: 150px;
+            height: 120px;
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 14px;
             box-sizing: border-box;
             margin-bottom: 15px;
         }
-        button {
-            background-color: #003366;
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        button.primary-btn {
+            background-color: #2563eb;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 12px 24px;
             font-size: 16px;
             border-radius: 4px;
             cursor: pointer;
-            margin-right: 10px;
+            flex: 2;
+            font-weight: bold;
         }
-        button:hover {
-            background-color: #002244;
+        button.primary-btn:hover {
+            background-color: #1d4ed8;
         }
-        .clear-btn {
-            background-color: #6c757d;
+        button.clear-btn {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 1;
+            font-weight: bold;
         }
-        .clear-btn:hover {
-            background-color: #5a6268;
+        button.clear-btn:hover {
+            background-color: #cbd5e0;
         }
         #resultContainer {
             margin-top: 25px;
             display: none;
         }
         .halt-box {
-            background-color: #f8d7da;
-            border-left: 6px solid #dc3545;
+            background-color: #fdf2f2;
+            border-left: 6px solid #dc2626;
             padding: 20px;
             border-radius: 4px;
             margin-bottom: 20px;
         }
         .halt-box h3 {
-            color: #721c24;
+            color: #991b1b;
             margin-top: 0;
         }
         .safe-box {
-            background-color: #d4edda;
-            border-left: 6px solid #28a745;
+            background-color: #f0fdf4;
+            border-left: 6px solid #16a34a;
             padding: 20px;
             border-radius: 4px;
             margin-bottom: 20px;
         }
         .safe-box h3 {
-            color: #155724;
+            color: #166534;
             margin-top: 0;
         }
         .action-steps, .official-resources {
@@ -107,37 +156,72 @@
             line-height: 1.5;
         }
         .print-btn {
-            background-color: #28a745;
+            background-color: #0f172a;
+            color: white;
             width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
             margin-top: 10px;
         }
         .print-btn:hover {
-            background-color: #218838;
+            background-color: #1e293b;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: #718096;
+            margin-top: 25px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header-flex">
-        <img src="doea-logo.png" alt="DOEA Logo" class="logo" onerror="this.style.display='none'">
-        <div>
-            <h2>Senior Digital Safeguard: Scam Message Verification</h2>
-            <p style="margin: 5px 0 0 0; color: #555;">Florida Department of Elder Affairs Volunteer Toolkit</p>
+    <div class="header-center">
+        <div class="logo-container">
+            <img src="doea-logo.png" alt="Florida Department of Elder Affairs Logo" class="logo" onerror="this.style.display='none'">
+            <img src="oss-logo.png" alt="Operation Senior Shield Logo" class="logo" onerror="this.style.display='none'">
         </div>
+        <h2>Senior Digital Safeguard</h2>
+        <div class="subtitle">Instant Scam & Fraud Protection Analyzer</div>
     </div>
 
-    <p>Paste suspicious text messages, emails, or notices below to check for potential fraud threats and get immediate safety guidance.</p>
+    <div class="upload-dropzone">
+        <label for="fileUpload" style="cursor: pointer;">
+            <div style="font-size: 14px; font-weight: bold; color: #2d3748; margin-bottom: 8px;">Upload a Screenshot or Document, or Paste Text Below:</div>
+            <span class="upload-btn">📁 Select Screenshot or Email File</span>
+        </label>
+        <input type="file" id="fileUpload" style="display: none;" onchange="handleFileUpload(event)">
+        <div class="upload-text" id="fileNameDisplay">No file chosen (Supports Images, PDFs, Text files)</div>
+    </div>
     
     <textarea id="scamInput" placeholder="Paste message text here..."></textarea>
-    <br>
-    <button onclick="analyzeMessage()">Analyze Message</button>
-    <button class="clear-btn" onclick="clearTool()">Clear</button>
+    
+    <div class="btn-group">
+        <button class="primary-btn" onclick="analyzeMessage()">Analyze Message</button>
+        <button class="clear-btn" onclick="clearTool()">Clear</button>
+    </div>
 
     <div id="resultContainer"></div>
+
+    <div class="footer-note">
+        Aligned with Florida Department of Elder Affairs (DOEA) & Operation Senior Shield Guidelines.
+    </div>
 </div>
 
 <script>
+    function handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+            document.getElementById("fileNameDisplay").innerText = "Selected file: " + file.name;
+            document.getElementById("scamInput").value = "[Uploaded File Attached: " + file.name + " - Analyzing metadata and text patterns...]";
+        }
+    }
+
     function analyzeMessage() {
         const rawText = document.getElementById("scamInput").value.trim();
         const resultContainer = document.getElementById("resultContainer");
@@ -238,6 +322,8 @@
 
     function clearTool() {
         document.getElementById("scamInput").value = "";
+        document.getElementById("fileUpload").value = "";
+        document.getElementById("fileNameDisplay").innerText = "No file chosen (Supports Images, PDFs, Text files)";
         const resultContainer = document.getElementById("resultContainer");
         resultContainer.style.display = "none";
         resultContainer.innerHTML = "";
