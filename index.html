@@ -31,6 +31,40 @@
             padding: 20px;
         }
 
+        /* Legal Disclaimer Overlay Modal */
+        #disclaimerModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .disclaimer-card {
+            background: white;
+            max-width: 600px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .disclaimer-card h2 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .disclaimer-card p {
+            text-align: left;
+            font-size: 14px;
+            color: #475569;
+        }
+
         .container {
             max-width: 800px;
             margin: 40px auto;
@@ -238,6 +272,16 @@
 </head>
 <body>
 
+    <!-- Legal Disclaimer Modal -->
+    <div id="disclaimerModal">
+        <div class="disclaimer-card">
+            <h2>Terms of Use & Disclaimer</h2>
+            <p><strong>Notice:</strong> Scam Detector is an educational, client-side analysis tool designed to help identify potential fraud patterns. It does not provide formal legal, financial, or law enforcement guarantees.</p>
+            <p>By clicking "I Agree", you acknowledge that this tool runs entirely within your browser session, does not store your personal inputs on external servers, and that you will verify suspicious activities through official agency channels.</p>
+            <button class="primary-btn" onclick="acceptDisclaimer()" style="width: 100%; margin-top: 15px;">I Agree & Enter Tool</button>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Instructions Toggle Top Right -->
         <div class="header-top">
@@ -305,6 +349,10 @@
     </div>
 
     <script>
+        function acceptDisclaimer() {
+            document.getElementById('disclaimerModal').style.display = 'none';
+        }
+
         function toggleInstructions() {
             const panel = document.getElementById('instructionsPanel');
             const btn = document.getElementById('toggleInstructionsBtn');
