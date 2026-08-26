@@ -348,14 +348,15 @@
             outputHTML = `
                 <div class="halt-box">
                     <h3>⚠️ STOP. POTENTIAL SCAM DETECTED.</h3>
-                    <p><strong>Threat Vector Identified:</strong> Suspicious pattern matched ("${matchedKeyword}"). This message or attached file exhibits classic signs of digital fraud, social engineering pretexts, or unauthorized credential harvesting.</p>
+                    <p><strong>Threat Vector Identified:</strong> Suspicious keyword matched ("${matchedKeyword}"). This message or attached file exhibits classic signs of digital fraud or security triggers.</p>
+                    <p style="font-size: 12px; margin-top: 10px; color: #7f1d1d;"><strong>Advisory Note on False Positives:</strong> If you know and trust the sender and are certain this message comes from an official or verified personal channel, this may be a false positive triggered by safety keywords. Exercise personal caution, evaluate the context, and proceed only if you have independently confirmed its authenticity.</p>
                 </div>
                 
                 <div class="action-steps">
                     <h4>Required Safety Actions:</h4>
                     <ol>
-                        <li><strong>Do Not Click Any Links:</strong> Tapping links in this message or attachment could compromise your device.</li>
-                        <li><strong>Do Not Call Provided Numbers:</strong> Do not dial phone numbers listed inside this notice. Scammers staff these lines directly.</li>
+                        <li><strong>Do Not Click Any Links:</strong> Tapping unverified links in this message or attachment could compromise your device.</li>
+                        <li><strong>Do Not Call Provided Numbers:</strong> Do not dial phone numbers listed inside suspicious notices. Scammers staff these lines directly.</li>
                         <li><strong>Verify Independently:</strong> If this claims to be from your bank, utility, or government agency, look at the back of your actual card or official statement and call that verified number directly.</li>
                         <li><strong>Delete the Message:</strong> Remove the threat from your inbox or phone immediately.</li>
                     </ol>
