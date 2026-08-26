@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Digital Safeguard - Scam Message Verification Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #003366;
+            margin-top: 0;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #002244;
+        }
+        .clear-btn {
+            background-color: #6c757d;
+        }
+        .clear-btn:hover {
+            background-color: #5a6268;
+        }
+        #resultContainer {
+            margin-top: 25px;
+            display: none;
+        }
+        .halt-box {
+            background-color: #f8d7da;
+            border-left: 6px solid #dc3545;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .halt-box h3 {
+            color: #721c24;
+            margin-top: 0;
+        }
+        .safe-box {
+            background-color: #d4edda;
+            border-left: 6px solid #28a745;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .safe-box h3 {
+            color: #155724;
+            margin-top: 0;
+        }
+        .action-steps, .official-resources {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border: 1px solid #e9ecef;
+        }
+        .action-steps ol, .official-resources ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .action-steps li, .official-resources li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .print-btn {
+            background-color: #28a745;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .print-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Senior Digital Safeguard: Scam Message Verification</h2>
+    <p>Paste suspicious text messages, emails, or notices below to check for potential fraud threats and get immediate safety guidance.</p>
+    
+    <textarea id="scamInput" placeholder="Paste message text here..."></textarea>
+    <br>
+    <button onclick="analyzeMessage()">Analyze Message</button>
+    <button class="clear-btn" onclick="clearTool()">Clear</button>
+
+    <div id="resultContainer"></div>
+</div>
+
+<script>
+    function analyzeMessage() {
+        const rawText = document.getElementById("scamInput").value.trim();
+        const resultContainer = document.getElementById("resultContainer");
+
+        if (!rawText) {
+            alert("Please paste text or upload a message to analyze.");
+            return;
+        }
+
+        const normalizedText = rawText.toLowerCase();
+        const words = normalizedText.match(/\b[a-z0-9]+\b/g) || [];
+
+        const scamKeywords = [
+            "urgent", "locked", "bank", "verify", "suspend", "winner", "prize", 
+            "gift card", "social security", "irs", "fbi", "click here", "password", 
+            "crypto", "wire", "attachment", "screenshot", "warrant", "federal", 
+            "arrest", "compliance", "directive", "termination", "audit", 
+            "jurisdiction", "penalty", "backflow", "assembly", "lapsed"
+        ];
+        
+        let isScam = false;
+        let matchedKeyword = "";
+        
+        const hasUrl = normalizedText.includes("http") || normalizedText.includes("www.") || normalizedText.includes(".net") || normalizedText.includes(".com");
+        const hasSocialEngineering = (normalizedText.includes("outreach") || normalizedText.includes("grant") || normalizedText.includes("wellness") || normalizedText.includes("community")) && (hasUrl || normalizedText.includes("confirm") || normalizedText.includes("schedule"));
+
+        if (hasSocialEngineering) {
+            isScam = true;
+            matchedKeyword = "social engineering / community outreach pretext";
+        } else {
+            for (let kw of scamKeywords) {
+                const kwParts = kw.split(" ");
+                if (kwParts.length === 1) {
+                    if (words.includes(kw)) {
+                        isScam = true;
+                        matchedKeyword = kw;
+                        break;
+                    }
+                } else {
+                    if (normalizedText.includes(kw)) {
+                        isScam = true;
+                        matchedKeyword = kw;
+                        break;
+                    }
+                }
+            }
+        }
+
+        let outputHTML = "";
+
+        if (isScam || rawText.length < 15) {
+            outputHTML = `
+                <div class="halt-box">
+                    <h3>⚠️ STOP. POTENTIAL SCAM DETECTED.</h3>
+                    <p><strong>Threat Vector Identified:</strong> Suspicious pattern matched ("${matchedKeyword}"). This message or attached file exhibits classic signs of digital fraud, social engineering pretexts, or unauthorized credential harvesting.</p>
+                </div>
+                
+                <div class="action-steps">
+                    <h4>Required Safety Actions:</h4>
+                    <ol>
+                        <li><strong>Do Not Click Any Links:</strong> Tapping links in this message or attachment could compromise your device.</li>
+                        <li><strong>Do Not Call Provided Numbers:</strong> Do not dial phone numbers listed inside this notice. Scammers staff these lines directly.</li>
+                        <li><strong>Verify Independently:</strong> If this claims to be from your bank, utility, or government agency, look at the back of your actual card or official statement and call that verified number directly.</li>
+                        <li><strong>Delete the Message:</strong> Remove the threat from your inbox or phone immediately.</li>
+                    </ol>
+                </div>
+
+                <div class="official-resources">
+                    <h4>Official Florida & Federal Help Resources:</h4>
+                    <ul>
+                        <li>📞 <strong>DOEA Elder Helpline:</strong> <a href="tel:18009635337">1-800-96-ELDER (1-800-963-5337)</a></li>
+                        <li>📞 <strong>Florida Abuse Hotline (Financial Exploitation):</strong> <a href="tel:18009622873">1-800-96-ABUSE</a></li>
+                        <li>🌐 <strong>Operation Senior Shield:</strong> <a href="https://opseniorshieldfl.com/" target="_blank">opseniorshieldfl.com</a></li>
+                        <li>⚖️ <strong>FTC Reporting Portal:</strong> <a href="https://reportfraud.ftc.gov" target="_blank">reportfraud.ftc.gov</a></li>
+                    </ul>
+                </div>
+
+                <button class="print-btn" onclick="window.print()">🖨️ Print Pocket Guide & Emergency Numbers</button>
+            `;
+        } else {
+            outputHTML = `
+                <div class="safe-box">
+                    <h3>✅ NO IMMEDIATE THREAT DETECTED</h3>
+                    <p>The analyzed text or attachment does not contain common high-risk fraud keywords or emergency pressure tactics. However, always exercise normal digital caution before sharing personal or financial information.</p>
+                </div>
+                <div class="official-resources">
+                    <h4>Need Guidance?</h4>
+                    <p>If you still feel uneasy about this message, you can always contact the Florida Department of Elder Affairs Helpline at <a href="tel:18009635337">1-800-96-ELDER</a>.</p>
+                </div>
+                <button class="print-btn" onclick="window.print()">🖨️ Print Reference Guide</button>
+            `;
+        }
+
+        resultContainer.style.display = "block";
+        resultContainer.innerHTML = outputHTML;
+        resultContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function clearTool() {
+        document.getElementById("scamInput").value = "";
+        const resultContainer = document.getElementById("resultContainer");
+        resultContainer.style.display = "none";
+        resultContainer.innerHTML = "";
+    }
+</script>
+
+</body>
+</html>
