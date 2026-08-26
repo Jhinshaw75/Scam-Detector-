@@ -229,7 +229,7 @@
             color: #1e293b;
             border: none;
             padding: 14px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
@@ -286,10 +286,6 @@
             text-decoration: underline;
         }
 
-        .print-btn-container {
-            margin-top: 15px;
-        }
-
         .footer-note {
             margin-top: 35px;
             text-align: center;
@@ -304,7 +300,6 @@
             .container { box-shadow: none; padding: 0; margin: 0; max-width: 100%; }
             .header-top, .instructions-panel, .upload-dropzone, .form-group, .button-group, .disclaimer-box { display: none !important; }
             .result-box { display: block !important; border: none !important; background: white !important; color: black !important; }
-            .print-btn-container { display: none !important; }
         }
     </style>
 </head>
@@ -316,7 +311,7 @@
             <button class="instructions-toggle-btn" id="toggleInstructionsBtn" onclick="toggleInstructions()">How to Use</button>
         </div>
 
-        <!-- Collapsible Instructions Panel -->
+        <!-- Collapsible Instructions Panel containing the exact locked-in step-by-step instructions -->
         <div class="instructions-panel" id="instructionsPanel">
             <h3>Step-by-Step Instructions</h3>
             <ol>
@@ -378,6 +373,7 @@
             <div class="button-group">
                 <button class="primary-btn" onclick="analyzeContent()">Analyze Message</button>
                 <button class="secondary-btn" onclick="clearForm()">Clear</button>
+                <button class="secondary-btn" onclick="printGuide()">Print Reference Guide</button>
             </div>
 
             <div id="resultBox" class="result-box">
@@ -390,9 +386,6 @@
                         <a href="tel:18009622873">Florida Abuse Hotline</a>
                         <a href="https://www.ftc.gov" target="_blank" rel="noopener">FTC Reporting Portal</a>
                     </div>
-                </div>
-                <div class="print-btn-container" id="printBtnContainer" style="display:none;">
-                    <button class="secondary-btn" onclick="printGuide()" style="width: 100%; margin-top: 15px;">Print Reference Guide</button>
                 </div>
             </div>
         </main>
@@ -435,7 +428,6 @@
             const resultBox = document.getElementById('resultBox');
             const resultContent = document.getElementById('resultContent');
             const helplineBox = document.getElementById('helplineBox');
-            const printBtnContainer = document.getElementById('printBtnContainer');
 
             if (!text && fileInput.files.length === 0) {
                 alert('Please paste message text or upload a file to analyze.');
@@ -462,13 +454,11 @@
                     '2. Do NOT click any links or download attachments.<br>' +
                     '3. Verify independently using official agency resources.';
                 helplineBox.style.display = 'block';
-                printBtnContainer.style.display = 'block';
             } else {
                 resultBox.className = 'result-box safe';
                 resultContent.innerHTML = '<strong>No Common Scam Patterns Detected.</strong><br>' +
                     'Always exercise caution with unfamiliar messages and verify through official channels if unsure.';
                 helplineBox.style.display = 'none';
-                printBtnContainer.style.display = 'none';
             }
         }
 
