@@ -295,11 +295,17 @@
             padding-top: 15px;
         }
 
+        /* Printable Wallet Reference Card Section */
+        .printable-card {
+            display: none;
+        }
+
         @media print {
             body { background: white; padding: 0; }
             .container { box-shadow: none; padding: 0; margin: 0; max-width: 100%; }
-            .header-top, .instructions-panel, .upload-dropzone, .form-group, .button-group, .disclaimer-box { display: none !important; }
-            .result-box { display: block !important; border: none !important; background: white !important; color: black !important; }
+            .header-top, .instructions-panel, .upload-dropzone, .form-group, .button-group, .disclaimer-box, .footer-note, .result-box { display: none !important; }
+            .printable-card { display: block !important; border: 2px dashed #1e3a8a; padding: 20px; border-radius: 8px; margin: 20px; }
+            .printable-card h2 { color: #1e3a8a; margin-top: 0; }
         }
     </style>
 </head>
@@ -311,7 +317,7 @@
             <button class="instructions-toggle-btn" id="toggleInstructionsBtn" onclick="toggleInstructions()">How to Use</button>
         </div>
 
-        <!-- Collapsible Instructions Panel containing the exact locked-in step-by-step instructions -->
+        <!-- Collapsible Instructions Panel -->
         <div class="instructions-panel" id="instructionsPanel">
             <h3>Step-by-Step Instructions</h3>
             <ol>
@@ -389,6 +395,25 @@
                 </div>
             </div>
         </main>
+
+        <!-- Printable Wallet Reference Card (Visible only when printing) -->
+        <div class="printable-card">
+            <h2>Scam Detector &mdash; Reference & Emergency Guide</h2>
+            <p><strong>Golden Rules to Remember:</strong></p>
+            <ul>
+                <li>Never call phone numbers listed in suspicious text messages, emails, or pop-ups.</li>
+                <li>Never click unfamiliar links or download attachments from unknown senders.</li>
+                <li>Always verify independently through official channels.</li>
+            </ul>
+            <h3>Verified Emergency & Support Contacts:</h3>
+            <ul>
+                <li><strong>DOEA Elder Helpline:</strong> 1-800-96-ELDER (1-800-963-5337)</li>
+                <li><strong>Florida Abuse Hotline:</strong> 1-800-962-2873</li>
+                <li><strong>FTC Reporting Portal:</strong> <a href="https://www.ftc.gov" target="_blank" rel="noopener">ftc.gov</a></li>
+                <li><strong>Operation Senior Shield:</strong> <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">opseniorshieldfl.com</a></li>
+            </ul>
+            <p style="font-size: 11px; margin-top: 30px; text-align: center;">Aligned with Florida Department of Elder Affairs (DOEA) & Operation Senior Shield (OSS) Guidelines.</p>
+        </div>
 
         <div class="footer-note">
             Aligned with Florida Department of Elder Affairs (DOEA) & <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield (OSS)</a> Guidelines.
