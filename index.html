@@ -225,27 +225,27 @@
             <button class="instructions-toggle-btn" id="toggleInstructionsBtn" onclick="toggleInstructions()">How to Use</button>
         </header>
 
-        <!-- Dropdown / Collapsible Instructions Panel -->
+        <!-- Collapsible Instructions Panel -->
         <div class="instructions-panel" id="instructionsPanel">
             <h3>Step-by-Step Instructions</h3>
             <ol>
-                <li>Open any standard web browser (Chrome, Edge, or Safari) on your computer, tablet, or phone[cite: 1].</li>
-                <li>Review the initial Terms of Use and educational disclaimer screen when the page loads. Note that the tool runs entirely inside your browser session, meaning no personal information, text, or uploads are ever saved on a central server[cite: 1].</li>
+                <li>Open any standard web browser (Chrome, Edge, or Safari) on your computer, tablet, or phone.</li>
+                <li>Read through the initial Terms of Use and educational disclaimer screen when the page loads. Note that the tool runs entirely inside your browser session, meaning no personal information, text, or uploads are ever saved on a central server.</li>
                 <li>Choose how to check the suspicious message:
                     <ul>
-                        <li><strong>Option A:</strong> Copy the text from the suspicious email, text message, or voicemail transcript and paste it right into the input box[cite: 1].</li>
-                        <li><strong>Option B:</strong> Take a screenshot of the message and upload the image file using the upload button[cite: 1].</li>
+                        <li><strong>Option A:</strong> Copy the text from the suspicious email, text message, or voicemail transcript and paste it right into the input box.</li>
+                        <li><strong>Option B:</strong> Take a screenshot of the message and upload the image file using the upload button.</li>
                     </ul>
                 </li>
-                <li>Click the analyze button to screen the content against the twenty built-in scam categories (such as government impersonation, fake process servers, banking lockouts, or family emergencies)[cite: 1].</li>
+                <li>Click the analyze button to screen the content against the twenty built-in scam categories (such as government impersonation, fake process servers, banking lockouts, or family emergencies).</li>
                 <li>Review the result:
                     <ul>
-                        <li>If no common scam patterns show up, the tool will let you know (though you should still use your own judgment if it came from someone you know and trust)[cite: 1].</li>
-                        <li>If a threat is detected, a warning banner will appear right away with clear instructions, such as advising you not to click links or call the phone number listed in the message[cite: 1].</li>
+                        <li>If no common scam patterns show up, the tool will let you know (though you should still use your own judgment if it came from someone you know and trust).</li>
+                        <li>If a threat is detected, a warning banner will appear right away with clear instructions, such as advising you not to click links or call the phone number listed in the message.</li>
                     </ul>
                 </li>
-                <li>Use the direct phone links provided in the output to reach verified help channels if a threat is flagged, including the DOEA Elder Helpline, the Florida Abuse Hotline, Operation Senior Shield, or the FTC[cite: 1].</li>
-                <li>Click the print reference guide button if you want a physical copy of the emergency numbers to keep by your phone[cite: 1].</li>
+                <li>Use the direct phone links provided in the output to reach verified help channels if a threat is flagged, including the DOEA Elder Helpline, the Florida Abuse Hotline, Operation Senior Shield, or the FTC.</li>
+                <li>Click the print reference guide button if you want a physical copy of the emergency numbers to keep by your phone.</li>
                 <li>Open your browser menu on a mobile device and select "Add to Home Screen" if you want to pin the tool to your phone so you can open it like a regular app.</li>
             </ol>
         </div>
@@ -308,7 +308,6 @@
                 return;
             }
 
-            // Simple demo evaluation logic matching test categories
             const lowerText = text.toLowerCase();
             const scamKeywords = ['irs', 'audit', 'warrant', 'arrest', 'leon county', 'bail', 'zelle', 'locked', 'virus', 'sweepstakes', 'gift card', 'bitcoin', 'shutoff', 'disconnection', 'customs', 'suspended'];
             
@@ -323,16 +322,16 @@
             if (isThreat || document.getElementById('imageUpload').files.length > 0) {
                 resultBox.className = 'result-box danger';
                 resultContent.innerHTML = '<strong>WARNING: Potential Scam Detected!</strong><br>' +
-                    'This message matches known threat patterns (such as government impersonation, legal intimidation, or urgent financial demands)[cite: 1].<br><br>' +
+                    'This message matches known threat patterns (such as government impersonation, legal intimidation, or urgent financial demands).<br><br>' +
                     '<strong>Recommended Action Steps:</strong><br>' +
-                    '1. Do NOT call any phone numbers listed in the message[cite: 1].<br>' +
-                    '2. Do NOT click any links or download attachments[cite: 1].<br>' +
-                    '3. Verify independently using official numbers listed below[cite: 1].';
+                    '1. Do NOT call any phone numbers listed in the message.<br>' +
+                    '2. Do NOT click any links or download attachments.<br>' +
+                    '3. Verify independently using official numbers listed below.';
                 helplineBox.style.display = 'block';
             } else {
                 resultBox.className = 'result-box safe';
                 resultContent.innerHTML = '<strong>No Common Scam Patterns Detected.</strong><br>' +
-                    'However, if you received this from an unknown sender or feel uneasy, always exercise caution and verify independently[cite: 1].';
+                    'However, if you received this from an unknown sender or feel uneasy, always exercise caution and verify independently.';
                 helplineBox.style.display = 'none';
             }
         }
