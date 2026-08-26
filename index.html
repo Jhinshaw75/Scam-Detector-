@@ -321,27 +321,20 @@
         let isScam = false;
         let matchedKeyword = "";
         
-        const hasUrl = normalizedText.includes("http") || normalizedText.includes("www.") || normalizedText.includes(".net") || normalizedText.includes(".com");
-        const hasSocialEngineering = (normalizedText.includes("outreach") || normalizedText.includes("grant") || normalizedText.includes("wellness") || normalizedText.includes("community")) && (hasUrl || normalizedText.includes("confirm") || normalizedText.includes("schedule"));
-
-        if (hasSocialEngineering) {
-            isScam = true;
-            matchedKeyword = "social engineering / community outreach pretext";
-        } else {
-            for (let kw of scamKeywords) {
-                const kwParts = kw.split(" ");
-                if (kwParts.length === 1) {
-                    if (words.includes(kw)) {
-                        isScam = true;
-                        matchedKeyword = kw;
-                        break;
-                    }
-                } else {
-                    if (normalizedText.includes(kw)) {
-                        isScam = true;
-                        matchedKeyword = kw;
-                        break;
-                    }
+        // Strictly evaluate standalone scam keywords using whole-word boundaries
+        for (let kw of scamKeywords) {
+            const kwParts = kw.split(" ");
+            if (kwParts.length === 1) {
+                if (words.includes(kw)) {
+                    isScam = true;
+                    matchedKeyword = kw;
+                    break;
+                }
+            } else {
+                if (normalizedText.includes(kw)) {
+                    isScam = true;
+                    matchedKeyword = kw;
+                    break;
                 }
             }
         }
