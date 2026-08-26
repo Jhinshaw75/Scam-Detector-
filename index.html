@@ -311,15 +311,46 @@
             return;
         }
 
-        const normalizedText = rawText.toLowerCase();
+        // Normalize text and strip obfuscating hyphens/spaces for robust detection
+        const normalizedText = rawText.toLowerCase().replace(/[-–—]/g, "");
         const words = normalizedText.match(/\b[a-z0-9]+\b/g) || [];
 
+        // Comprehensive 20-Category Scam Threat Matrix Dictionary
         const scamKeywords = [
-            "urgent", "locked", "bank", "verify", "suspend", "winner", "prize", 
-            "gift card", "social security", "irs", "fbi", "click here", "password", 
-            "crypto", "wire", "attachment", "screenshot", "warrant", "federal", 
-            "arrest", "compliance", "directive", "termination", "audit", 
-            "jurisdiction", "penalty", "backflow", "assembly", "lapsed"
+            // Category 1: Government & IRS Impersonation
+            "irs", "social security", "medicare", "treasury", "fbi", "federal", "audit", "penalty", "tax",
+            // Category 2: Law Enforcement & Process Server Intimidation
+            "warrant", "arrest", "court", "lawsuit", "claim", "assets", "order", "file", "filing", "jurisdiction", "sheriff", "subpoena",
+            // Category 3: Grandparent & Family Emergency Scams
+            "emergency", "accident", "hospital", "bail", "jail", "arrested", "grandchild",
+            // Category 4: Fake Banking & Financial Alerts
+            "bank", "account", "locked", "suspended", "unauthorized", "fraud", "alert", "verify", "security", "zelle", "venmo",
+            // Category 5: Technical Support Traps
+            "microsoft", "apple", "support", "virus", "infected", "firewall", "remote", "access", "technician",
+            // Category 6: Lottery & Prize Fraud
+            "winner", "won", "prize", "sweepstakes", "lottery", "jackpot", "congratulations", "processing fee",
+            // Category 7: Romance & Confidence Scams
+            "darling", "love", "ticket", "customs", "airport", "investment", "overseas",
+            // Category 8: Crypto Extortion & Fake Investment
+            "crypto", "bitcoin", "wallet", "returns", "platform", "extortion", "webcam",
+            // Category 9: Utility Disconnection Threats
+            "utility", "power", "electric", "water", "gas", "disconnect", "shutoff", "overdue", "backflow", "assembly",
+            // Category 10: Gift Card & P2P Demands
+            "gift card", "target", "walmart", "apple card", "steam card", "reload", "barcode", "wire", "transfer",
+            // Category 11: Malicious Attachments & Invoices
+            "attachment", "invoice", "receipt", "statement", "pdf", "download", "billing", "payment confirmation",
+            // Category 12: Phishing Links & Credential Harvesting
+            "click here", "login", "sign in", "update", "password", "credentials", "portal", "lapsed",
+            // Category 13: Subscription Traps
+            "subscription", "renew", "charged", "membership", "cancel", "customer service", "refund",
+            // Category 14: Data Breach Exploitation
+            "breach", "exposed", "leak", "dark web", "social security number", "identity theft", "credit monitoring",
+            // Category 15: Cross-Border Consignment
+            "package", "shipment", "delivery", "tracking", "hold", "international", "duties",
+            // Category 16-18: Social Engineering & Pretexts
+            "urgent", "suspend", "directive", "termination", "confidential", "do not tell", "immediate action",
+            // Category 19-20: Charity & Employment Fraud
+            "charity", "donation", "relief", "hurricane", "disaster", "fund", "job offer", "remote work", "equipment check"
         ];
         
         let isScam = false;
@@ -348,7 +379,7 @@
             outputHTML = `
                 <div class="halt-box">
                     <h3>⚠️ STOP. POTENTIAL SCAM DETECTED.</h3>
-                    <p><strong>Threat Vector Identified:</strong> Suspicious keyword matched ("${matchedKeyword}"). This message or attached file exhibits classic signs of digital fraud or security triggers.</p>
+                    <p><strong>Threat Vector Identified:</strong> Suspicious pattern matched ("${matchedKeyword}"). This message or attached file exhibits classic indicators across our 20 senior threat categories, including digital fraud, legal intimidation, or social engineering pretexts.</p>
                     <p style="font-size: 12px; margin-top: 10px; color: #7f1d1d;"><strong>Advisory Note on False Positives:</strong> If you know and trust the sender and are certain this message comes from an official or verified personal channel, this may be a false positive triggered by safety keywords. Exercise personal caution, evaluate the context, and proceed only if you have independently confirmed its authenticity.</p>
                 </div>
                 
@@ -356,8 +387,8 @@
                     <h4>Required Safety Actions:</h4>
                     <ol>
                         <li><strong>Do Not Click Any Links:</strong> Tapping unverified links in this message or attachment could compromise your device.</li>
-                        <li><strong>Do Not Call Provided Numbers:</strong> Do not dial phone numbers listed inside suspicious notices. Scammers staff these lines directly.</li>
-                        <li><strong>Verify Independently:</strong> If this claims to be from your bank, utility, or government agency, look at the back of your actual card or official statement and call that verified number directly.</li>
+                        <li><strong>Do Not Call Provided Numbers:</strong> Do not dial phone numbers listed inside suspicious notices or legal threats. Scammers staff these lines directly.</li>
+                        <li><strong>Verify Independently:</strong> If this claims to be from your bank, utility, government agency, or a legal/court office, look up the verified official number independently and call that number directly.</li>
                         <li><strong>Delete the Message:</strong> Remove the threat from your inbox or phone immediately.</li>
                     </ol>
                 </div>
@@ -378,7 +409,7 @@
             outputHTML = `
                 <div class="safe-box">
                     <h3>✅ NO IMMEDIATE THREAT DETECTED</h3>
-                    <p>The analyzed text or attachment does not contain common high-risk fraud keywords or emergency pressure tactics. However, always exercise normal digital caution before sharing personal or financial information.</p>
+                    <p>The analyzed text or attachment does not contain common high-risk fraud keywords or emergency pressure tactics from our threat matrix. However, always exercise normal digital caution before sharing personal or financial information.</p>
                 </div>
                 <div class="official-resources">
                     <h4>Need Guidance & Sign-Up Resources?</h4>
