@@ -292,17 +292,48 @@
             display: block;
         }
 
+        .warning-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--danger-text);
+            margin-bottom: 6px;
+        }
+
+        .warning-desc {
+            font-size: 14px;
+            color: var(--danger-text);
+            margin-bottom: 15px;
+        }
+
+        .action-list {
+            margin: 0 0 15px 0;
+            padding-left: 20px;
+            font-size: 14px;
+            color: var(--danger-text);
+        }
+
+        .action-list li {
+            margin-bottom: 8px;
+        }
+
         .helpline-box {
-            margin-top: 20px;
+            margin-top: 15px;
             background: #ffffff;
             padding: 15px;
             border-radius: 6px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--danger-border);
         }
 
         .helpline-box h4 {
             margin-top: 0;
             color: var(--primary);
+            font-size: 15px;
+        }
+
+        .helpline-box p {
+            font-size: 13px;
+            color: #334155;
+            margin-bottom: 10px;
         }
 
         .helpline-links a {
@@ -312,6 +343,7 @@
             color: var(--primary);
             font-weight: bold;
             text-decoration: none;
+            font-size: 13px;
         }
 
         .helpline-links a:hover {
@@ -421,15 +453,18 @@
 
             <div id="resultBox" class="result-box">
                 <div id="resultContent">
-                    <strong>Stop! This looks like a scam. Warnings found:</strong><br>
-                    This message uses scare tactics—like pretending to be the government, threatening you with arrest, or demanding money in a hurry.<br><br>
-                    <strong>What you should do right now:</strong><br>
-                    1. Do NOT call the phone number written in the message. (Scammers use fake call centers to trick you into giving up personal details.)<br>
-                    2. Do NOT click any links, scan QR codes, or download anything. (Links can instantly compromise your device or steal your sign-in details.)<br>
-                    3. Talk it over with a trusted family member or friend, or call the <a href="tel:18009635337">DOEA Elder Helpline</a> for help.
+                    <div class="warning-title">Stop! This high-risk threat was detected:</div>
+                    <div class="warning-desc">This message uses aggressive psychological manipulation or government impersonation tactics. Do not let fear or urgency make your decisions right now.</div>
+                    <div class="warning-title">What you should do right now:</div>
+                    <ol class="action-list">
+                        <li><strong>Do NOT call the phone number listed in the message.</strong> Scammers use fake call centers to trick you into giving up personal details.</li>
+                        <li><strong>Do NOT click any links, scan QR codes, or download files.</strong> Links can instantly compromise your device or steal your sign-in details.</li>
+                        <li><strong>STOP AND BREATHE. Talk it over right now.</strong> Show this message to a trusted family member, friend, or caregiver before doing anything else.</li>
+                        <li><strong>CALL VERIFIED STATE HELP.</strong> If you have any doubts, use the official Florida Department of Elder Affairs numbers below or call the <a href="tel:18009635337">DOEA Elder Helpline (1-800-96-ELDER)</a>.</li>
+                    </ol>
                 </div>
-                <div class="helpline-box" id="helplineBox" style="display:none;">
-                    <h4>Verified State & Federal Resources</h4>
+                <div class="helpline-box" id="helplineBox">
+                    <h4>Verified State & Federal Resources (Official Lines Only)</h4>
                     <p>Do not call numbers listed in suspicious messages. Use official contacts below:</p>
                     <div class="helpline-links">
                         <a href="tel:18009635337">DOEA Elder Helpline: 1-800-96-ELDER</a>
@@ -504,7 +539,7 @@
             }
 
             const lowerText = text.toLowerCase();
-            const scamKeywords = ['irs', 'audit', 'warrant', 'arrest', 'leon county', 'bail', 'zelle', 'locked', 'virus', 'sweepstakes', 'gift card', 'bitcoin', 'shutoff', 'disconnection', 'customs', 'suspended'];
+            const scamKeywords = ['irs', 'audit', 'warrant', 'arrest', 'leon county', 'bail', 'zelle', 'locked', 'virus', 'sweepstakes', 'gift card', 'bitcoin', 'shutoff', 'disconnection', 'customs', 'suspended', 'directors', 'wire'];
             
             let isThreat = false;
             for (let keyword of scamKeywords) {
@@ -516,12 +551,16 @@
 
             if (isThreat || fileInput.files.length > 0) {
                 resultBox.className = 'result-box danger';
-                resultContent.innerHTML = '<strong>Stop! This looks like a scam. Warnings found:</strong><br>' +
-                    'This message uses scare tactics—like pretending to be the government, threatening you with arrest, or demanding money in a hurry.<br><br>' +
-                    '<strong>What you should do right now:</strong><br>' +
-                    '1. Do NOT call the phone number written in the message. (Scammers use fake call centers to trick you into giving up personal details.)<br>' +
-                    '2. Do NOT click any links, scan QR codes, or download anything. (Links can instantly compromise your device or steal your sign-in details.)<br>' +
-                    '3. Talk it over with a trusted family member or friend, or call the <a href="tel:18009635337">DOEA Elder Helpline</a> for help.';
+                resultContent.innerHTML = 
+                    '<div class="warning-title">Stop! This high-risk threat was detected:</div>' +
+                    '<div class="warning-desc">This message uses aggressive psychological manipulation or government impersonation tactics. Do not let fear or urgency make your decisions right now.</div>' +
+                    '<div class="warning-title">What you should do right now:</div>' +
+                    '<ol class="action-list">' +
+                    '<li><strong>Do NOT call the phone number listed in the message.</strong> Scammers use fake call centers to trick you into giving up personal details.</li>' +
+                    '<li><strong>Do NOT click any links, scan QR codes, or download files.</strong> Links can instantly compromise your device or steal your sign-in details.</li>' +
+                    '<li><strong>STOP AND BREATHE. Talk it over right now.</strong> Show this message to a trusted family member, friend, or caregiver before doing anything else.</li>' +
+                    '<li><strong>CALL VERIFIED STATE HELP.</strong> If you have any doubts, use the official Florida Department of Elder Affairs numbers below or call the <a href="tel:18009635337">DOEA Elder Helpline (1-800-96-ELDER)</a>.</li>' +
+                    '</ol>';
                 helplineBox.style.display = 'block';
             } else {
                 resultBox.className = 'result-box safe';
@@ -547,4 +586,4 @@
         }
     </script>
 </body>
-</html>
+</html> 
