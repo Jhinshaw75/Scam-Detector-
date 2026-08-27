@@ -494,21 +494,12 @@
             const panel = document.getElementById('instructionsPanel');
             const btn = document.getElementById('toggleInstructionsBtn');
             panel.classList.toggle('active');
-            if (panel.classList.contains('active')) {
-                btn.textContent = 'Hide Instructions';
-            } else {
-                btn.textContent = 'How to Use';
-            }
+            btn.textContent = panel.classList.contains('active') ? 'Hide Instructions' : 'How to Use';
         }
 
         function updateFileName() {
             const input = document.getElementById('imageUpload');
-            const info = document.getElementById('fileInfo');
-            if (input.files.length > 0) {
-                info.textContent = input.files[0].name;
-            } else {
-                info.textContent = "No file chosen (Supports Images, PDFs, Text files)";
-            }
+            document.getElementById('fileInfo').textContent = input.files.length > 0 ? input.files[0].name : "No file chosen (Supports Images, PDFs, Text files)";
         }
 
         function analyzeContent() {
@@ -526,15 +517,9 @@
             const lowerText = text.toLowerCase();
             const scamKeywords = ['irs', 'audit', 'warrant', 'arrest', 'leon county', 'bail', 'zelle', 'locked', 'virus', 'sweepstakes', 'gift card', 'bitcoin', 'shutoff', 'disconnection', 'customs', 'suspended', 'directors', 'wire'];
             
-            let isThreat = false;
-            for (let keyword of scamKeywords) {
-                if (lowerText.includes(keyword)) {
-                    isThreat = true;
-                    break;
-                }
-            }
+            const isThreat = fileInput.files.length > 0 || scamKeywords.some(keyword => lowerText.includes(keyword));
 
-            if (isThreat || fileInput.files.length > 0) {
+            if (isThreat) {
                 resultBox.className = 'result-box danger';
                 resultContent.innerHTML = 
                     '<div class="warning-title">Stop! This looks like a scam. Warnings found:</div>' +
