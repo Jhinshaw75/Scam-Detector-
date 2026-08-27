@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +26,7 @@
             font-family: Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.5;
+            line-height: 1.4;
             margin: 0;
             padding: 20px;
         }
@@ -35,7 +35,7 @@
             max-width: 800px;
             margin: 40px auto;
             background: var(--card-bg);
-            padding: 40px;
+            padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
@@ -43,7 +43,7 @@
         .header-top {
             display: flex;
             justify-content: flex-end;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .instructions-toggle-btn {
@@ -66,7 +66,7 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: none;
         }
 
@@ -90,7 +90,7 @@
 
         .brand-section {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .logos {
@@ -121,35 +121,34 @@
         .disclaimer-box {
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 25px;
+            padding: 20px;
             background-color: #ffffff;
-            margin-bottom: 25px;
-            max-height: 400px;
-            overflow-y: auto;
+            margin-bottom: 20px;
         }
 
         .disclaimer-box h3 {
             margin-top: 0;
             color: #1e293b;
             font-size: 18px;
+            margin-bottom: 8px;
         }
 
         .disclaimer-box p {
             color: #475569;
             font-size: 14px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .disclaimer-box ol {
             text-align: left;
             color: #475569;
-            font-size: 14px;
+            font-size: 13px;
             padding-left: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .disclaimer-box li {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .oss-promo-banner {
@@ -293,17 +292,48 @@
             display: block;
         }
 
+        .warning-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--danger-text);
+            margin-bottom: 6px;
+        }
+
+        .warning-desc {
+            font-size: 14px;
+            color: var(--danger-text);
+            margin-bottom: 15px;
+        }
+
+        .action-list {
+            margin: 0 0 15px 0;
+            padding-left: 20px;
+            font-size: 14px;
+            color: var(--danger-text);
+        }
+
+        .action-list li {
+            margin-bottom: 8px;
+        }
+
         .helpline-box {
-            margin-top: 20px;
+            margin-top: 15px;
             background: #ffffff;
             padding: 15px;
             border-radius: 6px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--danger-border);
         }
 
         .helpline-box h4 {
             margin-top: 0;
             color: var(--primary);
+            font-size: 15px;
+        }
+
+        .helpline-box p {
+            font-size: 13px;
+            color: #334155;
+            margin-bottom: 10px;
         }
 
         .helpline-links a {
@@ -313,6 +343,7 @@
             color: var(--primary);
             font-weight: bold;
             text-decoration: none;
+            font-size: 13px;
         }
 
         .helpline-links a:hover {
@@ -383,15 +414,15 @@
             <p class="subtitle">Instant Scam & Fraud Protection Analyzer</p>
         </div>
 
-        <!-- Exact Legal & Educational Disclaimer View -->
+        <!-- Legal & Educational Disclaimer View (No Scroll Required) -->
         <div id="disclaimerView" class="disclaimer-box">
-            <h3>Legal & Educational Disclaimer and Terms of Use</h3>
-            <p>Please read this notice carefully before accessing the Senior Digital Safeguard tool:</p>
+            <h3>Legal & Educational Disclaimer</h3>
+            <p>Please review before accessing the Senior Digital Safeguard tool:</p>
             <ol>
-                <li><strong>Educational Purpose Only:</strong> This is a free, no-cost tool provided for educational and awareness purposes as part of the Senior Digital Safeguard and Operation Senior Shield initiatives. It cannot catch every single scam out there, so think of it as a quick first check to help you pause and look closer until you can verify things properly.</li>
-                <li><strong>How It Works:</strong> If you get a strange text, email, or letter that makes you suspicious, paste it into this box or upload a picture of it, and it will check it against common tricks scammers use. It does not provide formal legal, financial, or investigative assurance.</li>
-                <li><strong>No Guarantee of Safety:</strong> Just because the tool doesn't find a threat doesn't mean a message is entirely safe. Always proceed with caution, talk it over with a trusted family member or friend before replying or taking any action, and if you still have doubts, reach out directly to the DOEA Elder Helpline.</li>
-                <li><strong>Limitation of Liability:</strong> While this tool is provided with every intention of helping you stay safe, neither the Florida Department of Elder Affairs nor Operation Senior Shield can assume legal responsibility or liability for any losses that might occur from using it. We created this as an extra layer of protection, but always remember to stay cautious and protect yourself.</li>
+                <li><strong>Educational Purpose:</strong> Provided free for awareness under Operation Senior Shield as a quick first check.</li>
+                <li><strong>How It Works:</strong> Paste suspicious texts or upload screenshots to check for common scam indicators.</li>
+                <li><strong>No Guarantee:</strong> Always proceed with caution, consult a trusted person, and verify through official channels.</li>
+                <li><strong>Liability:</strong> DOEA and Operation Senior Shield assume no legal liability for losses from tool usage.</li>
             </ol>
             <button class="primary-btn" onclick="acceptDisclaimer()" style="width: 100%;">I Have Read and Agree — Enter Tool</button>
         </div>
@@ -421,8 +452,17 @@
             </div>
 
             <div id="resultBox" class="result-box">
-                <div id="resultContent"></div>
-                <div class="helpline-box" id="helplineBox" style="display:none;">
+                <div id="resultContent">
+                    <div class="warning-title">Stop! This looks like a scam. Warnings found:</div>
+                    <div class="warning-desc">This message uses scare tactics—like pretending to be the government, threatening you with arrest, or demanding money in a hurry.</div>
+                    <div class="warning-title">What you should do right now:</div>
+                    <ol class="action-list">
+                        <li>Do NOT call the phone number written in the message.</li>
+                        <li>Do NOT click any links or download anything.</li>
+                        <li>Talk it over with a trusted family member or friend, or call the <a href="tel:18009635337">DOEA Elder Helpline</a> for help.</li>
+                    </ol>
+                </div>
+                <div class="helpline-box" id="helplineBox">
                     <h4>Verified State & Federal Resources</h4>
                     <p>Do not call numbers listed in suspicious messages. Use official contacts below:</p>
                     <div class="helpline-links">
@@ -498,7 +538,7 @@
             }
 
             const lowerText = text.toLowerCase();
-            const scamKeywords = ['irs', 'audit', 'warrant', 'arrest', 'leon county', 'bail', 'zelle', 'locked', 'virus', 'sweepstakes', 'gift card', 'bitcoin', 'shutoff', 'disconnection', 'customs', 'suspended'];
+            const scamKeywords = ['irs', 'audit', 'warrant', 'arrest', 'leon county', 'bail', 'zelle', 'locked', 'virus', 'sweepstakes', 'gift card', 'bitcoin', 'shutoff', 'disconnection', 'customs', 'suspended', 'directors', 'wire'];
             
             let isThreat = false;
             for (let keyword of scamKeywords) {
@@ -510,12 +550,15 @@
 
             if (isThreat || fileInput.files.length > 0) {
                 resultBox.className = 'result-box danger';
-                resultContent.innerHTML = '<strong>Stop! This looks like a scam. Warnings found:</strong><br>' +
-                    'This message uses scare tactics—like pretending to be the government, threatening you with arrest, or demanding money in a hurry.<br><br>' +
-                    '<strong>What you should do right now:</strong><br>' +
-                    '1. Do NOT call the phone number written in the message.<br>' +
-                    '2. Do NOT click any links or download anything.<br>' +
-                    '3. Talk it over with a trusted family member or friend, or call the <a href="tel:18009635337">DOEA Elder Helpline</a> for help.';
+                resultContent.innerHTML = 
+                    '<div class="warning-title">Stop! This looks like a scam. Warnings found:</div>' +
+                    '<div class="warning-desc">This message uses scare tactics—like pretending to be the government, threatening you with arrest, or demanding money in a hurry.</div>' +
+                    '<div class="warning-title">What you should do right now:</div>' +
+                    '<ol class="action-list">' +
+                    '<li>Do NOT call the phone number written in the message.</li>' +
+                    '<li>Do NOT click any links or download anything.</li>' +
+                    '<li>Talk it over with a trusted family member or friend, or call the <a href="tel:18009635337">DOEA Elder Helpline</a> for help.</li>' +
+                    '</ol>';
                 helplineBox.style.display = 'block';
             } else {
                 resultBox.className = 'result-box safe';
