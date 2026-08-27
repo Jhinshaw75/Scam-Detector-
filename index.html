@@ -1,538 +1,94 @@
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scam Detector</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#1e3a8a">
-    <style>
-        :root {
-            --primary: #1e3a8a;
-            --primary-hover: #172554;
-            --bg-color: #f4f6f9;
-            --card-bg: #ffffff;
-            --text-color: #334155;
-            --border-color: #cbd5e1;
-            --danger-bg: #fef2f2;
-            --danger-border: #f87171;
-            --danger-text: #991b1b;
-            --safe-bg: #f0fdf4;
-            --safe-border: #4ade80;
-            --safe-text: #166534;
-        }
+ <style>
+    /* High-Impact Shock & Funnel Warning State */
+    .result-box.danger {
+        background-color: #fff5f5;
+        border: 3px solid #dc2626;
+        color: #7f1d1d;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.2);
+        display: block;
+        animation: pulseWarning 2s infinite;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.5;
-            margin: 0;
-            padding: 20px;
-        }
+    @keyframes pulseWarning {
+        0% { border-color: #dc2626; }
+        50% { border-color: #ef4444; box-shadow: 0 10px 30px -3px rgba(239, 68, 68, 0.4); }
+        100% { border-color: #dc2626; }
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+    .danger-header {
+        font-size: 22px;
+        font-weight: 800;
+        color: #991b1b;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-        .header-top {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 10px;
-        }
+    .shock-directive-list {
+        background: #ffffff;
+        border: 2px solid #f87171;
+        border-radius: 8px;
+        padding: 20px 20px 20px 40px;
+        margin: 20px 0;
+        font-size: 16px;
+        font-weight: 700;
+        color: #7f1d1d;
+    }
 
-        .instructions-toggle-btn {
-            background-color: #e2e8f0;
-            color: #1e293b;
-            border: 1px solid var(--border-color);
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    .shock-directive-list li {
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
 
-        .instructions-toggle-btn:hover {
-            background-color: #cbd5e1;
-        }
+    .shock-directive-list li span {
+        font-weight: 400;
+        display: block;
+        font-size: 14px;
+        color: #475569;
+        margin-top: 3px;
+    }
+</style>
 
-        .instructions-panel {
-            background-color: #f1f5f9;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-            display: none;
-        }
-
-        .instructions-panel.active {
-            display: block;
-        }
-
-        .instructions-panel h3 {
-            margin-top: 0;
-            color: var(--primary);
-        }
-
-        .instructions-panel ol {
-            padding-left: 20px;
-            margin-bottom: 0;
-        }
-
-        .instructions-panel li {
-            margin-bottom: 8px;
-        }
-
-        .brand-section {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
-
-        .logos img {
-            height: 45px;
-            object-fit: contain;
-        }
-
-        h1 {
-            color: var(--primary);
-            margin: 0 0 5px 0;
-            font-size: 26px;
-        }
-
-        .subtitle {
-            color: #64748b;
-            font-size: 14px;
-            margin: 0;
-        }
-
-        .disclaimer-box {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 25px;
-            background-color: #ffffff;
-            margin-bottom: 25px;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .disclaimer-box h3 {
-            margin-top: 0;
-            color: #1e293b;
-            font-size: 18px;
-        }
-
-        .disclaimer-box p {
-            color: #475569;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .disclaimer-box ol {
-            text-align: left;
-            color: #475569;
-            font-size: 14px;
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .disclaimer-box li {
-            margin-bottom: 12px;
-        }
-
-        .oss-promo-banner {
-            background-color: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .oss-promo-text {
-            font-size: 14px;
-            color: #1e3a8a;
-            margin: 0;
-        }
-
-        .oss-promo-btn {
-            background-color: var(--primary);
-            color: white;
-            padding: 8px 14px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        .oss-promo-btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .upload-dropzone {
-            border: 2px dashed var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            background-color: #fafafa;
-            margin-bottom: 20px;
-        }
-
-        .upload-dropzone label {
-            display: inline-block;
-            background-color: #e2e8f0;
-            color: #1e293b;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 8px;
-        }
-
-        .upload-dropzone label:hover {
-            background-color: #cbd5e1;
-        }
-
-        input[type="file"] {
-            display: none;
-        }
-
-        .file-info {
-            font-size: 13px;
-            color: #64748b;
-            margin: 0;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        textarea {
-            width: 100%;
-            height: 140px;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 15px;
-            box-sizing: border-box;
-            resize: vertical;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        button.primary-btn {
-            flex: 2;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        button.primary-btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        button.secondary-btn {
-            flex: 1;
-            background-color: #e2e8f0;
-            color: #1e293b;
-            border: none;
-            padding: 14px;
-            font-size: 15px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        button.secondary-btn:hover {
-            background-color: #cbd5e1;
-        }
-
-        .result-box {
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .result-box.danger {
-            background-color: var(--danger-bg);
-            border: 2px solid var(--danger-border);
-            color: var(--danger-text);
-            display: block;
-        }
-
-        .result-box.safe {
-            background-color: var(--safe-bg);
-            border: 2px solid var(--safe-border);
-            color: var(--safe-text);
-            display: block;
-        }
-
-        .helpline-box {
-            margin-top: 20px;
-            background: #ffffff;
-            padding: 15px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-        }
-
-        .helpline-box h4 {
-            margin-top: 0;
-            color: var(--primary);
-        }
-
-        .helpline-links a {
-            display: inline-block;
-            margin-right: 15px;
-            margin-top: 5px;
-            color: var(--primary);
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .helpline-links a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-note {
-            margin-top: 35px;
-            text-align: center;
-            font-size: 12px;
-            color: #64748b;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-        }
-
-        .printable-card {
-            display: none;
-        }
-
-        @media print {
-            body { background: white; padding: 0; }
-            .container { box-shadow: none; padding: 0; margin: 0; max-width: 100%; }
-            .header-top, .instructions-panel, .oss-promo-banner, .upload-dropzone, .form-group, .button-group, .disclaimer-box, .footer-note, .result-box { display: none !important; }
-            .printable-card { display: block !important; border: 2px dashed #1e3a8a; padding: 20px; border-radius: 8px; margin: 20px; }
-            .printable-card h2 { color: #1e3a8a; margin-top: 0; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <!-- Instructions Toggle Top Right -->
-        <div class="header-top">
-            <button class="instructions-toggle-btn" id="toggleInstructionsBtn" onclick="toggleInstructions()">How to Use</button>
+<!-- Inside the Result Box Container -->
+<div id="resultBox" class="result-box">
+    <div id="resultContent">
+        <div class="danger-header">
+            🛑 STOP! HIGH-RISK THREAT DETECTED
         </div>
-
-        <!-- Collapsible Instructions Panel (Enhanced with Home-Screen & Offline Guidance) -->
-        <div class="instructions-panel" id="instructionsPanel">
-            <h3>Step-by-Step Instructions & Support Guide</h3>
+        <p><strong>This message is using aggressive psychological manipulation or government impersonation tactics.</strong> Do not let fear or urgency make your decisions right now.</p>
+        
+        <div class="shock-directive-list">
             <ol>
-                <li><strong>Getting Started:</strong> Open any standard web browser (Chrome, Edge, or Safari) on your computer, tablet, or phone.</li>
-                <li><strong>Pin for Easy Access:</strong> Open your browser menu and select <em>"Add to Home Screen"</em> so this tool is saved like a regular app right on your phone or tablet.</li>
-                <li><strong>Review the Terms:</strong> Read through the initial Terms of Use and educational disclaimer screen when the page loads. The tool runs entirely inside your browser session, meaning no personal information, text, or uploads are ever saved on a central server.</li>
-                <li><strong>Check a Suspicious Message:</strong>
-                    <ul>
-                        <li><strong>Option A:</strong> Copy the text from a suspicious email, text message, or letter and paste it right into the input box.</li>
-                        <li><strong>Option B:</strong> Take a screenshot of the message and upload the image file using the upload button.</li>
-                    </ul>
+                <li>
+                    DO NOT CALL the phone number listed in the message.
+                    <span>Scammers use fake call centers to trick you into giving up personal details.</span>
                 </li>
-                <li><strong>Analyze & Review:</strong> Click the analyze button to screen the content against common scam indicators. If a threat is detected, a warning banner will appear right away advising you not to click links or call numbers listed in the message.</li>
-                <li><strong>Offline / Internet Hurdle Fallback:</strong> If your internet drops or you prefer not to use a digital device, click <strong>"Print Reference Guide"</strong> immediately to print out a physical emergency card with the toll-free DOEA Elder Helpline to keep by your telephone.</li>
+                <li>
+                    DO NOT CLICK any links, scan QR codes, or download files.
+                    <span>Links can instantly compromise your device or steal your sign-in details.</span>
+                </li>
+                <li>
+                    STOP AND BREATHE. Talk it over right now.
+                    <span>Show this message to a trusted family member, friend, or caregiver before doing anything else.</span>
+                </li>
+                <li>
+                    CALL VERIFIED STATE HELP.
+                    <span>If you have any doubts, use the official Florida Department of Elder Affairs numbers below.</span>
+                </li>
             </ol>
-        </div>
-
-        <div class="brand-section">
-            <div class="logos">
-                <a href="https://elderaffairs.org" target="_blank" rel="noopener"><img src="doea-logo.png" alt="Florida Department of Elder Affairs"></a>
-                <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener"><img src="oss-logo.png" alt="Operation Senior Shield"></a>
-            </div>
-            <h1>Scam Detector</h1>
-            <p class="subtitle">Instant Scam & Fraud Protection Analyzer</p>
-        </div>
-
-        <!-- Exact Legal & Educational Disclaimer View -->
-        <div id="disclaimerView" class="disclaimer-box">
-            <h3>Legal & Educational Disclaimer and Terms of Use</h3>
-            <p>Please read this notice carefully before accessing the Senior Digital Safeguard tool:</p>
-            <ol>
-                <li><strong>Educational Purpose Only:</strong> This is a free, no-cost tool provided for educational and awareness purposes as part of the Senior Digital Safeguard and Operation Senior Shield initiatives. It cannot catch every single scam out there, so think of it as a quick first check to help you pause and look closer until you can verify things properly.</li>
-                <li><strong>How It Works:</strong> If you get a strange text, email, or letter that makes you suspicious, paste it into this box or upload a picture of it, and it will check it against common tricks scammers use. It does not provide formal legal, financial, or investigative assurance.</li>
-                <li><strong>No Guarantee of Safety:</strong> Just because the tool doesn't find a threat doesn't mean a message is entirely safe. Always proceed with caution, talk it over with a trusted family member or friend before replying or taking any action, and if you still have doubts, reach out directly to the DOEA Elder Helpline.</li>
-                <li><strong>Limitation of Liability:</strong> While this tool is provided with every intention of helping you stay safe, neither the Florida Department of Elder Affairs nor Operation Senior Shield can assume legal responsibility or liability for any losses that might occur from using it. We created this as an extra layer of protection, but always remember to stay cautious and protect yourself.</li>
-            </ol>
-            <button class="primary-btn" onclick="acceptDisclaimer()" style="width: 100%;">I Have Read and Agree — Enter Tool</button>
-        </div>
-
-        <!-- Main Tool View (Hidden Until Agreement) -->
-        <main id="toolView" style="display: none;">
-            <!-- Prominent sign-up offer presented right after acceptance -->
-            <div class="oss-promo-banner">
-                <p class="oss-promo-text">Want to stay ahead of the latest scams? <strong>Sign up for OSS Updates</strong> to get safety alerts straight to your inbox.</p>
-                <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener" class="oss-promo-btn">Sign Up Now</a>
-            </div>
-
-            <div class="upload-dropzone">
-                <label for="imageUpload">📁 Select Screenshot or Email File</label>
-                <input type="file" id="imageUpload" accept="image/*,.pdf,.txt" onchange="updateFileName()">
-                <p class="file-info" id="fileInfo">No file chosen (Supports Images, PDFs, Text files)</p>
-            </div>
-
-            <div class="form-group">
-                <textarea id="scamInput" placeholder="Paste message text here..."></textarea>
-            </div>
-
-            <div class="button-group">
-                <button class="primary-btn" onclick="analyzeContent()">Analyze Message</button>
-                <button class="secondary-btn" onclick="clearForm()">Clear</button>
-                <button class="secondary-btn" onclick="printGuide()">Print Reference Guide</button>
-            </div>
-
-            <div id="resultBox" class="result-box">
-                <div id="resultContent"></div>
-                <div class="helpline-box" id="helplineBox" style="display:none;">
-                    <h4>Verified State & Federal Resources</h4>
-                    <p>Do not call numbers listed in suspicious messages. Use official contacts below:</p>
-                    <div class="helpline-links">
-                        <a href="tel:18009635337">DOEA Elder Helpline: 1-800-96-ELDER</a>
-                        <a href="tel:18009622873">Florida Abuse Hotline</a>
-                        <a href="https://www.ftc.gov" target="_blank" rel="noopener">FTC Reporting Portal</a>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Printable Wallet Reference Card -->
-        <div class="printable-card">
-            <h2>Scam Detector &mdash; Reference & Emergency Guide</h2>
-            <p><strong>Golden Rules to Remember:</strong></p>
-            <ul>
-                <li>Never call phone numbers listed in suspicious text messages, emails, or pop-ups.</li>
-                <li>Never click unfamiliar links or download attachments from unknown senders.</li>
-                <li>Always verify independently through trusted sources.</li>
-            </ul>
-            <h3>Verified Emergency & Support Contacts:</h3>
-            <ul>
-                <li><strong>DOEA Elder Helpline:</strong> <a href="tel:18009635337">1-800-963-5337</a></li>
-                <li><strong>Florida Abuse Hotline:</strong> <a href="tel:18009622873">1-800-962-2873</a></li>
-                <li><strong>FTC Reporting Portal:</strong> <a href="https://www.ftc.gov" target="_blank" rel="noopener">ftc.gov</a></li>
-                <li><strong>Operation Senior Shield:</strong> <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">opseniorshieldfl.com</a></li>
-            </ul>
-            <p style="font-size: 11px; margin-top: 30px; text-align: center;">Aligned with Florida Department of Elder Affairs (DOEA) & Operation Senior Shield (OSS) Guidelines.</p>
-        </div>
-
-        <div class="footer-note">
-            Aligned with Florida Department of Elder Affairs (DOEA) & Operation Senior Shield (OSS) Guidelines.
         </div>
     </div>
-
-    <script>
-        function acceptDisclaimer() {
-            document.getElementById('disclaimerView').style.display = 'none';
-            document.getElementById('toolView').style.display = 'block';
-        }
-
-        function toggleInstructions() {
-            const panel = document.getElementById('instructionsPanel');
-            const btn = document.getElementById('toggleInstructionsBtn');
-            panel.classList.toggle('active');
-            if (panel.classList.contains('active')) {
-                btn.textContent = 'Hide Instructions';
-            } else {
-                btn.textContent = 'How to Use';
-            }
-        }
-
-        function updateFileName() {
-            const input = document.getElementById('imageUpload');
-            const info = document.getElementById('fileInfo');
-            if (input.files.length > 0) {
-                info.textContent = input.files[0].name;
-            } else {
-                info.textContent = "No file chosen (Supports Images, PDFs, Text files)";
-            }
-        }
-
-        function analyzeContent() {
-            const text = document.getElementById('scamInput').value.trim();
-            const fileInput = document.getElementById('imageUpload');
-            const resultBox = document.getElementById('resultBox');
-            const resultContent = document.getElementById('resultContent');
-            const helplineBox = document.getElementById('helplineBox');
-
-            if (!text && fileInput.files.length === 0) {
-                alert('Please paste message text or upload a file to analyze.');
-                return;
-            }
-
-            const lowerText = text.toLowerCase();
-            const scamKeywords = ['irs', 'audit', 'warrant', 'arrest', 'leon county', 'bail', 'zelle', 'locked', 'virus', 'sweepstakes', 'gift card', 'bitcoin', 'shutoff', 'disconnection', 'customs', 'suspended'];
-            
-            let isThreat = false;
-            for (let keyword of scamKeywords) {
-                if (lowerText.includes(keyword)) {
-                    isThreat = true;
-                    break;
-                }
-            }
-
-            if (isThreat || fileInput.files.length > 0) {
-                resultBox.className = 'result-box danger';
-                resultContent.innerHTML = '<strong>Stop! This looks like a scam. Warnings found:</strong><br>' +
-                    'This message uses scare tactics—like pretending to be the government, threatening you with arrest, or demanding money in a hurry.<br><br>' +
-                    '<strong>What you should do right now:</strong><br>' +
-                    '1. Do NOT call the phone number written in the message.<br>' +
-                    '2. Do NOT click any links or download anything.<br>' +
-                    '3. Talk it over with a trusted family member or friend, or call the <a href="tel:18009635337">DOEA Elder Helpline</a> for help.';
-                helplineBox.style.display = 'block';
-            } else {
-                resultBox.className = 'result-box safe';
-                resultContent.innerHTML = '<strong>This looks okay. No common scam words found.</strong><br>' +
-                    'Even so, always proceed with caution and talk it over with a trusted source before taking any further action.';
-                helplineBox.style.display = 'none';
-            }
-        }
-
-        function clearForm() {
-            document.getElementById('scamInput').value = '';
-            document.getElementById('imageUpload').value = '';
-            document.getElementById('fileInfo').textContent = "No file chosen (Supports Images, PDFs, Text files)";
-            document.getElementById('resultBox').style.display = 'none';
-        }
-
-        function printGuide() {
-            window.print();
-        }
-
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(() => {});
-        }
-    </script>
-</body>
-</html>
+    
+    <div class="helpline-box" id="helplineBox" style="display:block;">
+        <h4>Verified State & Federal Resources (Official Lines Only)</h4>
+        <p>Use these trusted contacts instead of any number provided in the suspicious message:</p>
+        <div class="helpline-links">
+            <a href="tel:18009635337">DOEA Elder Helpline: 1-800-96-ELDER</a>
+            <a href="tel:18009622873">Florida Abuse Hotline</a>
+            <a href="https://www.ftc.gov" target="_blank" rel="noopener">FTC Reporting Portal</a>
+        </div>
+    </div>
+</div>
