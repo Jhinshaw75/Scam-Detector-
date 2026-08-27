@@ -238,7 +238,6 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
 
         button.primary-btn {
@@ -350,21 +349,28 @@
             <button class="instructions-toggle-btn" id="toggleInstructionsBtn" onclick="toggleInstructions()">How to Use</button>
         </div>
 
-        <!-- Collapsible Instructions Panel (Enhanced with Home-Screen & Offline Guidance) -->
+        <!-- Collapsible Instructions Panel -->
         <div class="instructions-panel" id="instructionsPanel">
-            <h3>Step-by-Step Instructions & Support Guide</h3>
+            <h3>Step-by-Step Instructions</h3>
             <ol>
-                <li><strong>Getting Started:</strong> Open any standard web browser (Chrome, Edge, or Safari) on your computer, tablet, or phone.</li>
-                <li><strong>Pin for Easy Access:</strong> Open your browser menu and select <em>"Add to Home Screen"</em> so this tool is saved like a regular app right on your phone or tablet.</li>
-                <li><strong>Review the Terms:</strong> Read through the initial Terms of Use and educational disclaimer screen when the page loads. The tool runs entirely inside your browser session, meaning no personal information, text, or uploads are ever saved on a central server.</li>
-                <li><strong>Check a Suspicious Message:</strong>
+                <li>Open any standard web browser (Chrome, Edge, or Safari) on your computer, tablet, or phone.</li>
+                <li>Read through the initial Terms of Use and educational disclaimer screen when the page loads. Note that the tool runs entirely inside your browser session, meaning no personal information, text, or uploads are ever saved on a central server.</li>
+                <li>Choose how to check the suspicious message:
                     <ul>
-                        <li><strong>Option A:</strong> Copy the text from a suspicious email, text message, or letter and paste it right into the input box.</li>
+                        <li><strong>Option A:</strong> Copy the text from the suspicious email, text message, or voicemail transcript and paste it right into the input box.</li>
                         <li><strong>Option B:</strong> Take a screenshot of the message and upload the image file using the upload button.</li>
                     </ul>
                 </li>
-                <li><strong>Analyze & Review:</strong> Click the analyze button to screen the content against common scam indicators. If a threat is detected, a warning banner will appear right away advising you not to click links or call numbers listed in the message.</li>
-                <li><strong>Offline / Internet Hurdle Fallback:</strong> If your internet drops or you prefer not to use a digital device, click <strong>"Print Reference Guide"</strong> immediately to print out a physical emergency card with the toll-free DOEA Elder Helpline to keep by your telephone.</li>
+                <li>Click the analyze button to screen the content against common scam indicators (such as government impersonation, fake process servers, banking lockouts, or family emergencies).</li>
+                <li>Review the result:
+                    <ul>
+                        <li>If no common scam patterns show up, the tool will let you know (though you should still use caution and consult with someone trusted if it came from someone you don't know well).</li>
+                        <li>If a threat is detected, a warning banner will appear right away with clear instructions, such as advising you not to click links or call the phone number listed in the message.</li>
+                    </ul>
+                </li>
+                <li>Use the direct phone links provided in the output to reach verified help channels if a threat is flagged, including the DOEA Elder Helpline, the Florida Abuse Hotline, Operation Senior Shield, or the FTC.</li>
+                <li>Click the print reference guide button if you want a physical copy of the emergency numbers to keep by your phone.</li>
+                <li>Open your browser menu on a mobile device and select "Add to Home Screen" if you want to pin the tool to your phone so you can open it like a regular app.</li>
             </ol>
         </div>
 
