@@ -152,6 +152,39 @@
             margin-bottom: 12px;
         }
 
+        .oss-promo-banner {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .oss-promo-text {
+            font-size: 14px;
+            color: #1e3a8a;
+            margin: 0;
+        }
+
+        .oss-promo-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .oss-promo-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
         .upload-dropzone {
             border: 2px dashed var(--border-color);
             border-radius: 8px;
@@ -302,7 +335,7 @@
         @media print {
             body { background: white; padding: 0; }
             .container { box-shadow: none; padding: 0; margin: 0; max-width: 100%; }
-            .header-top, .instructions-panel, .upload-dropzone, .form-group, .button-group, .disclaimer-box, .footer-note, .result-box { display: none !important; }
+            .header-top, .instructions-panel, .oss-promo-banner, .upload-dropzone, .form-group, .button-group, .disclaimer-box, .footer-note, .result-box { display: none !important; }
             .printable-card { display: block !important; border: 2px dashed #1e3a8a; padding: 20px; border-radius: 8px; margin: 20px; }
             .printable-card h2 { color: #1e3a8a; margin-top: 0; }
         }
@@ -328,10 +361,10 @@
                         <li><strong>Option B:</strong> Take a screenshot of the message and upload the image file using the upload button.</li>
                     </ul>
                 </li>
-                <li>Click the analyze button to screen the content against the twenty built-in scam categories (such as government impersonation, fake process servers, banking lockouts, or family emergencies).</li>
+                <li>Click the analyze button to screen the content against common scam indicators (such as government impersonation, fake process servers, banking lockouts, or family emergencies).</li>
                 <li>Review the result:
                     <ul>
-                        <li>If no common scam patterns show up, the tool will let you know (though you should still use your own judgment if it came from someone you know and trust).</li>
+                        <li>If no common scam patterns show up, the tool will let you know (though you should still use caution and consult with someone trusted if it came from someone you don't know well).</li>
                         <li>If a threat is detected, a warning banner will appear right away with clear instructions, such as advising you not to click links or call the phone number listed in the message.</li>
                     </ul>
                 </li>
@@ -355,16 +388,22 @@
             <h3>Legal & Educational Disclaimer and Terms of Use</h3>
             <p>Please read this notice carefully before accessing the Senior Digital Safeguard tool:</p>
             <ol>
-                <li><strong>Educational Purpose Only:</strong> This tool is provided for informational, educational, and awareness purposes only as part of the Senior Digital Safeguard and Operation Senior Shield initiatives.</li>
-                <li><strong>Automated Pattern Recognition:</strong> The tool uses automated keyword pattern matching and heuristic algorithms to assist in identifying common digital fraud indicators, phishing patterns, and social engineering pretexts. It does not provide formal legal, financial, or investigative assurance.</li>
-                <li><strong>No Guarantee of Authenticity:</strong> A result indicating "No Immediate Threat Detected" does not guarantee that a communication, text message, email, or attached document is entirely authentic, safe, or risk-free. Users must continue to exercise independent judgment and verify communications through official channels.</li>
-                <li><strong>Limitation of Liability:</strong> The Florida Department of Elder Affairs and project maintainers assume no legal liability or responsibility for any direct or indirect losses resulting from the use of this tool.</li>
+                <li><strong>Educational Purpose Only:</strong> This is a free, no-cost tool provided for educational and awareness purposes as part of the Senior Digital Safeguard and Operation Senior Shield initiatives. It cannot catch every single scam out there, so think of it as a quick first check to help you pause and look closer until you can verify things properly.</li>
+                <li><strong>How It Works:</strong> If you get a strange text, email, or letter that makes you suspicious, paste it into this box or upload a picture of it, and it will check it against common tricks scammers use. It does not provide formal legal, financial, or investigative assurance.</li>
+                <li><strong>No Guarantee of Safety:</strong> Just because the tool doesn't find a threat doesn't mean a message is entirely safe. Always proceed with caution, talk it over with a trusted family member or friend before replying or taking any action, and if you still have doubts, reach out directly to the DOEA Elder Helpline.</li>
+                <li><strong>Limitation of Liability:</strong> While this tool is provided with every intention of helping you stay safe, neither the Florida Department of Elder Affairs nor the project maintainers can assume legal responsibility or liability for any losses that might occur from using it. We created this as an extra layer of protection, but always remember to stay cautious and protect yourself.</li>
             </ol>
             <button class="primary-btn" onclick="acceptDisclaimer()" style="width: 100%;">I Have Read and Agree — Enter Tool</button>
         </div>
 
         <!-- Main Tool View (Hidden Until Agreement) -->
         <main id="toolView" style="display: none;">
+            <!-- Prominent sign-up offer presented right after acceptance -->
+            <div class="oss-promo-banner">
+                <p class="oss-promo-text">Want to stay ahead of the latest scams? <strong>Sign up for OSS Updates</strong> to get safety alerts straight to your inbox.</p>
+                <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener" class="oss-promo-btn">Sign Up Now</a>
+            </div>
+
             <div class="upload-dropzone">
                 <label for="imageUpload">📁 Select Screenshot or Email File</label>
                 <input type="file" id="imageUpload" accept="image/*,.pdf,.txt" onchange="updateFileName()">
@@ -402,7 +441,7 @@
             <ul>
                 <li>Never call phone numbers listed in suspicious text messages, emails, or pop-ups.</li>
                 <li>Never click unfamiliar links or download attachments from unknown senders.</li>
-                <li>Always verify independently through official channels.</li>
+                <li>Always verify independently through trusted sources.</li>
             </ul>
             <h3>Verified Emergency & Support Contacts:</h3>
             <ul>
@@ -415,7 +454,7 @@
         </div>
 
         <div class="footer-note">
-            Aligned with Florida Department of Elder Affairs (DOEA) & <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield (OSS)</a> Guidelines.
+            Aligned with Florida Department of Elder Affairs (DOEA) & Operation Senior Shield (OSS) Guidelines.
         </div>
     </div>
 
@@ -471,17 +510,17 @@
 
             if (isThreat || fileInput.files.length > 0) {
                 resultBox.className = 'result-box danger';
-                resultContent.innerHTML = '<strong>Heads Up: This looks like a scam.</strong><br>' +
-                    'This message matches common tricks used by fraudsters (like pretending to be government officials, making false legal threats, or demanding urgent payments).<br><br>' +
+                resultContent.innerHTML = '<strong>Stop! This looks like a scam. Warnings found:</strong><br>' +
+                    'This message uses scare tactics—like pretending to be the government, threatening you with arrest, or demanding money in a hurry.<br><br>' +
                     '<strong>What you should do right now:</strong><br>' +
-                    '1. Do NOT call any phone numbers listed in the message.<br>' +
-                    '2. Do NOT click any links or open attachments.<br>' +
-                    '3. Double-check things independently using official resources (like checking the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield page</a> or calling the <a href="tel:18009635337">DOEA Elder Helpline</a>).';
+                    '1. Do NOT call the phone number written in the message.<br>' +
+                    '2. Do NOT click any links or download anything.<br>' +
+                    '3. Talk it over with a trusted family member or friend, or call the <a href="tel:18009635337">DOEA Elder Helpline</a> for help.';
                 helplineBox.style.display = 'block';
             } else {
                 resultBox.className = 'result-box safe';
-                resultContent.innerHTML = '<strong>No common scam patterns found here.</strong><br>' +
-                    'Always stay careful with unfamiliar messages, and double-check with someone you trust if you are unsure.';
+                resultContent.innerHTML = '<strong>This looks okay. No common scam words found.</strong><br>' +
+                    'Even so, always proceed with caution and talk it over with a trusted source before taking any further action.';
                 helplineBox.style.display = 'none';
             }
         }
