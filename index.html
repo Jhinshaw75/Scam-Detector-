@@ -475,7 +475,7 @@
             <div id="printDynamicContent">
                 <p><strong>Golden Rules to Remember:</strong></p>
                 <ul>
-                    <li>Never call phone numbers listed in suspicious text messages, emails, or pop-ups.</li>
+                    <li>Never call phone numbers listed in suspicious text messages, emails, or pop-up notices.</li>
                     <li>Never click unfamiliar links or download attachments from unknown senders.</li>
                     <li>Always use our verified Operation Senior Shield resource links.</li>
                 </ul>
@@ -558,6 +558,48 @@
 
             const threatCategories = [
                 {
+                    keywords: ['urgent audio directive', 'ai-synthesized voice message', 'chief executive officer', 'finalizing a confidential acquisition', 'immediate wire transfer bypass'],
+                    minMatches: 2,
+                    title: "Fake AI-Derived Voice / Deepfake Executive Impersonation Scam",
+                    desc: "A fraudulent audio directive or message mimics a corporate executive using AI voice synthesis to demand rushed wire transfers bypassing clearinghouse protocols.",
+                    warn: "Executive impersonation scams use deepfake audio and manufactured urgency to trick employees into bypassing internal financial verification controls."
+                },
+                {
+                    keywords: ['google calendar notification', 'emergency compliance review meeting', 'embedded video conference link', 'calendar invite details', 'authenticate your corporate credentials'],
+                    minMatches: 2,
+                    title: "Fake Calendar Invite Phishing (Calendar Quishing) Trap",
+                    desc: "A deceptive calendar notification invites you to a compliance review meeting and uses a malicious video conference link to capture enterprise credentials.",
+                    warn: "Cybercriminals use automated calendar invites and fake meeting links to bypass email security filters and capture enterprise login tokens."
+                },
+                {
+                    keywords: ['security team notice', 'new sign-in attempt was detected from an unrecognized device', 'eastern europe', 'proxy authentication link', 'multi-factor push token before your account locks'],
+                    minMatches: 2,
+                    title: "Fake Adversary-in-the-Middle (AiTM) Session Hijack Login Alert",
+                    desc: "A deceptive security warning claims a foreign sign-in attempt occurred and tricks you into clicking a proxy login link to intercept multi-factor tokens.",
+                    warn: "Adversary-in-the-middle phishing attacks use proxy links to capture live multi-factor authentication tokens and hijack active user sessions."
+                },
+                {
+                    keywords: ['audio directive', 'synthesized voice', 'clearinghouse protocols'],
+                    minMatches: 2,
+                    title: "Fake AI-Derived Voice / Deepfake Executive Impersonation Scam",
+                    desc: "A fraudulent audio directive or message mimics a corporate executive using AI voice synthesis to demand rushed wire transfers bypassing clearinghouse protocols.",
+                    warn: "Executive impersonation scams use deepfake audio and manufactured urgency to trick employees into bypassing internal financial verification controls."
+                },
+                {
+                    keywords: ['google calendar', 'compliance review', 'video conference link', 'authenticate your corporate credentials'],
+                    minMatches: 2,
+                    title: "Fake Calendar Invite Phishing (Calendar Quishing) Trap",
+                    desc: "A deceptive calendar notification invites you to a compliance review meeting and uses a malicious video conference link to capture enterprise credentials.",
+                    warn: "Cybercriminals use automated calendar invites and fake meeting links to bypass email security filters and capture enterprise login tokens."
+                },
+                {
+                    keywords: ['security team notice', 'unrecognized device', 'proxy authentication link', 'multi-factor push token'],
+                    minMatches: 2,
+                    title: "Fake Adversary-in-the-Middle (AiTM) Session Hijack Login Alert",
+                    desc: "A deceptive security warning claims a foreign sign-in attempt occurred and tricks you into clicking a proxy login link to intercept multi-factor tokens.",
+                    warn: "Adversary-in-the-middle phishing attacks use proxy links to capture live multi-factor authentication tokens and hijack active user sessions."
+                },
+                {
                     keywords: ['at&t billing alert', 'international roaming charge of $349.99', 'cellular bill cycle', 'secure billing portal link immediately to review your itemized statement and request an instant account credit'],
                     minMatches: 2,
                     title: "Fake Mobile Carrier Billing Overcharge Scam",
@@ -573,27 +615,6 @@
                 },
                 {
                     keywords: ['city traffic division', 'unpaid municipal parking violation was recorded against your vehicle license plate', 'settle your $35 balance via our secure text payment link within 24 hours', 'prevent immediate vehicle immobilization'],
-                    minMatches: 2,
-                    title: "Fake Municipal Parking Enforcement Fine Notice",
-                    desc: "A fraudulent traffic notice claims an unpaid parking ticket was issued against your vehicle license plate and threatens towing via text link.",
-                    warn: "Municipal parking authorities do not send text message notices threatening immediate vehicle clamping or towing without formal physical citations."
-                },
-                {
-                    keywords: ['at&t', 'roaming charge', 'billing portal', 'account credit'],
-                    minMatches: 2,
-                    title: "Fake Mobile Carrier Billing Overcharge Scam",
-                    desc: "A fraudulent carrier alert claims a massive roaming charge was billed to your cellular account to trick you into clicking a phishing link for a refund credit.",
-                    warn: "Cellular carriers never send sudden text alerts threatening huge roaming charges via unsecured web link portals."
-                },
-                {
-                    keywords: ['netflix', 'membership renewal failed', 'debit card was declined', 'reactivation portal'],
-                    minMatches: 2,
-                    title: "Fake Subscription Streaming Account Billing Suspension Scam",
-                    desc: "A fraudulent streaming service billing notice claims your credit card renewal failed to harvest your updated card and security code data.",
-                    warn: "Streaming entertainment providers handle billing updates securely inside official logged-in account settings rather than text link forms."
-                },
-                {
-                    keywords: ['city traffic division', 'parking violation', 'license plate', 'vehicle immobilization'],
                     minMatches: 2,
                     title: "Fake Municipal Parking Enforcement Fine Notice",
                     desc: "A fraudulent traffic notice claims an unpaid parking ticket was issued against your vehicle license plate and threatens towing via text link.",
