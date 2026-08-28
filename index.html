@@ -546,8 +546,9 @@
             const hasAlphanumeric = /[a-z0-9]/i.test(text);
             const isSymbolOnlySpam = text.length > 0 && !hasAlphanumeric;
 
-            // Exclude benign routine billing/statement notices from triggering threats
-            const isBenignRoutine = lowerText.includes('statement') || lowerText.includes('scheduled to process') || lowerText.includes('auto pay') || lowerText.includes('autopay') || lowerText.includes('ready to view');
+            // Strict benign check: only exempt if it lacks urgent phishing/verification triggers
+            const hasPhishingTriggers = lowerText.includes('verify') || lowerText.includes('suspension') || lowerText.includes('routing') || lowerText.includes('click') || lowerText.includes('security link');
+            const isBenignRoutine = !hasPhishingTriggers && (lowerText.includes('statement') || lowerText.includes('scheduled to process') || lowerText.includes('auto pay') || lowerText.includes('autopay') || lowerText.includes('ready to view'));
 
             const threatCategories = [
                 {
