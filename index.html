@@ -559,6 +559,20 @@
 
             const threatCategories = [
                 {
+                    keywords: ['tsaprecheck', 'trusted traveler', 'membershiphasexpired', 'paymentprocessingfailure', 'renewyourclearance'],
+                    minMatches: 2,
+                    title: "Fake TSA PreCheck / Global Entry Renewal Scam",
+                    desc: "A fraudulent travel alert claims your trusted traveler membership has expired due to payment failure, attempting to steal card details.",
+                    warn: "Official travel programs like TSA PreCheck never send urgent text alerts demanding immediate link clicks or fee payments to renew clearance."
+                },
+                {
+                    keywords: ['sunpass', 'tollaccountbalance', 'criticallylow', 'automaticreplenishmentfailed', 'linkedpaymentcard'],
+                    minMatches: 2,
+                    title: "Fake Toll Account Replenishment Scam",
+                    desc: "A fake toll notice claims your account replenishment failed and urges you to update billing details via a mobile link.",
+                    warn: "Scammers use fake toll account replenishment alerts to trick motorists into handing over sensitive credit card and billing information."
+                },
+                {
                     keywords: ['medicare compliance alert', 'medicare part b', 'medical insurance benefits', 'temporarily suspended', 'enrollment review office'],
                     minMatches: 2,
                     title: "Fake Medicare Benefits Suspension Scam",
