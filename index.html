@@ -559,6 +559,20 @@
 
             const threatCategories = [
                 {
+                    keywords: ['mining pool', 'staking rewards', 'locked pending validation', 'gas fee', 'smart contract address'],
+                    minMatches: 2,
+                    title: "Fake Crypto Staking / Mining Yield Scam",
+                    desc: "A fraudulent cryptocurrency notice claims your staking rewards or mining yields are locked and requires an upfront gas fee to release them.",
+                    warn: "Legitimate crypto platforms never require upfront gas fees or crypto transfers to unlock earned staking rewards or payouts."
+                },
+                {
+                    keywords: ['bench warrant', 'petit jury duty', 'bond processing division', 'dismissal fee', 'zelle', 'ignoring multiple court summons'],
+                    minMatches: 2,
+                    title: "Fake Police or Jury Duty Warrant Scam",
+                    desc: "A fake law enforcement officer or court worker is claiming a warrant has been issued against you requiring immediate payment.",
+                    warn: "Law enforcement and courts never call or text demanding immediate fine payments via gift cards, prepaid cards, or Zelle."
+                },
+                {
                     keywords: ['toll cameras', 'highway toll violation', 'unpaid toll', 'past-due toll', 'secure mobile link to avoid late fees', 'florida turnpike authority'],
                     minMatches: 2,
                     title: "Fake Toll Road Fine Scam",
@@ -613,13 +627,6 @@
                     title: "Fake Cryptocurrency Mining Investment Scam",
                     desc: "A fraudulent investment scheme promises guaranteed high returns on crypto mining rigs to trick you into transferring digital currency.",
                     warn: "Guaranteed high-return cryptocurrency schemes are high-risk financial traps designed to permanently drain your digital assets."
-                },
-                {
-                    keywords: ['bench warrant', 'missed jury duty', 'dismissal fine', 'sheriff compliance', 'arrest due to missing'],
-                    minMatches: 2,
-                    title: "Fake Police or Jury Duty Warrant Scam",
-                    desc: "A fake law enforcement officer or court worker is claiming a warrant has been issued against you requiring immediate payment.",
-                    warn: "Law enforcement and courts never call or text demanding immediate fine payments via gift cards or prepaid cards."
                 },
                 {
                     keywords: ['delivery failure', 'incorrect street address', 'redelivery fee', 'tracking link', 'usps delivery'],
