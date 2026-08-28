@@ -558,6 +558,27 @@
 
             const threatCategories = [
                 {
+                    keywords: ['security check required', 'unusual network traffic detected from your browser session', 'complete the interactive visual captcha', 'paste your authorization node token'],
+                    minMatches: 2,
+                    title: "Fake AI CAPTCHA Phishing Verification Trap",
+                    desc: "A deceptive security challenge claims unusual browser traffic and tricks you into pasting authorization tokens or running malicious scripts.",
+                    warn: "Fake CAPTCHA and browser verification prompts are used by cybercriminals to execute clipboard injection attacks and steal session tokens."
+                },
+                {
+                    keywords: ['global cyber defense bureau', 'successfully intercepted and recovered the cryptocurrency funds you lost', 'pay an upfront $450 administrative retainer fee', 'zelle or bitcoin'],
+                    minMatches: 2,
+                    title: "Fake Asset Recovery & Reclaim Fraud",
+                    desc: "A fraudulent recovery service claims they have located your lost crypto funds but requires an upfront retainer or administrative fee.",
+                    warn: "Asset recovery bureaus that demand upfront fees before returning lost funds are secondary scams targeting previous fraud victims."
+                },
+                {
+                    keywords: ['postal service delivery notice', 'incoming international parcel is currently held at our sorting facility', 'incomplete street address and unpaid $1.50 handling fee', 'secure mobile link immediately'],
+                    minMatches: 2,
+                    title: "Deceptive Parcel Delivery & Customs Scam",
+                    desc: "A fake shipping alert claims your package is stuck due to unpaid handling fees or address issues to harvest credit card details.",
+                    warn: "Postal and shipping services never demand sudden digital fee payments via link clicks to release standard packages."
+                },
+                {
                     keywords: ['clean energy grant department', 'pre-approved for a $7,500 direct government solar installation subsidy', 'confirm your bank routing details', 'secure portal link immediately before funds expire'],
                     minMatches: 2,
                     title: "Fake Solar Panel Government Tax Credit / Grant Scam",
