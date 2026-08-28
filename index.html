@@ -559,6 +559,20 @@
 
             const threatCategories = [
                 {
+                    keywords: ['geek squad', 'total protection', 'successfully renewed', 'cancel and request an immediate refund', 'billing support desk'],
+                    minMatches: 2,
+                    title: "Fake Tech Support / Antivirus Subscription Scam",
+                    desc: "A fraudulent subscription renewal notice claims you were charged for antivirus or tech support services to trick you into calling a fake refund desk.",
+                    warn: "Scammers use fake tech support subscription notices to gain remote access or steal banking details when you call to cancel."
+                },
+                {
+                    keywords: ['amber alert', 'microchipped', 'scanned at an emergency veterinary clinic', 'courier transport release', 'registry verification fee'],
+                    minMatches: 2,
+                    title: "Fake Lost Pet Recovery Scam",
+                    desc: "A fraudulent pet recovery notice claims a missing or microchipped pet has been found at a clinic and demands a fee for courier transport.",
+                    warn: "Scammers exploit owners' emotional attachment to pets by manufacturing urgent rescue or transport fee demands."
+                },
+                {
                     keywords: ['tsaprecheck', 'trusted traveler', 'membershiphasexpired', 'paymentprocessingfailure', 'renewyourclearance'],
                     minMatches: 2,
                     title: "Fake TSA PreCheck / Global Entry Renewal Scam",
@@ -979,7 +993,7 @@
             document.getElementById('imageUpload').value = '';
             document.getElementById('fileInfo').textContent = "No file chosen (Supports Images, PDFs, Text files)";
             document.getElementById('resultBox').style.display = 'none';
-            document.getElementById('resultContent').innerHTML = '';
+            resultBox.style.display = 'none';
         }
 
         function printGuide() {
