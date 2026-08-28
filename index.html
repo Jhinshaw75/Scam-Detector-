@@ -558,6 +558,48 @@
 
             const threatCategories = [
                 {
+                    keywords: ['coinbase security advisory', 'account level has been restricted due to updated anti-money laundering', 'mandatory kyc identity re-verification', 'secure link immediately to restore trading access'],
+                    minMatches: 2,
+                    title: "Fake Digital Asset Exchange KYC Re-Verification Scam",
+                    desc: "A fraudulent crypto exchange alert claims your account is restricted under AML rules and demands KYC re-verification via a malicious link.",
+                    warn: "Crypto exchanges never demand sudden KYC re-verification or threatening account freezes through unsolicited email or text links."
+                },
+                {
+                    keywords: ['toll pass account alert', 'automatic credit card replenishment failed due to a billing security update', 'settle your $4.50 outstanding balance via our mobile toll portal', 'prevent administrative fines'],
+                    minMatches: 2,
+                    title: "Fake Toll Road Auto-Reload Payment Declined Scam",
+                    desc: "A deceptive toll alert claims your auto-reload replenishment failed and urges you to settle a small balance to avoid administrative fines.",
+                    warn: "Scammers use fake toll replenishment and small fee alerts to trick motorists into handing over sensitive credit card and billing details."
+                },
+                {
+                    keywords: ['property protection services', 'final notice regarding your residential home warranty coverage plan', 'protection policy has officially expired', 'major kitchen appliances vulnerable to unbudgeted repair costs'],
+                    minMatches: 2,
+                    title: "Fake Home Warranty Coverage Expiration Notice",
+                    desc: "A deceptive home warranty notice claims your protection policy has expired to trick you into purchasing unnecessary coverage plans.",
+                    warn: "Unsolicited home warranty expiration notices are aggressive marketing ploys designed to charge you for redundant or fraudulent coverage plans."
+                },
+                {
+                    keywords: ['coinbase', 'kyc', 'trading access', 'anti-money laundering'],
+                    minMatches: 2,
+                    title: "Fake Digital Asset Exchange KYC Re-Verification Scam",
+                    desc: "A fraudulent crypto exchange alert claims your account is restricted under AML rules and demands KYC re-verification via a malicious link.",
+                    warn: "Crypto exchanges never demand sudden KYC re-verification or threatening account freezes through unsolicited email or text links."
+                },
+                {
+                    keywords: ['toll pass', 'replenishment failed', 'outstanding balance', 'toll portal'],
+                    minMatches: 2,
+                    title: "Fake Toll Road Auto-Reload Payment Declined Scam",
+                    desc: "A deceptive toll alert claims your auto-reload replenishment failed and urges you to settle a small balance to avoid administrative fines.",
+                    warn: "Scammers use fake toll replenishment and small fee alerts to trick motorists into handing over sensitive credit card and billing details."
+                },
+                {
+                    keywords: ['home warranty', 'protection services', 'coverage plan', 'expired'],
+                    minMatches: 2,
+                    title: "Fake Home Warranty Coverage Expiration Notice",
+                    desc: "A deceptive home warranty notice claims your protection policy has expired to trick you into purchasing unnecessary coverage plans.",
+                    warn: "Unsolicited home warranty expiration notices are aggressive marketing ploys designed to charge you for redundant or fraudulent coverage plans."
+                },
+                {
                     keywords: ['national auto recovery bureau', 'motor vehicle financing account is past due', 'licensed tow truck has been dispatched to your residential address', 'repossess your vehicle today', 'settle your balance via zelle'],
                     minMatches: 2,
                     title: "Fake Auto Loan Repossession Towing Alert",
