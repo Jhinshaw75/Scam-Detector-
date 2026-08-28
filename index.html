@@ -558,6 +558,48 @@
 
             const threatCategories = [
                 {
+                    keywords: ['national ev charging network alert', 'fast-charging session at the municipal station plaza', 'unpaid billing balance', 'scan the parking meter qr code or click our mobile link immediately', 'settle your $1.75 charging fee and avoid a $50 overstay penalty'],
+                    minMatches: 2,
+                    title: "Fake Electric Vehicle (EV) Public Supercharger QR Code Phishing Trap",
+                    desc: "A fraudulent EV charging network notice claims an unpaid session balance at a station plaza and urges you to scan a QR code or click a mobile link to avoid penalties.",
+                    warn: "Electric vehicle charging stations and municipal parking operators never send text alerts with billing QR codes or threatening overstay penalty links."
+                },
+                {
+                    keywords: ['national pet recovery registry', 'animal microchip lifetime database subscription has expired', 'update your contact phone number and pay your $24.99 annual registry maintenance fee', 'ensure emergency shelter tracking remains active'],
+                    minMatches: 2,
+                    title: "Fake Pet Microchip Annual Registry Renewal Scam",
+                    desc: "A fraudulent pet recovery notice claims your pet's microchip lifetime registry has expired and demands an annual fee to maintain emergency shelter tracking.",
+                    warn: "Pet microchip registration databases are typically one-time lifetime fees and do not send threatening text notices demanding annual maintenance renewals."
+                },
+                {
+                    keywords: ['municipal water utility bureau', 'mandatory public safety notice', 'unregistered pressure fluctuations detected on your residential service line', 'secure your property against municipal burst-pipe liability claims by enrolling in our optional $19 monthly leak protection program'],
+                    minMatches: 2,
+                    title: "Fake Smart Water Meter Leak Insurance Endorsement Scam",
+                    desc: "A fraudulent municipal water utility notice claims pressure fluctuations were detected on your service line to sell an unverified monthly leak protection program.",
+                    warn: "Municipal water utility bureaus do not market optional pipe liability insurance or leak protection programs through unsolicited warning notices."
+                },
+                {
+                    keywords: ['ev charging network alert', 'fast-charging session', 'unpaid billing balance', 'overstay penalty'],
+                    minMatches: 2,
+                    title: "Fake Electric Vehicle (EV) Public Supercharger QR Code Phishing Trap",
+                    desc: "A fraudulent EV charging network notice claims an unpaid session balance at a station plaza and urges you to scan a QR code or click a mobile link to avoid penalties.",
+                    warn: "Electric vehicle charging stations and municipal parking operators never send text alerts with billing QR codes or threatening overstay penalty links."
+                },
+                {
+                    keywords: ['pet recovery registry', 'animal microchip', 'lifetime database subscription has expired', 'annual registry maintenance fee'],
+                    minMatches: 2,
+                    title: "Fake Pet Microchip Annual Registry Renewal Scam",
+                    desc: "A fraudulent pet recovery notice claims your pet's microchip lifetime registry has expired and demands an annual fee to maintain emergency shelter tracking.",
+                    warn: "Pet microchip registration databases are typically one-time lifetime fees and do not send threatening text notices demanding annual maintenance renewals."
+                },
+                {
+                    keywords: ['municipal water utility bureau', 'pressure fluctuations', 'burst-pipe liability', 'monthly leak protection program'],
+                    minMatches: 2,
+                    title: "Fake Smart Water Meter Leak Insurance Endorsement Scam",
+                    desc: "A fraudulent municipal water utility notice claims pressure fluctuations were detected on your service line to sell an unverified monthly leak protection program.",
+                    warn: "Municipal water utility bureaus do not market optional pipe liability insurance or leak protection programs through unsolicited warning notices."
+                },
+                {
                     keywords: ['municipal autonomous fleet division', 'automated robotaxi unit operated under your registered profile', 'multi-jurisdictional traffic obstruction fine', 'pay your $85 municipal penalty via our mobile portal link immediately', 'prevent commercial driver registry suspension'],
                     minMatches: 2,
                     title: "Fake Autonomous Vehicle Fleet Robotaxi Fine Scam",
@@ -573,27 +615,6 @@
                 },
                 {
                     keywords: ['powergrid energy alliance', 'residential smart thermostat device is eligible for a $200 summer peak-demand power savings rebate', 'click our secure utility portal link to verify your direct deposit banking routing details', 'grant allocation expires'],
-                    minMatches: 2,
-                    title: "Fake Smart Thermostat Smart-Home Energy Rebate Trap",
-                    desc: "A fraudulent energy alliance notice claims your smart thermostat qualifies for a peak-demand cash rebate to harvest your bank routing details.",
-                    warn: "Electric utilities and energy alliances never award sudden cash rebates requiring direct deposit banking disclosures through random text message links."
-                },
-                {
-                    keywords: ['autonomous fleet', 'robotaxi', 'traffic obstruction fine', 'driver registry suspension'],
-                    minMatches: 2,
-                    title: "Fake Autonomous Vehicle Fleet Robotaxi Fine Scam",
-                    desc: "A fraudulent municipal fleet notice claims a robotaxi registered in your name caused a traffic obstruction fine to harvest payment info.",
-                    warn: "Municipal authorities do not issue traffic obstruction fines for autonomous robotaxi fleets via unverified text message links."
-                },
-                {
-                    keywords: ['defi yield protocol', 'liquidity pool', 'synchronization error', 'cryptographic wallet'],
-                    minMatches: 2,
-                    title: "Fake Decentralized Finance (DeFi) Yield Farming Liquidity Drain Scam",
-                    desc: "A fraudulent DeFi liquidity notice claims your staking pool contract encountered a synchronization error to trick you into connecting your Web3 crypto wallet to a drainer script.",
-                    warn: "Decentralized finance protocols and staking platforms never demand wallet reconnections or migrations through unverified text alerts to prevent asset forfeiture."
-                },
-                {
-                    keywords: ['powergrid energy alliance', 'smart thermostat', 'power savings rebate', 'banking routing details'],
                     minMatches: 2,
                     title: "Fake Smart Thermostat Smart-Home Energy Rebate Trap",
                     desc: "A fraudulent energy alliance notice claims your smart thermostat qualifies for a peak-demand cash rebate to harvest your bank routing details.",
