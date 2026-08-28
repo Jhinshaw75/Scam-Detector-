@@ -553,7 +553,7 @@
                     minMatches: 2,
                     title: "Fake Academic Internship / Job Scam",
                     desc: "A deceptive recruitment notice uses a prestigious university header but instructs you to apply using an unverified personal webmail address instead of an institutional domain.",
-                    warn: "Scammers spoof university departments and use personal webmail addresses (like @gmail.com) to harvest student personal information through fake employment offers."
+                    warn: "Scammers spoof university departments and use personal webmail addresses (like @gmail.com) to harvest student personal information and identity details through fake employment offers."
                 },
                 {
                     keywords: ['library', 'admin', 'membership', 'institutional credentials', 'backup portal', 'account suspension'],
@@ -790,7 +790,7 @@
                 
                 const title = matchedThreat ? matchedThreat.title : "Stop! This is a Known Scam Trick";
                 const desc = matchedThreat ? matchedThreat.desc : "This message is trying to scare you into acting quickly before you have time to think.";
-                const specificWarning = matchedThreat ? matchedThreat.warn : "This matches fraudulent patterns designed to cause panic and financial loss. Remember: real organizations and authorities will never threaten you or demand immediate payment over a text, email, or pop-up.";
+                const specificWarning = matchedThreat ? matchedThreat.warn : "This matches fraudulent patterns designed to cause privacy and financial loss.";
                 
                 const step3Custom = "If you have actually suffered a financial loss or fallen victim to this communication, report the incident to the appropriate authority: file with the <a href='https://reportfraud.ftc.gov' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Federal Trade Commission (FTC)</a>, contact your local law enforcement or the <a href='https://www.fdle.state.fl.us/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>FDLE</a> for criminal matters, file a deceptive trade complaint with the <a href='https://www.myfloridalegal.com' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Florida Attorney General</a>, or forward scam text messages to <strong>7726</strong>.";
                 const step4Custom = "To review general security guidelines, scam trends, and educational resources, explore the <a href='https://elderaffairs.org/programs-and-services/elder-protection-programs-fraud-trends/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>DOEA Fraud Protection Programs</a> hub.";
