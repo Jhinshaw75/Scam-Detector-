@@ -424,7 +424,7 @@
             <strong>2. How It Works:</strong> Paste suspicious texts or upload screenshots to check for common scam indicators.<br>
             <strong>3. No Guarantee:</strong> Always proceed with caution, consult our trusted resources, and verify through official channels.<br>
             <strong>4. Liability:</strong> DOEA and Operation Senior Shield assume no legal liability for losses from tool usage.</p>
-            <button class="primary-btn" onclick="acceptDisclaimer()" style="width: 100%;">I Have Read and Agree — Enter Tool</button>
+            <button type="button" class="primary-btn" onclick="acceptDisclaimer()" style="width: 100%; position: relative; z-index: 10; cursor: pointer;">I Have Read and Agree — Enter Tool</button>
         </div>
 
         <main id="toolView" style="display: none;">
@@ -444,9 +444,9 @@
             </div>
 
             <div class="button-group">
-                <button class="primary-btn" onclick="analyzeContent()">Analyze Message</button>
-                <button class="secondary-btn" onclick="clearForm()">Clear</button>
-                <button class="secondary-btn" onclick="printGuide()">Print Reference Guide</button>
+                <button type="button" class="primary-btn" onclick="analyzeContent()">Analyze Message</button>
+                <button type="button" class="secondary-btn" onclick="clearForm()">Clear</button>
+                <button type="button" class="secondary-btn" onclick="printGuide()">Print Reference Guide</button>
             </div>
 
             <div id="resultBox" class="result-box">
@@ -519,4 +519,97 @@
             const resultBox = document.getElementById('resultBox');
             const resultContent = document.getElementById('resultContent');
 
-            if (!
+            if (!text && fileInput.files.length === 0) {
+                alert('Please paste message text or upload a file to analyze.');
+                return;
+            }
+
+            const rawLower = text.toLowerCase()
+                .replace(/0/g, 'o')
+                .replace(/[1!]/g, 'i')
+                .replace(/3/g, 'e')
+                .replace(/4/g, 'a')
+                .replace(/5/g, 's')
+                .replace(/7/g, 't')
+                .replace(/8/g, 'b');
+
+            const condensedText = rawLower.replace(/\s+/g, '');
+            const lowerText = rawLower;
+
+            const hasAlphanumeric = /[a-z0-9]/i.test(text);
+            const isSymbolOnlySpam = text.length > 0 && !hasAlphanumeric;
+
+            const threatCategories = [
+                {
+                    keywords: ['career services', 'research internship', '@gmail.com', 'paid research'],
+                    minMatches: 2,
+                    title: "Fake Academic Internship / Job Scam",
+                    desc: "A deceptive recruitment notice uses a prestigious university header but instructs you to apply using an unverified personal webmail address instead of an institutional domain.",
+                    warn: "Scammers spoof university departments and use personal webmail addresses (like @gmail.com) to harvest student personal information and identity details through fake employment offers."
+                },
+                {
+                    keywords: ['library', 'admin', 'membership', 'institutional credentials', 'backup portal', 'account suspension'],
+                    minMatches: 2,
+                    title: "Institutional Portal Phishing Trap",
+                    desc: "A deceptive library or university administrative notice is trying to trick you into re-authenticating your credentials on a fake backup portal.",
+                    warn: "Scammers use institutional credential harvesting to gain unauthorized access to internal systems and databases."
+                },
+                {
+                    keywords: ['ceo', 'emergency board', 'wire', 'escrow holding', 'liquid capital', 'confidentiality'],
+                    minMatches: 2,
+                    title: "Executive Wire / CEO Fraud Extortion",
+                    desc: "A fraudulent executive audio or message warning is demanding rushed wire transfers under strict internal secrecy.",
+                    warn: "Business email compromise and executive impersonation scams exploit artificial urgency to divert funds into fraudulent escrow accounts."
+                },
+                {
+                    keywords: ['expense report', 'reimbursement', 'receipt validation', 'employee self-service', 'forfeiture'],
+                    minMatches: 2,
+                    title: "Corporate Expense Reimbursement Phishing",
+                    desc: "A fake corporate finance alert is trying to trick you into logging into a fraudulent portal to steal your employee credentials.",
+                    warn: "Scammers use fake expense reimbursement notices to harvest corporate portal logins."
+                },
+                {
+                    keywords: ['privacy regulations', 'directory credentials', 'compliance validation', 'network access', 're-certify'],
+                    minMatches: 2,
+                    title: "Compliance & Data Privacy Phishing Trap",
+                    desc: "A deceptive security update claims your compliance credentials must be re-certified to avoid losing network access.",
+                    warn: "Attackers manufacture fake regulatory updates to capture internal directory credentials."
+                },
+                {
+                    keywords: ['vendor payment', 'routing details', 'clearinghouse', 'accounts payable', 'vendor disbursements'],
+                    minMatches: 2,
+                    title: "Vendor Invoice Routing Redirection Scam",
+                    desc: "A fraudulent vendor notice is attempting to redirect accounts payable funds into an unauthorized clearinghouse account.",
+                    warn: "Financial transfer scams impersonate suppliers to divert corporate payments to fraudulent bank accounts."
+                },
+                {
+                    keywords: ['mfa', 'push notification', 'unauthorized login', 'enterprise account', 'validation link', 'access rights'],
+                    minMatches: 2,
+                    title: "Urgent MFA & Account Hijack Scam",
+                    desc: "A scammer is pretending to be corporate IT or security claiming unauthorized login attempts to trick you into approving a push notification.",
+                    warn: "They are attempting to bypass multi-factor authentication to take over your enterprise or personal account."
+                },
+                {
+                    keywords: ['seed phrase', 'recovery phrase', 'wallet node', 'synchronization', 'token locking', 'decentralized'],
+                    minMatches: 2,
+                    title: "Crypto Wallet & Seed Phrase Phishing",
+                    desc: "A fake blockchain notification is claiming synchronization errors to trick you into handing over your private recovery seed phrase.",
+                    warn: "Never share your secret 12-word wallet recovery phrase with anyone; doing so gives attackers full control of your funds."
+                },
+                {
+                    keywords: ['delivery exception', 'sorting facility', 'customs clearance', 'handling fees', 'package', 'usps'],
+                    minMatches: 2,
+                    title: "Deceptive Parcel Delivery & Customs Scam",
+                    desc: "A fake shipping alert is claiming a package is stuck at customs or sorting facilities requiring immediate fee payment.",
+                    warn: "Postal and shipping services never demand sudden digital fee payments via link clicks to release standard packages."
+                },
+                {
+                    keywords: ['irs', 'tax', 'audit', 'back taxes'],
+                    minMatches: 1,
+                    title: "Fake IRS Tax Threat",
+                    desc: "Someone pretending to be the IRS is trying to scare you into paying money by threatening you with arrest.",
+                    warn: "They are using fake government intimidation to steal your money."
+                },
+                {
+                    keywords: ['social security', 'ssn', 'benefits'],
+                    minMatches:
