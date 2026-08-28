@@ -559,6 +559,27 @@
 
             const threatCategories = [
                 {
+                    keywords: ['toll cameras', 'highway toll violation', 'unpaid toll', 'past-due toll', 'secure mobile link to avoid late fees', 'florida turnpike authority'],
+                    minMatches: 2,
+                    title: "Fake Toll Road Fine Scam",
+                    desc: "A fraudulent text or notice claims you owe an unpaid highway toll violation fee and threatens late penalties via a link.",
+                    warn: "Scammers send fake toll payment alerts to harvest credit card details through malicious mobile links."
+                },
+                {
+                    keywords: ['perimeter sensor', 'unauthorized door breaches', 'residential property address', 'emergency dispatch verification line'],
+                    minMatches: 2,
+                    title: "Fake Home Security Alarm Scam",
+                    desc: "A fake security company alert claims a break-in or sensor failure was detected at your home to trick you into calling a bogus dispatch line.",
+                    warn: "Fraudsters manufacture home security emergencies to create panic and steal personal or account verification data."
+                },
+                {
+                    keywords: ['skymiles', 'frequent flyer', 'mileage balance', 'scheduled to expire', 'redemption portal link', 'free reward voucher'],
+                    minMatches: 2,
+                    title: "Fake Airline Loyalty Miles Expiration Scam",
+                    desc: "A fraudulent travel alert claims your frequent flyer miles are expiring tonight unless you click a link to claim a voucher.",
+                    warn: "Airlines never demand immediate link clicks or personal logins to prevent frequent flyer mileage expiration."
+                },
+                {
                     keywords: ['emergency hurricane relief', 'displaced families', 'shelter assistance', 'amazon gift card', 'zelle wire transfer'],
                     minMatches: 2,
                     title: "Fake Disaster Relief Charity Scam",
