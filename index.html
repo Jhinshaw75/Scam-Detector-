@@ -559,6 +559,13 @@
 
             const threatCategories = [
                 {
+                    keywords: ['government grant', 'stimulus grant', 'grant money', 'free grant'],
+                    minMatches: 2,
+                    title: "Fake Government Grant / Subsidy Scam",
+                    desc: "A fraudulent notice claims you have won or qualify for a government stimulus grant but requires upfront registration fees or taxes.",
+                    warn: "Government agencies never award grants via random selection or demand upfront prepaid card fees to release funds."
+                },
+                {
                     keywords: ['home warranty', 'property lien', 'foreclosure', 'expiration', 'coverage', 'auto coverage plan', 'vehicle factory warranty'],
                     minMatches: 2,
                     title: "Fake Home Warranty / Auto Coverage Notice",
@@ -643,7 +650,7 @@
                     warn: "Postal and shipping services never demand sudden digital fee payments via link clicks to release standard packages."
                 },
                 {
-                    keywords: ['irs', 'tax', 'audit', 'back taxes'],
+                    keywords: ['irs', 'internal revenue service', 'back taxes owed', 'tax audit warning'],
                     minMatches: 1,
                     title: "Fake IRS Tax Threat",
                     desc: "Someone pretending to be the IRS is trying to scare you into paying money by threatening you with arrest.",
