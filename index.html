@@ -558,6 +558,27 @@
 
             const threatCategories = [
                 {
+                    keywords: ['property records division alert', 'residential real estate deed', 'unauthorized mortgage refinancing attempts', 'parcel identifier', 'deed protection bureau', 'lock your title'],
+                    minMatches: 2,
+                    title: "Fake Home Title Lock / Deed Theft Monitoring Scam",
+                    desc: "A fraudulent property notice claims unauthorized mortgage refinancing attempts have been filed against your real estate deed to sell fake title protection.",
+                    warn: "Home title lock marketing and deed scam operations use exaggerated threats of property theft to sell unnecessary monthly monitoring subscriptions."
+                },
+                {
+                    keywords: ['veterinary health rewards', 'unclaimed pet wellness cashback rebates', 'secure portal link immediately', 'deposit funds into your debit card'],
+                    minMatches: 2,
+                    title: "Fake Pet Insurance Wellness Rebate Scam",
+                    desc: "A fraudulent veterinary wellness reward notice claims you have accumulated unclaimed pet cashback rebates to harvest debit card info.",
+                    warn: "Scammers use fake pet care and insurance reward notifications to steal financial account numbers through phishing links."
+                },
+                {
+                    keywords: ['state turnpike authority', 'recorded an unpaid highway toll violation', 'avoid a $50 late administrative penalty', 'paying immediately via our mobile portal link'],
+                    minMatches: 2,
+                    title: "Fake Smishing Toll Road Unpaid Balance Scam",
+                    desc: "A fraudulent toll road text message claims you owe an unpaid balance and threatens late administrative penalties via a link.",
+                    warn: "State toll agencies never send sudden smishing text messages threatening fees via mobile links for unpaid highway tolls."
+                },
+                {
                     keywords: ['public parking authority notice', 'secure physical parking meter qr code', 'settle your overdue municipal ticket', 'avoid vehicle towing'],
                     minMatches: 2,
                     title: "Malicious QR Code Phishing (Quishing) Scam",
@@ -1062,7 +1083,7 @@
                 let safeMessage = '<strong>✅ This looks okay. No common scam patterns or threat combinations found.</strong>';
                 
                 if (hasWeirdSymbols) {
-                    safeMessage += '<br><span style="font-size: 14px; color: #166534; display: block; margin-top: 6px;">⚠️ <em>Caution:</em> This message contains unusual characters or symbols. If you have questions or want to review general awareness materials, please explore the <a href="https://opseniresieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
+                    safeMessage += '<br><span style="font-size: 14px; color: #166534; display: block; margin-top: 6px;">⚠️ <em>Caution:</em> This message contains unusual characters or symbols. If you have questions or want to review general awareness materials, please explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
                 } else {
                     safeMessage += '<br>Even so, if you ever want to check educational guides, you can explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
                 }
