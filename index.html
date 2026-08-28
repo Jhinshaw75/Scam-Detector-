@@ -381,10 +381,12 @@
 <body>
 
     <div class="container">
+        <!-- Instructions Toggle Top Right -->
         <div class="header-top">
             <button class="instructions-toggle-btn" id="toggleInstructionsBtn" onclick="toggleInstructions()">How to Use</button>
         </div>
 
+        <!-- Collapsible Instructions Panel -->
         <div class="instructions-panel" id="instructionsPanel">
             <h3>Step-by-Step Instructions</h3>
             <ol>
@@ -417,16 +419,18 @@
             <p class="subtitle">Instant Scam & Fraud Protection Analyzer</p>
         </div>
 
-        <div id="disclaimerView" class="disclaimer-box">
+        <!-- Legal & Educational Disclaimer View -->
+        <div id="disclaimerView" class="disclaimer-box" style="display: block;">
             <h3>Legal & Educational Disclaimer</h3>
             <p>Please review before accessing the Senior Digital Safeguard tool:</p>
             <p><strong>1. Educational Purpose:</strong> Provided free for awareness under Operation Senior Shield as a quick first check.<br>
             <strong>2. How It Works:</strong> Paste suspicious texts or upload screenshots to check for common scam indicators.<br>
             <strong>3. No Guarantee:</strong> Always proceed with caution, consult our trusted resources, and verify through official channels.<br>
             <strong>4. Liability:</strong> DOEA and Operation Senior Shield assume no legal liability for losses from tool usage.</p>
-            <button type="button" class="primary-btn" onclick="acceptDisclaimer()" style="width: 100%; position: relative; z-index: 10; cursor: pointer;">I Have Read and Agree — Enter Tool</button>
+            <button type="button" id="agreeBtn" class="primary-btn" style="width: 100%; position: relative; z-index: 9999; cursor: pointer; pointer-events: auto;">I Have Read and Agree — Enter Tool</button>
         </div>
 
+        <!-- Main Tool View -->
         <main id="toolView" style="display: none;">
             <div class="oss-promo-banner">
                 <p class="oss-promo-text">Want to stay ahead of the latest scams? <strong>Sign up for OSS Updates</strong> to get safety alerts straight to your inbox.</p>
@@ -451,9 +455,11 @@
 
             <div id="resultBox" class="result-box">
                 <div id="resultContent">
-                    </div>
+                    <!-- Dynamic targeted walkthrough injected here -->
+                </div>
             </div>
 
+            <!-- Always Visible Scam Text Reporting Info Box -->
             <div class="permanent-info-box">
                 <h3>📲 How to Report Scam Text Messages (7726)</h3>
                 <p>If you receive a suspicious text message, you can report it instantly to mobile carriers and security authorities without clicking any links:</p>
@@ -463,6 +469,7 @@
             </div>
         </main>
 
+        <!-- Printable Wallet Reference Card -->
         <div class="printable-card" id="printableCardContainer">
             <h2>Scam Detector &mdash; Reference & Emergency Guide</h2>
             <div id="printDynamicContent">
@@ -496,6 +503,17 @@
             if (disclaimerView) disclaimerView.style.display = 'none';
             if (toolView) toolView.style.display = 'block';
         }
+
+        // Bind via event listener to guarantee execution without relying solely on inline attributes
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('agreeBtn');
+            if (btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    acceptDisclaimer();
+                });
+            }
+        });
 
         function toggleInstructions() {
             const panel = document.getElementById('instructionsPanel');
@@ -612,4 +630,246 @@
                 },
                 {
                     keywords: ['social security', 'ssn', 'benefits'],
-                    minMatches:
+                    minMatches: 1,
+                    title: "Fake Social Security Scam",
+                    desc: "Someone is falsely claiming your Social Security number or benefits have been canceled or frozen.",
+                    warn: "They are trying to trick you into handing over your sensitive personal numbers."
+                },
+                {
+                    keywords: ['jury duty', 'sheriff', 'police', 'bench warrant', 'court'],
+                    minMatches: 1,
+                    title: "Fake Police or Jury Duty Scam",
+                    desc: "A fake police officer, sheriff, or court worker is claiming you missed jury duty and owe money for bail or a fine.",
+                    warn: "Law enforcement will never call you demanding immediate cash or gift cards over the phone."
+                },
+                {
+                    keywords: ['compliance officer', 'crypto', 'blockchain', 'checking account', 'wire', 'bitcoin'],
+                    minMatches: 2,
+                    title: "Fake Bank Wire / Crypto Compliance Scam",
+                    desc: "A scammer is impersonating a bank compliance or security officer claiming your accounts or digital assets are frozen.",
+                    warn: "They are creating manufactured financial panic to trick you into wiring funds or moving crypto."
+                },
+                {
+                    keywords: ['disconnect', 'shutoff', 'power', 'water', 'municipal', 're-connection', 'utility'],
+                    minMatches: 2,
+                    title: "Fake Utility Disconnection Threat",
+                    desc: "A scammer is threatening to cut off your power, water, or utilities immediately unless you make a rushed payment.",
+                    warn: "Utility companies do not disconnect services on short notice demanding immediate prepaid card payments."
+                },
+                {
+                    keywords: ['payroll', 'direct deposit', 'routing', 'hr notice', 'tax withholding'],
+                    minMatches: 2,
+                    title: "Subtle Executive Payroll Phishing",
+                    desc: "A deceptive HR or payroll notification is trying to trick you into updating your direct deposit and banking routing details.",
+                    warn: "Scammers use fake internal notices to divert payroll funds into unauthorized accounts."
+                },
+                {
+                    keywords: ['grandchild', 'grandma', 'grandpa', 'bail', 'accident', 'jail'],
+                    minMatches: 2,
+                    title: "Fake Grandchild in Trouble Scam",
+                    desc: "A scammer is pretending to be your grandchild or family member in a sudden emergency asking for emergency cash.",
+                    warn: "They are exploiting your family care and love to force rushed cash transfers."
+                },
+                {
+                    keywords: ['customs', 'border protection', 'contraband', 'seized'],
+                    minMatches: 2,
+                    title: "Fake Customs Package Scam",
+                    desc: "Someone pretending to be a customs agent is claiming a package with illegal items was caught in your name.",
+                    warn: "This is a scare tactic to force you into paying bogus clearance fees."
+                },
+                {
+                    keywords: ['legal notice', 'process server', 'subpoena', 'lawsuit'],
+                    minMatches: 2,
+                    title: "Fake Court Legal Notice",
+                    desc: "A fake legal notice is trying to scare you into thinking a lawsuit or court case has been filed against you.",
+                    warn: "Courts serve official papers in person or by mail, never through urgent threat texts."
+                },
+                {
+                    keywords: ['debit card', 'frozen', 'blocked', 'locked', 'unauthorized'],
+                    minMatches: 2,
+                    title: "Fake Bank Account Lockout Scam",
+                    desc: "Scammers are sending a fake alert pretending your checking account or debit card is frozen to steal your login password.",
+                    warn: "They are trying to get you to click a fake link to capture your bank password."
+                },
+                {
+                    keywords: ['zelle', 'payment alert', 'verification code'],
+                    minMatches: 2,
+                    title: "Fake Money App (Zelle) Scam",
+                    desc: "A fake warning claims unauthorized money was sent from your account to trick you into giving away your security pin.",
+                    warn: "Never read security pins or verification codes over the phone to anyone."
+                },
+                {
+                    keywords: ['investment', 'savings', 'high return', 'guaranteed'],
+                    minMatches: 2,
+                    title: "Fake Digital Money / Investment Trap",
+                    desc: "A fake online investment or digital savings trap is trying to trick you into handing over your hard-earned money.",
+                    warn: "This is a fraudulent financial scheme designed to drain your savings."
+                },
+                {
+                    keywords: ['grand prize', 'sweepstakes', 'winner', 'claim', 'million dollar', 'processing fee'],
+                    minMatches: 2,
+                    title: "Fake Contest / Sweepstakes Scam",
+                    desc: "A fake contest win is claiming you won a huge cash prize, but you have to pay taxes or buy gift cards first.",
+                    warn: "Legitimate contests never require upfront payment or gift cards to claim a prize."
+                },
+                {
+                    keywords: ['microsoft', 'windows', 'computer', 'infected', 'trojan', 'malware', 'support number'],
+                    minMatches: 2,
+                    title: "Scary Computer Pop-Up Virus Scam",
+                    desc: "A scary pop-up message appeared on your screen claiming your computer has a virus to trick you into paying for fake help.",
+                    warn: "This is a browser trap designed to freeze your screen and force you to call fake technicians."
+                },
+                {
+                    keywords: ['apple id', 'icloud', 'security breach', 'hacked', 'locked', 'recovery page'],
+                    minMatches: 2,
+                    title: "Fake Apple / iCloud Hacking Scam",
+                    desc: "A fake message claims your Apple or iCloud account has been hacked to trick you into entering your password on a fake page.",
+                    warn: "They are harvesting your device account credentials through a fake login page."
+                },
+                {
+                    keywords: ['router', 'broadband', 'botnet', 'internet', 'compromised', 'network repair'],
+                    minMatches: 2,
+                    title: "Fake Home Internet Router Warning",
+                    desc: "A fake warning claims your home internet router has security problems to trick you into downloading harmful software.",
+                    warn: "This is a trick to install remote access malware onto your home network."
+                },
+                {
+                    keywords: ['netflix', 'hulu', 'streaming', 'subscription', 'payment failed', 'billing', 'suspended', 'routing details'],
+                    minMatches: 2,
+                    title: "Fake TV / Streaming Bill Scam",
+                    desc: "A fake bill notice claims your Netflix, TV, or movie streaming payment failed to steal your credit card number.",
+                    warn: "They are using popular subscription names to steal updated credit card details."
+                },
+                {
+                    keywords: ['mailbox', 'storage quota', 'cloud storage', 'email', 'capacity', 'deleted'],
+                    minMatches: 2,
+                    title: "Fake Email Full Warning Scam",
+                    desc: "A fake email warning claims your email storage is completely full and will be deleted unless you click a link.",
+                    warn: "This is a credential-stealing trick to take over your personal email account."
+                },
+                {
+                    keywords: ['hospital', 'trauma center', 'emergency room', 'surgery', 'deposit', 'medical'],
+                    minMatches: 2,
+                    title: "Fake Hospital Emergency Scam",
+                    desc: "A fake caller claims a member of your family is hurt in a hospital and demands money upfront for surgery.",
+                    warn: "Fraudsters use manufactured medical emergencies to pressure you into paying fake deposits."
+                },
+                {
+                    keywords: ['home warranty', 'property lien', 'foreclosure', 'expiration', 'coverage'],
+                    minMatches: 2,
+                    title: "Fake Home Warranty / Property Notice",
+                    desc: "A deceptive letter or text claims your home warranty expired or a lien is on your property to trick you into paying fees.",
+                    warn: "This is a misleading solicitation designed to charge you for unnecessary property services."
+                },
+                {
+                    keywords: ['disaster relief', 'hurricane', 'donation', 'emergency shelter', 'charity', 'storm relief'],
+                    minMatches: 2,
+                    title: "Fake Disaster Relief Charity Scam",
+                    desc: "A fake charity scam is trying to collect donations over your phone after a storm or hurricane.",
+                    warn: "Scammers frequently create fake disaster relief funds to exploit community generosity."
+                }
+            ];
+
+            let matchedThreat = null;
+
+            for (let cat of threatCategories) {
+                let matchCount = cat.keywords.filter(kw => condensedText.includes(kw.replace(/\s+/g, '')) || lowerText.includes(kw)).length;
+                if (matchCount >= cat.minMatches) {
+                    if ((cat.title.includes('Grandchild') || cat.title.includes('Jail') || cat.title.includes('Bail')) && lowerText.includes('bailey')) {
+                        continue;
+                    }
+                    matchedThreat = cat;
+                    break;
+                }
+            }
+
+            if (isSymbolOnlySpam) {
+                matchedThreat = {
+                    title: "Suspicious Symbol / Emoji Spam Detected",
+                    desc: "This message contains unusual or unrecognizable characters often used to bypass filters or confuse recipients.",
+                    warn: "Unrecognized symbol sequences are frequently tied to automated spam or phishing tactics."
+                };
+            }
+
+            const isThreat = isSymbolOnlySpam || fileInput.files.length > 0 || matchedThreat;
+
+            if (isThreat) {
+                resultBox.className = 'result-box danger';
+                
+                const title = matchedThreat ? matchedThreat.title : "Stop! This is a Known Scam Trick";
+                const desc = matchedThreat ? matchedThreat.desc : "This message is trying to scare you into acting quickly before you have time to think.";
+                const specificWarning = matchedThreat ? matchedThreat.warn : "This matches fraudulent patterns designed to cause privacy and financial loss.";
+                
+                const step3Custom = "Even if you did not lose money, report this attempted scam to help authorities track emerging threats: file a report with the <a href='https://reportfraud.ftc.gov' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Federal Trade Commission (FTC)</a>, contact your local law enforcement or the <a href='https://www.fdle.state.fl.us/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>FDLE</a> for criminal matters, file a deceptive trade complaint with the <a href='https://www.myfloridalegal.com' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Florida Attorney General</a>, or forward scam text messages to <strong>7726</strong>.";
+                const step4Custom = "To review general security guidelines, scam trends, and educational resources, explore the <a href='https://elderaffairs.org/programs-and-services/elder-protection-programs-fraud-trends/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>DOEA Fraud Protection Programs</a> hub.";
+
+                const steps = '<li><strong>Step 1: STOP Engaging and Do Nothing Else Immediately</strong><br>' +
+                              'Take a deep breath and relax. Stop interacting, do NOT reply to the message, do NOT call any phone numbers listed in it, and do NOT click any links or pop-ups. You are completely safe as long as you do not interact with them. If this is a text message, take a screenshot for your records and forward the text to <strong>7726</strong> (spells SPAM) to report it to your carrier.</li>' +
+                              '<li><strong>Step 2: Understand the Specific Trick</strong><br>' +
+                              '<em>' + specificWarning + '</em></li>' +
+                              '<li><strong>Step 3: Report the Scam or Attempt</strong><br>' +
+                              step3Custom + '</li>' +
+                              '<li><strong>Step 4: Review External Resource Channels</strong><br>' +
+                              step4Custom + '</li>';
+
+                const emergencyBanner = '<div class="emergency-banner">' +
+                                        '<span>Need immediate telephone guidance? Call the DOEA Elder Helpline:</span>' +
+                                        '<a href="tel:18009635337" class="emergency-call-btn">1-800-963-5337</a>' +
+                                        '</div>';
+
+                resultContent.innerHTML = 
+                    emergencyBanner +
+                    '<div class="warning-title">⚠️ ' + title + '</div>' +
+                    '<div class="warning-desc">' + desc + '</div>' +
+                    '<div class="warning-title" style="margin-top: 15px; border-top: 1px solid #f87171; padding-top: 15px;">What you should do right now:</div>' +
+                    '<ol class="action-list">' + steps + '</ol>' +
+                    '<div style="margin-top: 20px;">' +
+                    '<button type="button" class="secondary-btn" onclick="printActionPlan()">🖨️ Print Action Plan</button>' +
+                    '</div>';
+                
+                document.getElementById('printDynamicContent').innerHTML = 
+                    '<p style="color: #991b1b; font-weight: bold;">Detected Threat: ' + title + '</p>' +
+                    '<p>' + desc + '</p>' +
+                    '<p><strong>What you should do right now:</strong></p>' +
+                    '<ol style="padding-left: 20px; font-size: 13px;">' + steps + '</ol>';
+            } else {
+                resultBox.className = 'result-box safe';
+                
+                const hasWeirdSymbols = /[^a-zA-Z0-9\s]/.test(text);
+                let safeMessage = '<strong>✅ This looks okay. No common scam patterns or threat combinations found.</strong>';
+                
+                if (hasWeirdSymbols) {
+                    safeMessage += '<br><span style="font-size: 14px; color: #166534; display: block; margin-top: 6px;">⚠️ <em>Caution:</em> This message contains unusual characters or symbols. If you have questions or want to review general awareness materials, please explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
+                } else {
+                    safeMessage += '<br>Even so, if you ever want to check educational guides, you can explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
+                }
+                
+                resultContent.innerHTML = safeMessage;
+                
+                document.getElementById('printDynamicContent').innerHTML = 
+                    '<p><strong>Analysis Result:</strong> No common threat patterns found. Proceed with caution.</p>' +
+                    '<p><strong>Golden Rules to Remember:</strong></p>' +
+                    '<ul><li>Never call phone numbers listed in suspicious messages.</li><li>Always use verified Operation Senior Shield resource links.</li></ul>';
+            }
+            
+            resultBox.style.display = 'block';
+        }
+
+        function clearForm() {
+            document.getElementById('scamInput').value = '';
+            document.getElementById('imageUpload').value = '';
+            document.getElementById('fileInfo').textContent = "No file chosen (Supports Images, PDFs, Text files)";
+            document.getElementById('resultBox').style.display = 'none';
+            document.getElementById('resultContent').innerHTML = '';
+        }
+
+        function printGuide() {
+            window.print();
+        }
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
+    </script>
+</body>
+</html>
