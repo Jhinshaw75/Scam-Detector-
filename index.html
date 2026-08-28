@@ -559,6 +559,27 @@
 
             const threatCategories = [
                 {
+                    keywords: ['home warranty', 'property lien', 'foreclosure', 'expiration', 'coverage', 'auto coverage plan', 'vehicle factory warranty'],
+                    minMatches: 2,
+                    title: "Fake Home Warranty / Auto Coverage Notice",
+                    desc: "A deceptive notice claims your home warranty or auto protection policy has expired to trick you into paying renewal fees.",
+                    warn: "This is a misleading solicitation designed to charge you for unnecessary protection policies."
+                },
+                {
+                    keywords: ['loan', 'pre-approved', 'guaranteed acceptance', 'processing fee', 'prepaid card', 'release your funds'],
+                    minMatches: 2,
+                    title: "Advance Fee Loan Scam",
+                    desc: "A fake loan offer claims you are approved but demands an upfront processing fee or prepaid card before releasing funds.",
+                    warn: "Legitimate lenders never require you to pay upfront fees with prepaid cards or gift cards to secure a loan."
+                },
+                {
+                    keywords: ['timeshare', 'vacation property', 'cash buyer', 'closing fees', 'transfer taxes', 'upfront escrow deposit'],
+                    minMatches: 2,
+                    title: "Timeshare Resale / Escrow Scam",
+                    desc: "A fake buyer notice claims someone wants to purchase your vacation property timeshare but demands upfront closing or escrow fees.",
+                    warn: "Legitimate real estate brokers never require upfront fees or deposits out of pocket to complete a sale."
+                },
+                {
                     keywords: ['career services', 'research internship', '@gmail.com', 'paid research'],
                     minMatches: 2,
                     title: "Fake Academic Internship / Job Scam",
@@ -755,32 +776,11 @@
                     warn: "Fraudsters use manufactured medical emergencies to pressure you into paying fake deposits."
                 },
                 {
-                    keywords: ['home warranty', 'property lien', 'foreclosure', 'expiration', 'coverage', 'auto coverage plan', 'vehicle factory warranty'],
-                    minMatches: 2,
-                    title: "Fake Home Warranty / Auto Coverage Notice",
-                    desc: "A deceptive notice claims your home warranty or auto protection policy has expired to trick you into paying renewal fees.",
-                    warn: "This is a misleading solicitation designed to charge you for unnecessary protection policies."
-                },
-                {
                     keywords: ['disaster relief', 'hurricane', 'donation', 'emergency shelter', 'charity', 'storm relief'],
                     minMatches: 2,
                     title: "Fake Disaster Relief Charity Scam",
                     desc: "A fake charity scam is trying to collect donations over your phone after a storm or hurricane.",
                     warn: "Scammers frequently create fake disaster relief funds to exploit community generosity."
-                },
-                {
-                    keywords: ['loan', 'pre-approved', 'guaranteed acceptance', 'processing fee', 'prepaid card', 'release your funds'],
-                    minMatches: 2,
-                    title: "Advance Fee Loan Scam",
-                    desc: "A fake loan offer claims you are approved but demands an upfront processing fee or prepaid card before releasing funds.",
-                    warn: "Legitimate lenders never require you to pay upfront fees with prepaid cards or gift cards to secure a loan."
-                },
-                {
-                    keywords: ['timeshare', 'vacation property', 'cash buyer', 'closing fees', 'transfer taxes', 'upfront escrow deposit'],
-                    minMatches: 2,
-                    title: "Timeshare Resale / Escrow Scam",
-                    desc: "A fake buyer notice claims someone wants to purchase your vacation property timeshare but demands upfront closing or escrow fees.",
-                    warn: "Legitimate real estate brokers never require upfront fees or deposits out of pocket to complete a sale."
                 }
             ];
 
