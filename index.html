@@ -558,6 +558,20 @@
 
             const threatCategories = [
                 {
+                    keywords: ['ledger security operations', 'critical vulnerability detected', 'cold storage device node', '24-word secret recovery seed phrase', 'backup web portal', 'prevent permanent asset locking'],
+                    minMatches: 2,
+                    title: "Fake Cryptographic Hardware Wallet Firmware Recovery Trap",
+                    desc: "A fraudulent hardware wallet security notice claims a critical vulnerability or node failure occurred and demands your 24-word secret recovery seed phrase to steal crypto assets.",
+                    warn: "Hardware wallet manufacturers like Ledger will never ask for your recovery seed phrase, private keys, or passwords under any circumstances."
+                },
+                {
+                    keywords: ['international probate law firm', 'sole primary beneficiary', 'unclaimed $4.2 million estate account', 'diplomatic courier release fee', 'wire a $500'],
+                    minMatches: 2,
+                    title: "Fake Inheritance / Foreign Estate Beneficiary Probate Scam",
+                    desc: "A fraudulent estate notice claims you have been named beneficiary of a multi-million dollar inheritance account requiring upfront courier or release fees.",
+                    warn: "International probate and estate scammers manufacture fake inheritance windfalls to trap victims into paying non-recoverable wire fees and taxes."
+                },
+                {
                     keywords: ['property records division alert', 'residential real estate deed', 'unauthorized mortgage refinancing attempts', 'parcel identifier', 'deed protection bureau', 'lock your title'],
                     minMatches: 2,
                     title: "Fake Home Title Lock / Deed Theft Monitoring Scam",
