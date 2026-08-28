@@ -381,10 +381,12 @@
 <body>
 
     <div class="container">
+        <!-- Instructions Toggle Top Right -->
         <div class="header-top">
             <button class="instructions-toggle-btn" id="toggleInstructionsBtn" onclick="toggleInstructions()">How to Use</button>
         </div>
 
+        <!-- Collapsible Instructions Panel -->
         <div class="instructions-panel" id="instructionsPanel">
             <h3>Step-by-Step Instructions</h3>
             <ol>
@@ -417,6 +419,7 @@
             <p class="subtitle">Instant Scam & Fraud Protection Analyzer</p>
         </div>
 
+        <!-- Legal & Educational Disclaimer View -->
         <div id="disclaimerView" class="disclaimer-box">
             <h3>Legal & Educational Disclaimer</h3>
             <p>Please review before accessing the Senior Digital Safeguard tool:</p>
@@ -427,6 +430,7 @@
             <button class="primary-btn" onclick="acceptDisclaimer()" style="width: 100%;">I Have Read and Agree — Enter Tool</button>
         </div>
 
+        <!-- Main Tool View -->
         <main id="toolView" style="display: none;">
             <div class="oss-promo-banner">
                 <p class="oss-promo-text">Want to stay ahead of the latest scams? <strong>Sign up for OSS Updates</strong> to get safety alerts straight to your inbox.</p>
@@ -451,9 +455,11 @@
 
             <div id="resultBox" class="result-box">
                 <div id="resultContent">
-                    </div>
+                    <!-- Dynamic targeted walkthrough injected here -->
+                </div>
             </div>
 
+            <!-- Always Visible Scam Text Reporting Info Box -->
             <div class="permanent-info-box">
                 <h3>📲 How to Report Scam Text Messages (7726)</h3>
                 <p>If you receive a suspicious text message, you can report it instantly to mobile carriers and security authorities without clicking any links:</p>
@@ -463,6 +469,7 @@
             </div>
         </main>
 
+        <!-- Printable Wallet Reference Card -->
         <div class="printable-card" id="printableCardContainer">
             <h2>Scam Detector &mdash; Reference & Emergency Guide</h2>
             <div id="printDynamicContent">
@@ -491,8 +498,10 @@
 
     <script>
         function acceptDisclaimer() {
-            document.getElementById('disclaimerView').style.display = 'none';
-            document.getElementById('toolView').style.display = 'block';
+            const disclaimerView = document.getElementById('disclaimerView');
+            const toolView = document.getElementById('toolView');
+            if (disclaimerView) disclaimerView.style.display = 'none';
+            if (toolView) toolView.style.display = 'block';
         }
 
         function toggleInstructions() {
@@ -735,4 +744,126 @@
                     minMatches: 2,
                     title: "Fake Hospital Emergency Scam",
                     desc: "A fake caller claims a member of your family is hurt in a hospital and demands money upfront for surgery.",
-                    warn
+                    warn: "Fraudsters use manufactured medical emergencies to pressure you into paying fake deposits."
+                },
+                {
+                    keywords: ['home warranty', 'property lien', 'foreclosure', 'expiration', 'coverage'],
+                    minMatches: 2,
+                    title: "Fake Home Warranty / Property Notice",
+                    desc: "A deceptive letter or text claims your home warranty expired or a lien is on your property to trick you into paying fees.",
+                    warn: "This is a misleading solicitation designed to charge you for unnecessary property services."
+                },
+                {
+                    keywords: ['disaster relief', 'hurricane', 'donation', 'emergency shelter', 'charity', 'storm relief'],
+                    minMatches: 2,
+                    title: "Fake Disaster Relief Charity Scam",
+                    desc: "A fake charity scam is trying to collect donations over your phone after a storm or hurricane.",
+                    warn: "Scammers frequently create fake disaster relief funds to exploit community generosity."
+                }
+            ];
+
+            let matchedThreat = null;
+
+            if (!isBenignRoutine) {
+                for (let cat of threatCategories) {
+                    let matchCount = cat.keywords.filter(kw => condensedText.includes(kw.replace(/\s+/g, '')) || lowerText.includes(kw)).length;
+                    if (matchCount >= cat.minMatches) {
+                        if ((cat.title.includes('Grandchild') || cat.title.includes('Jail') || cat.title.includes('Bail')) && lowerText.includes('bailey')) {
+                            continue;
+                        }
+                        matchedThreat = cat;
+                        break;
+                    }
+                }
+            }
+
+            if (isSymbolOnlySpam) {
+                matchedThreat = {
+                    title: "Suspicious Symbol / Emoji Spam Detected",
+                    desc: "This message contains unusual or unrecognizable characters often used to bypass filters or confuse recipients.",
+                    warn: "Unrecognized symbol sequences are frequently tied to automated spam or phishing tactics."
+                };
+            }
+
+            const isThreat = isSymbolOnlySpam || fileInput.files.length > 0 || matchedThreat;
+
+            if (isThreat) {
+                resultBox.className = 'result-box danger';
+                
+                const title = matchedThreat ? matchedThreat.title : "Stop! This is a Known Scam Trick";
+                const desc = matchedThreat ? matchedThreat.desc : "This message is trying to scare you into acting quickly before you have time to think.";
+                const specificWarning = matchedThreat ? matchedThreat.warn : "This matches fraudulent patterns designed to cause privacy and financial loss.";
+                
+                const step3Custom = "If you have actually suffered a financial loss or fallen victim to this communication, report the incident to the appropriate authority: file with the <a href='https://reportfraud.ftc.gov' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Federal Trade Commission (FTC)</a>, contact your local law enforcement or the <a href='https://www.fdle.state.fl.us/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>FDLE</a> for criminal matters, file a deceptive trade complaint with the <a href='https://www.myfloridalegal.com' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Florida Attorney General</a>, or forward scam text messages to <strong>7726</strong>.";
+                const step4Custom = "To review general security guidelines, scam trends, and educational resources, explore the <a href='https://elderaffairs.org/programs-and-services/elder-protection-programs-fraud-trends/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>DOEA Fraud Protection Programs</a> hub.";
+
+                const steps = '<li><strong>Step 1: STOP Engaging and Do Nothing Else Immediately</strong><br>' +
+                              'Take a deep breath and relax. Stop interacting, do NOT reply to the message, do NOT call any phone numbers listed in it, and do NOT click any links or pop-ups. You are completely safe as long as you do not interact with them. If this is a text message, take a screenshot for your records and forward the text to <strong>7726</strong> (spells SPAM) to report it to your carrier.</li>' +
+                              '<li><strong>Step 2: Understand the Specific Trick</strong><br>' +
+                              '<em>' + specificWarning + '</em></li>' +
+                              '<li><strong>Step 3: Report Only If You Are a Victim</strong><br>' +
+                              step3Custom + '</li>' +
+                              '<li><strong>Step 4: Review External Resource Channels</strong><br>' +
+                              step4Custom + '</li>';
+
+                const emergencyBanner = '<div class="emergency-banner">' +
+                                        '<span>Need immediate telephone guidance? Call the DOEA Elder Helpline:</span>' +
+                                        '<a href="tel:18009635337" class="emergency-call-btn">1-800-963-5337</a>' +
+                                        '</div>';
+
+                resultContent.innerHTML = 
+                    emergencyBanner +
+                    '<div class="warning-title">⚠️ ' + title + '</div>' +
+                    '<div class="warning-desc">' + desc + '</div>' +
+                    '<div class="warning-title" style="margin-top: 15px; border-top: 1px solid #f87171; padding-top: 15px;">What you should do right now:</div>' +
+                    '<ol class="action-list">' + steps + '</ol>' +
+                    '<div style="margin-top: 20px;">' +
+                    '<button class="secondary-btn" onclick="printActionPlan()">🖨️ Print Action Plan</button>' +
+                    '</div>';
+                
+                document.getElementById('printDynamicContent').innerHTML = 
+                    '<p style="color: #991b1b; font-weight: bold;">Detected Threat: ' + title + '</p>' +
+                    '<p>' + desc + '</p>' +
+                    '<p><strong>What you should do right now:</strong></p>' +
+                    '<ol style="padding-left: 20px; font-size: 13px;">' + steps + '</ol>';
+            } else {
+                resultBox.className = 'result-box safe';
+                
+                const hasWeirdSymbols = /[^a-zA-Z0-9\s]/.test(text);
+                let safeMessage = '<strong>✅ This looks okay. No common scam patterns or threat combinations found.</strong>';
+                
+                if (hasWeirdSymbols) {
+                    safeMessage += '<br><span style="font-size: 14px; color: #166534; display: block; margin-top: 6px;">⚠️ <em>Caution:</em> This message contains unusual characters or symbols. If you have questions or want to review general awareness materials, please explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
+                } else {
+                    safeMessage += '<br>Even so, if you ever want to check educational guides, you can explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
+                }
+                
+                resultContent.innerHTML = safeMessage;
+                
+                document.getElementById('printDynamicContent').innerHTML = 
+                    '<p><strong>Analysis Result:</strong> No common threat patterns found. Proceed with caution.</p>' +
+                    '<p><strong>Golden Rules to Remember:</strong></p>' +
+                    '<ul><li>Never call phone numbers listed in suspicious messages.</li><li>Always use verified Operation Senior Shield resource links.</li></ul>';
+            }
+            
+            resultBox.style.display = 'block';
+        }
+
+        function clearForm() {
+            document.getElementById('scamInput').value = '';
+            document.getElementById('imageUpload').value = '';
+            document.getElementById('fileInfo').textContent = "No file chosen (Supports Images, PDFs, Text files)";
+            document.getElementById('resultBox').style.display = 'none';
+            document.getElementById('resultContent').innerHTML = '';
+        }
+
+        function printGuide() {
+            window.print();
+        }
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
+    </script>
+</body>
+</html>
