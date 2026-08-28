@@ -559,6 +559,20 @@
 
             const threatCategories = [
                 {
+                    keywords: ['factory auto warranty', 'vehicle protection plan', 'warranty coverage has officially expired', 'monthly rates increase'],
+                    minMatches: 2,
+                    title: "Fake Car Extended Warranty Scam",
+                    desc: "A deceptive auto notice claims your vehicle warranty has expired to trick you into purchasing unnecessary coverage plans.",
+                    warn: "Scammers use fake auto warranty expiration warnings to harvest personal vehicle details and credit card information."
+                },
+                {
+                    keywords: ['international logistics alert', 'incoming global delivery', 'on hold at customs', 'unpaid international handling taxes', 'secure portal link'],
+                    minMatches: 2,
+                    title: "Fake Package Customs Clearance Hold Notice",
+                    desc: "A fraudulent shipping alert claims your global delivery is stuck at customs requiring immediate handling tax payment via a link.",
+                    warn: "Shipping and customs authorities never demand sudden fee payments through random text links to release standard packages."
+                },
+                {
                     keywords: ['geek squad', 'total protection', 'successfully renewed', 'cancel and request an immediate refund', 'billing support desk'],
                     minMatches: 2,
                     title: "Fake Tech Support / Antivirus Subscription Scam",
@@ -993,7 +1007,7 @@
             document.getElementById('imageUpload').value = '';
             document.getElementById('fileInfo').textContent = "No file chosen (Supports Images, PDFs, Text files)";
             document.getElementById('resultBox').style.display = 'none';
-            resultBox.style.display = 'none';
+            document.getElementById('resultContent').innerHTML = '';
         }
 
         function printGuide() {
