@@ -554,7 +554,7 @@
                 topic = "Cryptocurrency ATM & QR Code Asset Transfer Scam";
             } else if (lower.includes('medicare') || lower.includes('medicaid') || lower.includes('part d reimbursement') || lower.includes('overpayment notice')) {
                 topic = "Fake Medicare/Medicaid Enrollment Overpayment Scam";
-            } else if (lower.includes('mechanics lien') || lower.includes('solar contractor') || lower.includes('property foreclosure notice') || lower.includes('unpaid home improvement balance')) {
+            } else if (lower.includes('mechanic') || lower.includes('lien') || lower.includes('foreclosure') || lower.includes('parcel id') || lower.includes('contractor')) {
                 topic = "Fake Home Improvement & Solar Contractor Lien Scam";
             } else if (lower.includes('bill pay') || lower.includes('utility payment search') || lower.includes('payment portal imposter')) {
                 topic = "Online Bill Pay Impersonation Search Scam";
@@ -591,7 +591,7 @@
             if (lower.includes('medicare') || lower.includes('medicaid') || lower.includes('part d reimbursement') || lower.includes('overpayment notice')) {
                 return "This notice claims you received an accidental medical overpayment or qualify for a special health reimbursement that requires verifying your Medicare ID, social security, and banking details.";
             }
-            if (lower.includes('mechanics lien') || lower.includes('solar contractor') || lower.includes('property foreclosure notice') || lower.includes('unpaid home improvement balance')) {
+            if (lower.includes('mechanic') || lower.includes('lien') || lower.includes('foreclosure') || lower.includes('parcel id') || lower.includes('contractor')) {
                 return "This fraudulent legal letter claims an unpaid balance or mechanic's lien has been placed on your home regarding solar panels or remodeling work to scare you into wiring settlement funds.";
             }
             if (lower.includes('bill pay') || lower.includes('utility payment search') || lower.includes('payment portal imposter')) {
@@ -637,21 +637,21 @@
 
             const threatCategories = [
                 {
-                    keywords: ['bitcoin atm', 'qr code', 'safe storage account', 'government marshals'],
+                    keywords: ['bitcoin atm', 'qr code', 'safe storage account', 'government marshals', 'active warrant'],
                     minMatches: 1,
                     title: "Cryptocurrency ATM & QR Code Asset Transfer Scam",
                     desc: "This message instructs you to convert your life savings into cryptocurrency using a physical Bitcoin ATM or scanning a custom QR code into a 'safe government storage account.' Government agencies never use crypto ATMs or QR codes to protect funds.",
                     warn: "Federal agencies, law enforcement, and banks will never instruct you to withdraw cash and deposit it into cryptocurrency ATMs or scan QR codes."
                 },
                 {
-                    keywords: ['medicare overpayment', 'part d reimbursement', 'benefit recalculation', 'medicaid audit'],
+                    keywords: ['medicare overpayment', 'part d reimbursement', 'benefit recalculation', 'medicaid audit', 'accidental medical'],
                     minMatches: 1,
                     title: "Fake Medicare/Medicaid Enrollment Overpayment Scam",
                     desc: "This notice claims you received an accidental medical overpayment or qualify for a special health reimbursement that requires verifying your Medicare ID, social security, and banking details.",
                     warn: "Medicare and healthcare administrators never threaten benefit cancellation or demand private banking credentials via unsolicited texts or calls."
                 },
                 {
-                    keywords: ['mechanics lien', 'contractor default', 'property foreclosure notice', 'unpaid home improvement'],
+                    keywords: ['mechanic', 'lien', 'foreclosure', 'parcel id', 'contractor', 'solar panel'],
                     minMatches: 1,
                     title: "Fake Home Improvement & Solar Contractor Lien Scam",
                     desc: "This fraudulent legal letter claims an unpaid balance or mechanic's lien has been placed on your home regarding solar panels or remodeling work to scare you into wiring settlement funds.",
