@@ -381,12 +381,10 @@
 <body>
 
     <div class="container">
-        <!-- Instructions Toggle Top Right -->
         <div class="header-top">
             <button class="instructions-toggle-btn" id="toggleInstructionsBtn" onclick="toggleInstructions()">How to Use</button>
         </div>
 
-        <!-- Collapsible Instructions Panel -->
         <div class="instructions-panel" id="instructionsPanel">
             <h3>Step-by-Step Instructions</h3>
             <ol>
@@ -419,7 +417,6 @@
             <p class="subtitle">Instant Scam & Fraud Protection Analyzer</p>
         </div>
 
-        <!-- Legal & Educational Disclaimer View -->
         <div id="disclaimerView" class="disclaimer-box" style="display: block;">
             <h3>Legal & Educational Disclaimer</h3>
             <p>Please review before accessing the Senior Digital Safeguard tool:</p>
@@ -427,10 +424,9 @@
             <strong>2. How It Works:</strong> Paste suspicious texts or upload screenshots to check for common scam indicators.<br>
             <strong>3. No Guarantee:</strong> Always proceed with caution, consult our trusted resources, and verify through official channels.<br>
             <strong>4. Liability:</strong> DOEA and Operation Senior Shield assume no legal liability for losses from tool usage.</p>
-            <button type="button" id="agreeBtn" class="primary-btn" style="width: 100%; position: relative; z-index: 9999; cursor: pointer; pointer-events: auto;">I Have Read and Agree — Enter Tool</button>
+            <button type="button" id="agreeBtn" class="primary-btn" style="width: 100%; position: relative; z-index: 9999; cursor: pointer; pointer-events: auto;" onclick="acceptDisclaimer()">I Have Read and Agree — Enter Tool</button>
         </div>
 
-        <!-- Main Tool View -->
         <main id="toolView" style="display: none;">
             <div class="oss-promo-banner">
                 <p class="oss-promo-text">Want to stay ahead of the latest scams? <strong>Sign up for OSS Updates</strong> to get safety alerts straight to your inbox.</p>
@@ -454,12 +450,9 @@
             </div>
 
             <div id="resultBox" class="result-box">
-                <div id="resultContent">
-                    <!-- Dynamic targeted walkthrough injected here -->
-                </div>
+                <div id="resultContent"></div>
             </div>
 
-            <!-- Always Visible Scam Text Reporting Info Box -->
             <div class="permanent-info-box">
                 <h3>📲 How to Report Scam Text Messages (7726)</h3>
                 <p>If you receive a suspicious text message, you can report it instantly to mobile carriers and security authorities without clicking any links:</p>
@@ -469,7 +462,6 @@
             </div>
         </main>
 
-        <!-- Printable Wallet Reference Card -->
         <div class="printable-card" id="printableCardContainer">
             <h2>Scam Detector &mdash; Reference & Emergency Guide</h2>
             <div id="printDynamicContent">
@@ -528,15 +520,7 @@
             
             if (file) {
                 fileInfo.textContent = file.name;
-                const fileNameLower = file.name.toLowerCase();
-                
-                if (fileNameLower.includes('fake text') || fileNameLower.includes('pamela') || fileNameLower.includes('leon county') || fileNameLower.includes('872') || fileNameLower.includes('voice mail')) {
-                    document.getElementById('scamInput').value = "[Uploaded Image: " + file.name + " - Voice Mail to Text: Hello Pamela Byard. This is our final attempt to help you with resolving your current matter in our office before we approve filing the claim against you out of Leon County. To avoid the order against your assets, please contact our office immediately at 872-217-1062]";
-                } else if (file.name.includes('Stanford') || file.name.includes('Internship')) {
-                    document.getElementById('scamInput').value = "[Uploaded Image: " + file.name + " - Research Internship Opportunity Stanford University Office of Career Services Professor James Landay jameslanday09@gmail.com]";
-                } else {
-                    document.getElementById('scamInput').value = "[Uploaded File: " + file.name + " - Threat Warning Notice Final Attempt Legal Claim Assets Leon County]";
-                }
+                document.getElementById('scamInput').value = "[Uploaded File: " + file.name + "]";
             } else {
                 fileInfo.textContent = "No file chosen (Supports Images, PDFs, Text files)";
             }
@@ -544,84 +528,6 @@
 
         function printActionPlan() {
             window.print();
-        }
-
-        function generatePlainEnglishTitle(text) {
-            const lower = text.toLowerCase();
-            let topic = "Suspicious Message";
-
-            if (lower.includes('fbi internet crime') || lower.includes('ic3') || lower.includes('wallet') || lower.includes('release fee')) {
-                topic = "FBI IC3 Re-Victimization / Fake Asset Recovery Scam";
-            } else if (lower.includes('chief executive officer') || lower.includes('cross-border acquisition') || lower.includes('wire') || lower.includes('escrow clearing partner')) {
-                topic = "AI Deepfake Executive Impersonation Scam";
-            } else if (lower.includes('state health benefits') || lower.includes('ppo health plan') || lower.includes('exchange') || lower.includes('subscriber profile')) {
-                topic = "Fake Health Insurance Marketplace Impersonation Scam";
-            } else if (lower.includes('medicare compliance bureau') || lower.includes('part d overpayment') || lower.includes('medicare id')) {
-                topic = "Fake Medicare/Medicaid Enrollment Overpayment Scam";
-            } else if (lower.includes('bitcoin atm') || lower.includes('qr code') || lower.includes('safe storage account') || lower.includes('federal marshals')) {
-                topic = "Cryptocurrency ATM & QR Code Asset Transfer Scam";
-            } else if (lower.includes('mechanic') || lower.includes('lien') || lower.includes('foreclosure') || lower.includes('parcel id') || lower.includes('contractor')) {
-                topic = "Fake Home Improvement & Solar Contractor Lien Scam";
-            } else if (lower.includes('bill pay') || lower.includes('utility payment search') || lower.includes('payment portal imposter')) {
-                topic = "Online Bill Pay Impersonation Search Scam";
-            } else if (lower.includes('veterans') || lower.includes('va pension') || lower.includes('cash advance advisory')) {
-                topic = "Veterans Benefit Postcard & Financial Advisory Scam";
-            } else if (lower.includes('jury duty') || lower.includes('bench warrant') || lower.includes('failure to appear')) {
-                topic = "Jury Duty Arrest Threat Scam";
-            } else if (lower.includes('flight itinerary') || lower.includes('airline') || lower.includes('reservation recovery')) {
-                topic = "Travel Booking & Search Ad Impersonation Scam";
-            } else if (lower.includes('tax refund') || lower.includes('irs notice') || lower.includes('annual tax return')) {
-                topic = "Fake Tax Refund Direct Deposit Scam";
-            } else if (lower.includes('reservation') || lower.includes('hotel') || lower.includes('marriott') || lower.includes('room forfeiture')) {
-                topic = "Fake Hotel Reservation Booking Confirmation Scam";
-            } else if (lower.includes('smart meter') || lower.includes('utility') || lower.includes('power interruption') || lower.includes('technician deposit')) {
-                topic = "Fake Utility Smart Meter Upgrade Notification Trap";
-            } else if (lower.includes('toll') || lower.includes('e-pass') || lower.includes('replenishment') || lower.includes('bridge tolls')) {
-                topic = "Fake Toll Pass Auto-Replenishment Phishing";
-            } else if (lower.includes('pamela byard') || lower.includes('leon county') || lower.includes('claim against you') || lower.includes('order against your assets')) {
-                topic = "Fake Legal & Debt Collection Threat Scam";
-            } else if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant') || lower.includes('stanford')) {
-                topic = "Fake University Internship & Job Phishing Trap";
-            } else {
-                topic = "Suspicious Scam Message Alert";
-            }
-
-            return topic;
-        }
-
-        function generatePlainEnglishDescription(text) {
-            const lower = text.toLowerCase();
-            if (lower.includes('fbi internet crime') || lower.includes('ic3') || lower.includes('wallet') || lower.includes('release fee')) {
-                return "This fraudulent notice pretends to be from the FBI IC3 claiming they have recovered your lost scam funds, but requires an upfront administrative release fee to withdraw them.";
-            }
-            if (lower.includes('chief executive officer') || lower.includes('cross-border acquisition') || lower.includes('wire') || lower.includes('escrow clearing partner')) {
-                return "This message mimics a corporate executive directive or deepfake instruction demanding an urgent wire transfer bypassing normal clearinghouse security controls.";
-            }
-            if (lower.includes('state health benefits') || lower.includes('ppo health plan') || lower.includes('exchange') || lower.includes('subscriber profile')) {
-                return "This fraudulent notice pretends to be from a state health insurance marketplace requiring urgent re-certification of your PPO plan through a phishing link.";
-            }
-            if (lower.includes('medicare compliance bureau') || lower.includes('part d overpayment') || lower.includes('medicare id')) {
-                return "This notice claims you received an accidental medical overpayment or qualify for a special health reimbursement that requires verifying your Medicare ID, social security, and banking details.";
-            }
-            if (lower.includes('bitcoin atm') || lower.includes('qr code') || lower.includes('safe storage account') || lower.includes('federal marshals')) {
-                return "This message instructs you to convert your life savings into cryptocurrency using a physical Bitcoin ATM or scanning a custom QR code into a 'safe government storage account.' Government agencies never use crypto ATMs or QR codes to protect funds.";
-            }
-            if (lower.includes('mechanic') || lower.includes('lien') || lower.includes('foreclosure') || lower.includes('parcel id') || lower.includes('contractor')) {
-                return "This fraudulent legal letter claims an unpaid balance or mechanic's lien has been placed on your home regarding solar panels or remodeling work to scare you into wiring settlement funds.";
-            }
-            if (lower.includes('bill pay') || lower.includes('utility payment search') || lower.includes('payment portal imposter')) {
-                return "This message or search ad mimics an online utility bill payment service. Scammers buy top search ads to trick you into paying through fraudulent portals that harvest credit card numbers and banking login credentials.";
-            }
-            if (lower.includes('veterans') || lower.includes('va pension') || lower.includes('cash advance advisory')) {
-                return "This physical postcard or message targets veterans offering assistance or fee-based advisory for VA pension benefits. Scammers use these mailers to charge exorbitant upfront fees for free government programs.";
-            }
-            if (lower.includes('jury duty') || lower.includes('bench warrant') || lower.includes('failure to appear')) {
-                return "This urgent notice or call claims you missed jury duty and face immediate arrest or a bench warrant unless you pay a fine over the phone. Courts never threaten immediate arrest or demand fine payments via digital apps.";
-            }
-            if (lower.includes('flight itinerary') || lower.includes('airline') || lower.includes('reservation recovery')) {
-                return "This deceptive travel promotion or search ad impersonates airlines, hotels, or booking agencies. Scammers use fake travel sites to steal payment information and fictitious reservation deposits.";
-            }
-            return "This message is trying to rush you or scare you into clicking a link, sharing personal information, or sending money before you can check if it is real.";
         }
 
         function analyzeContent() {
@@ -652,7 +558,28 @@
 
             const threatCategories = [
                 {
-                    keywords: ['fbi', 'internet crime', 'ic3', 'release fee', 'recovered cryptocurrency', 'intercepted your previous scam'],
+                    keywords: ['microsoft security alert', 'trojan spyware', 'browser registry', 'certified help desk', 'lock your firewall'],
+                    minMatches: 1,
+                    title: "Tech Support Pop-Up Extortion Scam",
+                    desc: "This message pretends to be a critical technical alert or virus warning from Microsoft or tech support, demanding you call an unverified phone number to lock your firewall and prevent data loss.",
+                    warn: "Technology companies never send pop-up error codes or text messages demanding you call phone numbers to fix malware or secure your personal computer."
+                },
+                {
+                    keywords: ['grandparent', 'car accident', 'pregnant woman', 'county jail', 'public defender', 'cash bond'],
+                    minMatches: 1,
+                    title: "Grandparent Emergency Jail & Bond Scam",
+                    desc: "This urgent emergency message pretends to be a family member or grandchild involved in an accident, demanding immediate cash bond or crypto bail sent via courier or QR code to avoid jail.",
+                    warn: "Always verify emergency claims directly by calling your family member's known phone number before responding to any urgent jail or bond requests."
+                },
+                {
+                    keywords: ['liquidity node', 'blockchain mining node', 'profit distribution', 'gas fee', 'wallet synchronization'],
+                    minMatches: 1,
+                    title: "Cryptocurrency Pig-Butchering & Liquidity Mining Scam",
+                    desc: "This fraudulent investment notice claims your portfolio or crypto node generated massive returns, requiring an upfront 'gas fee' or 'wallet synchronization balance' deposit to release profits.",
+                    warn: "Legitimate investment platforms and blockchain nodes never demand upfront cryptocurrency deposits or gas fees to withdraw earned profits."
+                },
+                {
+                    keywords: ['fbi internet crime', 'ic3', 'release fee', 'recovered cryptocurrency', 'intercepted your previous scam'],
                     minMatches: 1,
                     title: "FBI IC3 Re-Victimization / Fake Asset Recovery Scam",
                     desc: "This fraudulent notice pretends to be from the FBI IC3 claiming they have recovered your lost scam funds, but requires an upfront administrative release fee to withdraw them.",
@@ -770,9 +697,6 @@
             for (let cat of threatCategories) {
                 let matchCount = cat.keywords.filter(kw => condensedText.includes(kw.replace(/\s+/g, '')) || lowerText.includes(kw)).length;
                 if (matchCount >= cat.minMatches) {
-                    if ((cat.title.includes('Grandchild') || cat.title.includes('Jail') || cat.title.includes('Bail')) && lowerText.includes('bailey')) {
-                        continue;
-                    }
                     matchedThreat = cat;
                     break;
                 }
@@ -791,8 +715,8 @@
             if (isThreat) {
                 resultBox.className = 'result-box danger';
                 
-                const title = matchedThreat ? matchedThreat.title : generatePlainEnglishTitle(text);
-                const desc = matchedThreat ? matchedThreat.desc : generatePlainEnglishDescription(text);
+                const title = matchedThreat ? matchedThreat.title : "Suspicious Scam Message Alert";
+                const desc = matchedThreat ? matchedThreat.desc : "This message is trying to rush you or scare you into clicking a link, sharing personal information, or sending money before you can check if it is real.";
                 const specificWarning = matchedThreat ? matchedThreat.warn : "This matches trick patterns used by scammers to steal personal information or money.";
                 
                 const step3Custom = "Even if you did not lose money, report this attempted scam to help authorities track emerging threats: file a report with the <a href='https://reportfraud.ftc.gov' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Federal Trade Commission (FTC)</a>, contact your local law enforcement or the <a href='https://www.fdle.state.fl.us/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>FDLE</a> for criminal matters, file a deceptive trade complaint with the <a href='https://www.myfloridalegal.com' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Florida Attorney General</a>, or forward scam text messages to <strong>7726</strong>.";
