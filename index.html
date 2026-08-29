@@ -558,6 +558,20 @@
 
             const threatCategories = [
                 {
+                    keywords: ['social security administration', 'social security number', 'asset-freeze', 'felony money-laundering', 'senior investigator'],
+                    minMatches: 1,
+                    title: "Fake Social Security Arrest Scam",
+                    desc: "This message falsely claims your Social Security Number is linked to crimes and threatens immediate asset seizure or arrest unless you call them.",
+                    warn: "The Social Security Administration will never threaten you with arrest, demand immediate payment, or freeze your bank accounts."
+                },
+                {
+                    keywords: ['customs and border protection', 'interdiction notice', 'illicit narcotics', 'counterfeit currency', 'federal forfeiture'],
+                    minMatches: 1,
+                    title: "Fake Customs & Parcel Seizure Scam",
+                    desc: "This message claims an illegal package was intercepted in your name and threatens federal arrest unless you click a link to verify your identity.",
+                    warn: "Customs and border agencies never contact citizens via text or links to threaten asset forfeiture over intercepted packages."
+                },
+                {
                     keywords: ['fraud operations center', 'foreign ip address', 'remote assistance utility', 'security specialist'],
                     minMatches: 1,
                     title: "Fake Bank Fraud & Remote Access Scam",
