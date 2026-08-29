@@ -534,7 +534,9 @@
             const lower = text.toLowerCase();
             let topic = "Suspicious Message";
 
-            if (lower.includes('at&t') || lower.includes('verizon') || lower.includes('t-mobile') || lower.includes('cellular') || lower.includes('roaming')) {
+            if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant')) {
+                topic = "Fake University Internship & Job Phishing Trap";
+            } else if (lower.includes('at&t') || lower.includes('verizon') || lower.includes('t-mobile') || lower.includes('cellular') || lower.includes('roaming')) {
                 topic = "Fake Cell Phone Bill Alert";
             } else if (lower.includes('netflix') || lower.includes('hulu') || lower.includes('streaming') || lower.includes('subscription')) {
                 topic = "Fake Streaming Service Billing Alert";
@@ -577,6 +579,14 @@
             }
 
             return topic;
+        }
+
+        function generatePlainEnglishDescription(text) {
+            const lower = text.toLowerCase();
+            if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant')) {
+                return "This flyer or email pretends to be from a university department or professor offering a remote job or internship. Scammers use this to harvest your personal information (like your full name, student email, and phone number) to steal your identity or set up future financial scams.";
+            }
+            return "This message is trying to rush you or scare you into clicking a link, sharing personal information, or sending money before you can check if it is real.";
         }
 
         function analyzeContent() {
@@ -626,6 +636,13 @@
                     title: "Fake Smart Water Meter Leak Insurance Endorsement Scam",
                     desc: "A fraudulent municipal water utility notice claims pressure fluctuations were detected on your service line to sell an unverified monthly leak protection program.",
                     warn: "Municipal water utility bureaus do not market optional pipe liability insurance or leak protection programs through unsolicited warning notices."
+                },
+                {
+                    keywords: ['career services', 'research internship', '@gmail.com', 'paid research'],
+                    minMatches: 2,
+                    title: "Fake Academic Internship & Job Phishing Trap",
+                    desc: "This flyer or email pretends to be from a university department or professor offering a remote job or internship. Scammers use this to harvest your personal information (like your full name, student email, and phone number) to steal your identity or set up future financial scams.",
+                    warn: "Legitimate university departments never recruit students for remote positions through personal Gmail addresses (@gmail.com) or ask for sensitive personal data via unverified email links."
                 },
                 {
                     keywords: ['ev charging network alert', 'fast-charging session', 'unpaid billing balance', 'overstay penalty'],
@@ -1169,9 +1186,9 @@
                 {
                     keywords: ['career services', 'research internship', '@gmail.com', 'paid research'],
                     minMatches: 2,
-                    title: "Fake Academic Internship / Job Scam",
-                    desc: "A deceptive recruitment notice uses a prestigious university header but instructs you to apply using an unverified personal webmail address instead of an institutional domain.",
-                    warn: "Scammers spoof university departments and use personal webmail addresses (like @gmail.com) to harvest student personal information and identity details through fake employment offers."
+                    title: "Fake Academic Internship & Job Phishing Trap",
+                    desc: "This flyer or email pretends to be from a university department or professor offering a remote job or internship. Scammers use this to harvest your personal information (like your full name, student email, and phone number) to steal your identity or set up future financial scams.",
+                    warn: "Legitimate university departments never recruit students for remote positions through personal Gmail addresses (@gmail.com) or ask for sensitive personal data via unverified email links."
                 },
                 {
                     keywords: ['library', 'admin', 'membership', 'institutional credentials', 'backup portal', 'account suspension'],
@@ -1384,7 +1401,7 @@
                 resultBox.className = 'result-box danger';
                 
                 const title = matchedThreat ? matchedThreat.title : generatePlainEnglishTitle(text);
-                const desc = matchedThreat ? matchedThreat.desc : "This message is trying to rush you or scare you into clicking a link or sending money before you can check if it is real.";
+                const desc = matchedThreat ? matchedThreat.desc : generatePlainEnglishDescription(text);
                 const specificWarning = matchedThreat ? matchedThreat.warn : "This matches trick patterns used by scammers to steal personal information or money.";
                 
                 const step3Custom = "Even if you did not lose money, report this attempted scam to help authorities track emerging threats: file a report with the <a href='https://reportfraud.ftc.gov' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Federal Trade Commission (FTC)</a>, contact your local law enforcement or the <a href='https://www.fdle.state.fl.us/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>FDLE</a> for criminal matters, file a deceptive trade complaint with the <a href='https://www.myfloridalegal.com' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Florida Attorney General</a>, or forward scam text messages to <strong>7726</strong>.";
@@ -1433,10 +1450,10 @@
                 
                 resultContent.innerHTML = safeMessage;
                 
-                document.getElementById('printCyberGuide') || (document.getElementById('printDynamicContent').innerHTML = 
+                document.getElementById('printDynamicContent').innerHTML = 
                     '<p><strong>Analysis Result:</strong> No common threat patterns found. Proceed with caution.</p>' +
                     '<p><strong>Golden Rules to Remember:</strong></p>' +
-                    '<ul><li>Never call phone numbers listed in suspicious messages.</li><li>Always use verified Operation Senior Shield resource links.</li></ul>');
+                    '<ul><li>Never call phone numbers listed in suspicious messages.</li><li>Always use verified Operation Senior Shield resource links.</li></ul>';
             }
             
             resultBox.style.display = 'block';
