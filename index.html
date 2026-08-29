@@ -550,7 +550,15 @@
             const lower = text.toLowerCase();
             let topic = "Suspicious Message";
 
-            if (lower.includes('tax') || lower.includes('refund') || lower.includes('irs')) {
+            if (lower.includes('bill pay') || lower.includes('utility payment search') || lower.includes('payment portal imposter')) {
+                topic = "Online Bill Pay Impersonation Search Scam";
+            } else if (lower.includes('veterans benefits') || lower.includes('va pension') || lower.includes('postcard scam') || lower.includes('veteran financial advisory')) {
+                topic = "Veterans Benefit Postcard & Financial Advisory Scam";
+            } else if (lower.includes('jury duty') || lower.includes('missing jury duty') || lower.includes('arrested for failure to appear') || lower.includes('bench warrant for jury')) {
+                topic = "Jury Duty Arrest Threat Scam";
+            } else if (lower.includes('travel booking') || lower.includes('airline reservation search') || lower.includes('fake travel ad') || lower.includes('resort booking portal')) {
+                topic = "Travel Booking & Search Ad Impersonation Scam";
+            } else if (lower.includes('tax') || lower.includes('refund') || lower.includes('irs')) {
                 topic = "Fake Tax Refund Direct Deposit Scam";
             } else if (lower.includes('reservation') || lower.includes('hotel') || lower.includes('marriott') || lower.includes('room forfeiture')) {
                 topic = "Fake Hotel Reservation Booking Confirmation Scam";
@@ -609,6 +617,18 @@
 
         function generatePlainEnglishDescription(text) {
             const lower = text.toLowerCase();
+            if (lower.includes('bill pay') || lower.includes('utility payment search') || lower.includes('payment portal imposter')) {
+                return "This message or search ad mimics an online utility bill payment service. Scammers buy top search ads to trick you into paying through fraudulent portals that harvest credit card numbers and banking login credentials.";
+            }
+            if (lower.includes('veterans benefits') || lower.includes('va pension') || lower.includes('postcard scam') || lower.includes('veteran financial advisory')) {
+                return "This physical postcard or message targets veterans offering assistance or fee-based advisory for VA pension benefits. Scammers use these mailers to charge exorbitant upfront fees for free government programs.";
+            }
+            if (lower.includes('jury duty') || lower.includes('missing jury duty') || lower.includes('arrested for failure to appear') || lower.includes('bench warrant for jury')) {
+                return "This urgent notice or call claims you missed jury duty and face immediate arrest or a bench warrant unless you pay a fine over the phone. Courts never threaten immediate arrest or demand fine payments via digital apps.";
+            }
+            if (lower.includes('travel booking') || lower.includes('airline reservation search') || lower.includes('fake travel ad') || lower.includes('resort booking portal')) {
+                return "This deceptive travel promotion or search ad impersonates airlines, hotels, or booking agencies. Scammers use fake travel sites to steal payment information and fictitious reservation deposits.";
+            }
             if (lower.includes('tax') || lower.includes('refund') || lower.includes('irs')) {
                 return "This message pretends to be a tax refund notification or direct deposit adjustment from the IRS. Scammers use fake tax alerts to harvest banking credentials and personal data through malicious phishing links.";
             }
@@ -657,6 +677,34 @@
             const isSymbolOnlySpam = text.length > 0 && !hasAlphanumeric;
 
             const threatCategories = [
+                {
+                    keywords: ['online bill pay', 'utility payment portal', 'search ad bill pay', 'payment processor imposter'],
+                    minMatches: 2,
+                    title: "Online Bill Pay Impersonation Search Scam",
+                    desc: "This message or search ad mimics an online utility bill payment service. Scammers buy top search ads to trick you into paying through fraudulent portals that harvest credit card numbers and banking login credentials.",
+                    warn: "Always navigate directly to your utility company's official bookmarked website rather than clicking sponsored search engine ads to pay bills."
+                },
+                {
+                    keywords: ['veterans benefits', 'va pension advisory', 'postcard scam', 'pension cash advance fee'],
+                    minMatches: 2,
+                    title: "Veterans Benefit Postcard & Financial Advisory Scam",
+                    desc: "This physical postcard or message targets veterans offering assistance or fee-based advisory for VA pension benefits. Scammers use these mailers to charge exorbitant upfront fees for free government programs.",
+                    warn: "Never pay upfront fees for veterans pension assistance; official VA accredited representatives and programs provide assistance free of charge."
+                },
+                {
+                    keywords: ['jury duty', 'failure to appear', 'bench warrant', 'pay fine to avoid arrest'],
+                    minMatches: 2,
+                    title: "Jury Duty Arrest Threat Scam",
+                    desc: "This urgent notice or call claims you missed jury duty and face immediate arrest or a bench warrant unless you pay a fine over the phone. Courts never threaten immediate arrest or demand fine payments via digital apps.",
+                    warn: "Courts and law enforcement never contact citizens by text or phone demanding immediate fine payments or threatening arrest for missed jury service."
+                },
+                {
+                    keywords: ['travel booking', 'airline reservation search', 'fake travel ad', 'resort booking portal'],
+                    minMatches: 2,
+                    title: "Travel Booking & Search Ad Impersonation Scam",
+                    desc: "This deceptive travel promotion or search ad impersonates airlines, hotels, or booking agencies. Scammers use fake travel sites to steal payment information and fictitious reservation deposits.",
+                    warn: "Verify airline and hotel web addresses carefully before entering payment details, as scammers frequently buy lookalike search ads."
+                },
                 {
                     keywords: ['tax refund', 'direct deposit', 'irs notice', 'routing credentials'],
                     minMatches: 2,
@@ -907,7 +955,7 @@
                     minMatches: 2,
                     title: "Fake Remote Work Equipment Check Scam",
                     desc: "A deceptive employment offer sends a fake workstation check and instructs you to deposit it and wire remaining funds back to a vendor.",
-                    warn: "Fake remote work check-cashing schemes use counterfeit checks that eventually bounce, leaving victims responsible for wired funds."
+                    warn: "Fake remote work check-cashing schemes use counterfeit checks that eventually bounce, lingering victims responsible for wired funds."
                 },
                 {
                     keywords: ['remote executive talent acquisition', 'ai video interview', 'onboarding payroll setup', 'macbook workstation', 'cryptographic equipment verification fee', 'zelle'],
