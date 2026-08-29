@@ -530,60 +530,53 @@
             window.print();
         }
 
-        function generateDynamicScamTitle(text) {
+        function generatePlainEnglishTitle(text) {
             const lower = text.toLowerCase();
-            let entity = "Suspicious Digital Service";
-            let action = "Fraudulent Account Alert";
+            let topic = "Suspicious Message";
 
             if (lower.includes('at&t') || lower.includes('verizon') || lower.includes('t-mobile') || lower.includes('cellular') || lower.includes('roaming')) {
-                entity = "Mobile Carrier";
+                topic = "Fake Cell Phone Bill Alert";
             } else if (lower.includes('netflix') || lower.includes('hulu') || lower.includes('streaming') || lower.includes('subscription')) {
-                entity = "Streaming Service Subscription";
+                topic = "Fake Streaming Service Billing Alert";
             } else if (lower.includes('traffic') || lower.includes('parking') || lower.includes('toll') || lower.includes('dmv') || lower.includes('vehicle')) {
-                entity = "Municipal Traffic & Toll Enforcement";
+                topic = "Fake Toll or Parking Ticket Warning";
             } else if (lower.includes('coinbase') || lower.includes('crypto') || lower.includes('wallet') || lower.includes('ledger') || lower.includes('defi')) {
-                entity = "Digital Asset & Cryptocurrency Platform";
+                topic = "Fake Cryptocurrency or Digital Wallet Warning";
             } else if (lower.includes('homeguard') || lower.includes('security') || lower.includes('sensor') || lower.includes('water supply')) {
-                entity = "Smart Home Infrastructure Security";
+                topic = "Fake Home Emergency Alert";
             } else if (lower.includes('aviation') || lower.includes('customs') || lower.includes('airport') || lower.includes('luggage')) {
-                entity = "International Customs Interdiction";
+                topic = "Fake Airport or Customs Seizure Warning";
             } else if (lower.includes('auto recovery') || lower.includes('tow truck') || lower.includes('repossession')) {
-                entity = "Automotive Financing & Repossession";
+                topic = "Fake Car Towing or Loan Threat";
             } else if (lower.includes('openai') || lower.includes('gpu') || lower.includes('llm') || lower.includes('compute')) {
-                entity = "AI Compute & GPU Hosting Network";
+                topic = "Fake Computer Rental Job Offer";
             } else if (lower.includes('ez-pass') || lower.includes('transponder')) {
-                entity = "Electronic Toll Collection System";
+                topic = "Fake Toll Pass Account Warning";
             } else if (lower.includes('ev charging') || lower.includes('supercharger')) {
-                entity = "Electric Vehicle Charging Network";
+                topic = "Fake Electric Car Charging Bill";
             } else if (lower.includes('pet recovery') || lower.includes('microchip')) {
-                entity = "Pet Microchip Registry";
+                topic = "Fake Pet Microchip Fee Notice";
             } else if (lower.includes('water utility') || lower.includes('leak protection')) {
-                entity = "Municipal Water Utility Bureau";
+                topic = "Fake Water Company Leak Notice";
             } else if (lower.includes('powergrid') || lower.includes('thermostat') || lower.includes('rebate')) {
-                entity = "Smart-Home Energy Rebate Bureau";
+                topic = "Fake Power Company Cash Rebate Offer";
             } else if (lower.includes('robotaxi') || lower.includes('autonomous fleet')) {
-                entity = "Autonomous Fleet Municipal Division";
+                topic = "Fake Self-Driving Car Fine Notice";
             } else if (lower.includes('medicare') || lower.includes('social security') || lower.includes('irs')) {
-                entity = "Government Agency Compliance";
+                topic = "Fake Government Agency Threat";
             } else if (lower.includes('warranty') || lower.includes('protection plan')) {
-                entity = "Property Protection & Warranty Service";
+                topic = "Fake Home Warranty Expiration Notice";
+            } else if (lower.includes('bank') || lower.includes('debit card') || lower.includes('account locked')) {
+                topic = "Fake Bank Account Security Alert";
+            } else if (lower.includes('delivery') || lower.includes('package') || lower.includes('usps') || lower.includes('ups') || lower.includes('fedex')) {
+                topic = "Fake Package Delivery Problem";
+            } else if (lower.includes('grandchild') || lower.includes('bail') || lower.includes('jail') || lower.includes('accident')) {
+                topic = "Fake Family Emergency Scam";
+            } else {
+                topic = "Suspicious Scam Message Alert";
             }
 
-            if (lower.includes('past due') || lower.includes('balance') || lower.includes('fee') || lower.includes('payment') || lower.includes('fine') || lower.includes('charge')) {
-                action = "Billing & Financial Penalty Demand Scam";
-            } else if (lower.includes('suspended') || lower.includes('restricted') || lower.includes('expired') || lower.includes('locked') || lower.includes('declined')) {
-                action = "Account Suspension & Credential Phishing Trap";
-            } else if (lower.includes('intercepted') || lower.includes('seized') || lower.includes('indictment') || lower.includes('warrant')) {
-                action = "Federal & Legal Intimidation Scam";
-            } else if (lower.includes('rebate') || lower.includes('grant') || lower.includes('subsidy') || lower.includes('winner') || lower.includes('prize')) {
-                action = "Phishing & Upfront Fee Reward Scam";
-            } else if (lower.includes('compromised') || lower.includes('leak') || lower.includes('extortion') || lower.includes('bitcoin')) {
-                action = "Digital Extortion & Compromise Threat";
-            } else if (lower.includes('script') || lower.includes('docker') || lower.includes('token') || lower.includes('wallet')) {
-                action = "Malicious Payload Execution & Wallet Drain Trap";
-            }
-
-            return "Fake " + entity + " " + action;
+            return topic;
         }
 
         function analyzeContent() {
@@ -1211,7 +1204,7 @@
                 {
                     keywords: ['vendor payment', 'routing details', 'clearinghouse', 'accounts payable', 'vendor disbursements'],
                     minMatches: 2,
-                    title: "Vendor Invoice Routing Redirection Scam",
+                    title: "Vendor Invoice Routing Redirection Scam Sensor",
                     desc: "A fraudulent vendor notice is attempting to redirect accounts payable funds into an unauthorized clearinghouse account.",
                     warn: "Financial transfer scams impersonate suppliers to divert corporate payments to fraudulent bank accounts."
                 },
@@ -1390,9 +1383,9 @@
             if (isThreat) {
                 resultBox.className = 'result-box danger';
                 
-                const title = matchedThreat ? matchedThreat.title : generateDynamicScamTitle(text);
-                const desc = matchedThreat ? matchedThreat.desc : "This message utilizes high-pressure tactics and urgent demands characteristic of modern social engineering threats.";
-                const specificWarning = matchedThreat ? matchedThreat.warn : "This matches fraudulent patterns designed to cause privacy and financial loss.";
+                const title = matchedThreat ? matchedThreat.title : generatePlainEnglishTitle(text);
+                const desc = matchedThreat ? matchedThreat.desc : "This message is trying to rush you or scare you into clicking a link or sending money before you can check if it is real.";
+                const specificWarning = matchedThreat ? matchedThreat.warn : "This matches trick patterns used by scammers to steal personal information or money.";
                 
                 const step3Custom = "Even if you did not lose money, report this attempted scam to help authorities track emerging threats: file a report with the <a href='https://reportfraud.ftc.gov' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Federal Trade Commission (FTC)</a>, contact your local law enforcement or the <a href='https://www.fdle.state.fl.us/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>FDLE</a> for criminal matters, file a deceptive trade complaint with the <a href='https://www.myfloridalegal.com' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Florida Attorney General</a>, or forward scam text messages to <strong>7726</strong>.";
                 const step4Custom = "To review general security guidelines, scam trends, and educational resources, explore the <a href='https://elderaffairs.org/programs-and-services/elder-protection-programs-fraud-trends/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>DOEA Fraud Protection Programs</a> hub.";
@@ -1440,10 +1433,10 @@
                 
                 resultContent.innerHTML = safeMessage;
                 
-                document.getElementById('printDynamicContent').innerHTML = 
+                document.getElementById('printCyberGuide') || (document.getElementById('printDynamicContent').innerHTML = 
                     '<p><strong>Analysis Result:</strong> No common threat patterns found. Proceed with caution.</p>' +
                     '<p><strong>Golden Rules to Remember:</strong></p>' +
-                    '<ul><li>Never call phone numbers listed in suspicious messages.</li><li>Always use verified Operation Senior Shield resource links.</li></ul>';
+                    '<ul><li>Never call phone numbers listed in suspicious messages.</li><li>Always use verified Operation Senior Shield resource links.</li></ul>');
             }
             
             resultBox.style.display = 'block';
