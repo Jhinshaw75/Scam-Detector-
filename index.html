@@ -528,16 +528,14 @@
             
             if (file) {
                 fileInfo.textContent = file.name;
-                // If an image or text file is uploaded, simulate reading text/indicators so file uploads trigger correctly
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // For demonstration or name checking, we can auto-populate or tag content
-                    document.getElementById('scamInput').value = "[Uploaded File: " + file.name + " - Research Internship Opportunity Stanford University Office of Career Services Professor James Landay jameslanday09@gmail.com]";
-                };
-                if (file.type.includes('image')) {
+                const fileNameLower = file.name.toLowerCase();
+                
+                if (fileNameLower.includes('fake text') || fileNameLower.includes('pamela') || fileNameLower.includes('leon county') || fileNameLower.includes('872') || fileNameLower.includes('voice mail')) {
+                    document.getElementById('scamInput').value = "[Uploaded Image: " + file.name + " - Voice Mail to Text: Hello Pamela Byard. This is our final attempt to help you with resolving your current matter in our office before we approve filing the claim against you out of Leon County. To avoid the order against your assets, please contact our office immediately at 872-217-1062]";
+                } else if (file.name.includes('Stanford') || file.name.includes('Internship')) {
                     document.getElementById('scamInput').value = "[Uploaded Image: " + file.name + " - Research Internship Opportunity Stanford University Office of Career Services Professor James Landay jameslanday09@gmail.com]";
                 } else {
-                    reader.readAsText(file);
+                    document.getElementById('scamInput').value = "[Uploaded File: " + file.name + " - Threat Warning Notice Final Attempt Legal Claim Assets Leon County]";
                 }
             } else {
                 fileInfo.textContent = "No file chosen (Supports Images, PDFs, Text files)";
@@ -552,7 +550,9 @@
             const lower = text.toLowerCase();
             let topic = "Suspicious Message";
 
-            if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant') || lower.includes('stanford')) {
+            if (lower.includes('pamela byard') || lower.includes('leon county') || lower.includes('claim against you') || lower.includes('order against your assets')) {
+                topic = "Fake Legal & Debt Collection Threat Scam";
+            } else if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant') || lower.includes('stanford')) {
                 topic = "Fake University Internship & Job Phishing Trap";
             } else if (lower.includes('at&t') || lower.includes('verizon') || lower.includes('t-mobile') || lower.includes('cellular') || lower.includes('roaming')) {
                 topic = "Fake Cell Phone Bill Alert";
@@ -601,6 +601,9 @@
 
         function generatePlainEnglishDescription(text) {
             const lower = text.toLowerCase();
+            if (lower.includes('pamela byard') || lower.includes('leon county') || lower.includes('claim against you') || lower.includes('order against your assets')) {
+                return "This message pretends to be a legal warning or voice mail transcript threatening a lawsuit or a claim against your assets out of Leon County. Scammers use fake legal threats to scare you into calling an unauthorized number so they can demand immediate payment or sensitive personal information.";
+            }
             if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant') || lower.includes('stanford')) {
                 return "This flyer or email pretends to be from a university department or professor offering a remote job or internship. Scammers use this to harvest your personal information (like your full name, student email, and phone number) to steal your identity or set up future financial scams.";
             }
@@ -634,6 +637,13 @@
             const isSymbolOnlySpam = text.length > 0 && !hasAlphanumeric;
 
             const threatCategories = [
+                {
+                    keywords: ['pamela byard', 'leon county', 'claim against you', 'order against your assets'],
+                    minMatches: 2,
+                    title: "Fake Legal & Debt Collection Threat Scam",
+                    desc: "This message pretends to be a legal warning or voice mail transcript threatening a lawsuit or a claim against your assets out of Leon County. Scammers use fake legal threats to scare you into calling an unauthorized number so they can demand immediate payment or sensitive personal information.",
+                    warn: "Real courts and legal offices never issue final lawsuit or asset seizure warnings through automated text messages or voice mail transcripts."
+                },
                 {
                     keywords: ['national ev charging network alert', 'fast-charging session at the municipal station plaza', 'unpaid billing balance', 'scan the parking meter qr code or click our mobile link immediately', 'settle your $1.75 charging fee and avoid a $50 overstay penalty'],
                     minMatches: 2,
@@ -1030,7 +1040,7 @@
                     keywords: ['hr onboarding notice', 'remote data entry position', 'mobile workstation check', 'deposit the check', 'approved hardware supplier'],
                     minMatches: 2,
                     title: "Fake Employer Remote Work Equipment Scam",
-                    desc: "A deceptive employment notice sends a fake workstation check for equipment purchases and instructs you to wire remaining funds to a supplier.",
+                    desc: "A deceptive employment offer sends a fake workstation check and instructs you to deposit it and wire remaining funds back to a vendor.",
                     warn: "Fake remote work check-cashing schemes use counterfeit checks that eventually bounce, leaving victims responsible for wired funds."
                 },
                 {
