@@ -550,7 +550,15 @@
             const lower = text.toLowerCase();
             let topic = "Suspicious Message";
 
-            if (lower.includes('pamela byard') || lower.includes('leon county') || lower.includes('claim against you') || lower.includes('order against your assets')) {
+            if (lower.includes('tax') || lower.includes('refund') || lower.includes('irs')) {
+                topic = "Fake Tax Refund Direct Deposit Scam";
+            } else if (lower.includes('reservation') || lower.includes('hotel') || lower.includes('marriott') || lower.includes('room forfeiture')) {
+                topic = "Fake Hotel Reservation Booking Confirmation Scam";
+            } else if (lower.includes('smart meter') || lower.includes('utility') || lower.includes('power interruption') || lower.includes('technician deposit')) {
+                topic = "Fake Utility Smart Meter Upgrade Notification Trap";
+            } else if (lower.includes('toll') || lower.includes('e-pass') || lower.includes('replenishment') || lower.includes('bridge tolls')) {
+                topic = "Fake Toll Pass Auto-Replenishment Phishing";
+            } else if (lower.includes('pamela byard') || lower.includes('leon county') || lower.includes('claim against you') || lower.includes('order against your assets')) {
                 topic = "Fake Legal & Debt Collection Threat Scam";
             } else if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant') || lower.includes('stanford')) {
                 topic = "Fake University Internship & Job Phishing Trap";
@@ -601,6 +609,18 @@
 
         function generatePlainEnglishDescription(text) {
             const lower = text.toLowerCase();
+            if (lower.includes('tax') || lower.includes('refund') || lower.includes('irs')) {
+                return "This message pretends to be a tax refund notification or direct deposit adjustment from the IRS. Scammers use fake tax alerts to harvest banking credentials and personal data through malicious phishing links.";
+            }
+            if (lower.includes('reservation') || lower.includes('hotel') || lower.includes('marriott') || lower.includes('room forfeiture')) {
+                return "This message pretends to be a hotel reservation confirmation or cancellation warning. Scammers use fake hospitality alerts to trick you into updating payment cards on phishing websites to steal financial details.";
+            }
+            if (lower.includes('smart meter') || lower.includes('utility') || lower.includes('power interruption') || lower.includes('technician deposit')) {
+                return "This message pretends to be a municipal utility notice regarding smart meter upgrades and service disconnections. Scammers use fake utility threats to demand immediate deposits or personal information.";
+            }
+            if (lower.includes('toll') || lower.includes('e-pass') || lower.includes('replenishment') || lower.includes('bridge tolls')) {
+                return "This message pretends to be an automatic toll replenishment alert or bridge toll violation warning. Scammers use toll collection texts to scare drivers into clicking malicious payment links.";
+            }
             if (lower.includes('pamela byard') || lower.includes('leon county') || lower.includes('claim against you') || lower.includes('order against your assets')) {
                 return "This message pretends to be a legal warning or voice mail transcript threatening a lawsuit or a claim against your assets out of Leon County. Scammers use fake legal threats to scare you into calling an unauthorized number so they can demand immediate payment or sensitive personal information.";
             }
@@ -637,6 +657,34 @@
             const isSymbolOnlySpam = text.length > 0 && !hasAlphanumeric;
 
             const threatCategories = [
+                {
+                    keywords: ['tax refund', 'direct deposit', 'irs notice', 'routing credentials'],
+                    minMatches: 2,
+                    title: "Fake Tax Refund Direct Deposit Text Scam",
+                    desc: "This message pretends to be a tax refund notification or direct deposit adjustment from the IRS. Scammers use fake tax alerts to harvest banking credentials and personal data through malicious phishing links.",
+                    warn: "The IRS never sends text messages or emails demanding immediate bank account confirmations or routing updates to release tax refunds."
+                },
+                {
+                    keywords: ['marriott', 'hotel reservation', 'reservation pending cancellation', 'room forfeiture'],
+                    minMatches: 2,
+                    title: "Fake Hotel Reservation Booking Confirmation Scam",
+                    desc: "This message pretends to be a hotel reservation confirmation or cancellation warning. Scammers use fake hospitality alerts to trick you into updating payment cards on phishing websites to steal financial details.",
+                    warn: "Hotels and booking platforms never threaten immediate room cancellations or forfeiture via unverified text message links."
+                },
+                {
+                    keywords: ['smart meter upgrade', 'city electric', 'technician deposit', 'power interruption'],
+                    minMatches: 2,
+                    title: "Fake Utility Smart Meter Upgrade Notification Trap",
+                    desc: "This message pretends to be a municipal utility notice regarding smart meter upgrades and service disconnections. Scammers use fake utility threats to demand immediate deposits or personal information.",
+                    warn: "Municipal utility companies never require upfront online technician deposits or threaten immediate power shutoffs via unverified links."
+                },
+                {
+                    keywords: ['e-pass notification', 'automatic toll replenishment', 'bridge tolls', 'state violation fee'],
+                    minMatches: 2,
+                    title: "Fake Toll Pass Auto-Replenishment Phishing",
+                    desc: "This message pretends to be an automatic toll replenishment alert or bridge toll violation warning. Scammers use toll collection texts to scare drivers into clicking malicious payment links.",
+                    warn: "Toll agencies never send urgent text alerts threatening massive state violation fees over automatic replenishment failures via external links."
+                },
                 {
                     keywords: ['pamela byard', 'leon county', 'claim against you', 'order against your assets'],
                     minMatches: 2,
