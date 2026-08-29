@@ -530,6 +530,62 @@
             window.print();
         }
 
+        function generateDynamicScamTitle(text) {
+            const lower = text.toLowerCase();
+            let entity = "Suspicious Digital Service";
+            let action = "Fraudulent Account Alert";
+
+            if (lower.includes('at&t') || lower.includes('verizon') || lower.includes('t-mobile') || lower.includes('cellular') || lower.includes('roaming')) {
+                entity = "Mobile Carrier";
+            } else if (lower.includes('netflix') || lower.includes('hulu') || lower.includes('streaming') || lower.includes('subscription')) {
+                entity = "Streaming Service Subscription";
+            } else if (lower.includes('traffic') || lower.includes('parking') || lower.includes('toll') || lower.includes('dmv') || lower.includes('vehicle')) {
+                entity = "Municipal Traffic & Toll Enforcement";
+            } else if (lower.includes('coinbase') || lower.includes('crypto') || lower.includes('wallet') || lower.includes('ledger') || lower.includes('defi')) {
+                entity = "Digital Asset & Cryptocurrency Platform";
+            } else if (lower.includes('homeguard') || lower.includes('security') || lower.includes('sensor') || lower.includes('water supply')) {
+                entity = "Smart Home Infrastructure Security";
+            } else if (lower.includes('aviation') || lower.includes('customs') || lower.includes('airport') || lower.includes('luggage')) {
+                entity = "International Customs Interdiction";
+            } else if (lower.includes('auto recovery') || lower.includes('tow truck') || lower.includes('repossession')) {
+                entity = "Automotive Financing & Repossession";
+            } else if (lower.includes('openai') || lower.includes('gpu') || lower.includes('llm') || lower.includes('compute')) {
+                entity = "AI Compute & GPU Hosting Network";
+            } else if (lower.includes('ez-pass') || lower.includes('transponder')) {
+                entity = "Electronic Toll Collection System";
+            } else if (lower.includes('ev charging') || lower.includes('supercharger')) {
+                entity = "Electric Vehicle Charging Network";
+            } else if (lower.includes('pet recovery') || lower.includes('microchip')) {
+                entity = "Pet Microchip Registry";
+            } else if (lower.includes('water utility') || lower.includes('leak protection')) {
+                entity = "Municipal Water Utility Bureau";
+            } else if (lower.includes('powergrid') || lower.includes('thermostat') || lower.includes('rebate')) {
+                entity = "Smart-Home Energy Rebate Bureau";
+            } else if (lower.includes('robotaxi') || lower.includes('autonomous fleet')) {
+                entity = "Autonomous Fleet Municipal Division";
+            } else if (lower.includes('medicare') || lower.includes('social security') || lower.includes('irs')) {
+                entity = "Government Agency Compliance";
+            } else if (lower.includes('warranty') || lower.includes('protection plan')) {
+                entity = "Property Protection & Warranty Service";
+            }
+
+            if (lower.includes('past due') || lower.includes('balance') || lower.includes('fee') || lower.includes('payment') || lower.includes('fine') || lower.includes('charge')) {
+                action = "Billing & Financial Penalty Demand Scam";
+            } else if (lower.includes('suspended') || lower.includes('restricted') || lower.includes('expired') || lower.includes('locked') || lower.includes('declined')) {
+                action = "Account Suspension & Credential Phishing Trap";
+            } else if (lower.includes('intercepted') || lower.includes('seized') || lower.includes('indictment') || lower.includes('warrant')) {
+                action = "Federal & Legal Intimidation Scam";
+            } else if (lower.includes('rebate') || lower.includes('grant') || lower.includes('subsidy') || lower.includes('winner') || lower.includes('prize')) {
+                action = "Phishing & Upfront Fee Reward Scam";
+            } else if (lower.includes('compromised') || lower.includes('leak') || lower.includes('extortion') || lower.includes('bitcoin')) {
+                action = "Digital Extortion & Compromise Threat";
+            } else if (lower.includes('script') || lower.includes('docker') || lower.includes('token') || lower.includes('wallet')) {
+                action = "Malicious Payload Execution & Wallet Drain Trap";
+            }
+
+            return "Fake " + entity + " " + action;
+        }
+
         function analyzeContent() {
             const text = document.getElementById('scamInput').value.trim();
             const fileInput = document.getElementById('imageUpload');
@@ -1072,7 +1128,7 @@
                     keywords: ['international flight', 'luggage was stolen', 'wire $800', 'western union', 'emergency ticket to come home'],
                     minMatches: 2,
                     title: "Fake Romance / Emergency Travel Scam",
-                    desc: "An online acquaintance claims an abrupt overseas emergency or stolen luggage requires immediate cash wire transfers.",
+                    desc: "An online acquaintance claims an abrupt overseas emergency, stolen luggage requires immediate cash wire transfers.",
                     warn: "Romance and emergency travel impostors exploit personal affection to manipulate victims into wiring non-recoverable funds."
                 },
                 {
@@ -1334,8 +1390,8 @@
             if (isThreat) {
                 resultBox.className = 'result-box danger';
                 
-                const title = matchedThreat ? matchedThreat.title : "Stop! This is a Known Scam Trick";
-                const desc = matchedThreat ? matchedThreat.desc : "This message is trying to scare you into acting quickly before you have time to think.";
+                const title = matchedThreat ? matchedThreat.title : generateDynamicScamTitle(text);
+                const desc = matchedThreat ? matchedThreat.desc : "This message utilizes high-pressure tactics and urgent demands characteristic of modern social engineering threats.";
                 const specificWarning = matchedThreat ? matchedThreat.warn : "This matches fraudulent patterns designed to cause privacy and financial loss.";
                 
                 const step3Custom = "Even if you did not lose money, report this attempted scam to help authorities track emerging threats: file a report with the <a href='https://reportfraud.ftc.gov' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Federal Trade Commission (FTC)</a>, contact your local law enforcement or the <a href='https://www.fdle.state.fl.us/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>FDLE</a> for criminal matters, file a deceptive trade complaint with the <a href='https://www.myfloridalegal.com' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Florida Attorney General</a>, or forward scam text messages to <strong>7726</strong>.";
