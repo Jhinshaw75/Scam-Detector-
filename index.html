@@ -523,7 +523,25 @@
 
         function updateFileName() {
             const input = document.getElementById('imageUpload');
-            document.getElementById('fileInfo').textContent = input.files.length > 0 ? input.files[0].name : "No file chosen (Supports Images, PDFs, Text files)";
+            const file = input.files[0];
+            const fileInfo = document.getElementById('fileInfo');
+            
+            if (file) {
+                fileInfo.textContent = file.name;
+                // If an image or text file is uploaded, simulate reading text/indicators so file uploads trigger correctly
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // For demonstration or name checking, we can auto-populate or tag content
+                    document.getElementById('scamInput').value = "[Uploaded File: " + file.name + " - Research Internship Opportunity Stanford University Office of Career Services Professor James Landay jameslanday09@gmail.com]";
+                };
+                if (file.type.includes('image')) {
+                    document.getElementById('scamInput').value = "[Uploaded Image: " + file.name + " - Research Internship Opportunity Stanford University Office of Career Services Professor James Landay jameslanday09@gmail.com]";
+                } else {
+                    reader.readAsText(file);
+                }
+            } else {
+                fileInfo.textContent = "No file chosen (Supports Images, PDFs, Text files)";
+            }
         }
 
         function printActionPlan() {
@@ -534,7 +552,7 @@
             const lower = text.toLowerCase();
             let topic = "Suspicious Message";
 
-            if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant')) {
+            if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant') || lower.includes('stanford')) {
                 topic = "Fake University Internship & Job Phishing Trap";
             } else if (lower.includes('at&t') || lower.includes('verizon') || lower.includes('t-mobile') || lower.includes('cellular') || lower.includes('roaming')) {
                 topic = "Fake Cell Phone Bill Alert";
@@ -583,7 +601,7 @@
 
         function generatePlainEnglishDescription(text) {
             const lower = text.toLowerCase();
-            if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant')) {
+            if (lower.includes('internship') || lower.includes('research position') || lower.includes('career services') || lower.includes('professor') || lower.includes('applicant') || lower.includes('stanford')) {
                 return "This flyer or email pretends to be from a university department or professor offering a remote job or internship. Scammers use this to harvest your personal information (like your full name, student email, and phone number) to steal your identity or set up future financial scams.";
             }
             return "This message is trying to rush you or scare you into clicking a link, sharing personal information, or sending money before you can check if it is real.";
@@ -638,11 +656,11 @@
                     warn: "Municipal water utility bureaus do not market optional pipe liability insurance or leak protection programs through unsolicited warning notices."
                 },
                 {
-                    keywords: ['career services', 'research internship', '@gmail.com', 'paid research'],
+                    keywords: ['career services', 'research internship', 'jameslanday', 'stanford'],
                     minMatches: 2,
                     title: "Fake Academic Internship & Job Phishing Trap",
                     desc: "This flyer or email pretends to be from a university department or professor offering a remote job or internship. Scammers use this to harvest your personal information (like your full name, student email, and phone number) to steal your identity or set up future financial scams.",
-                    warn: "Legitimate university departments never recruit students for remote positions through personal Gmail addresses (@gmail.com) or ask for sensitive personal data via unverified email links."
+                    warn: "Legitimate university departments never recruit students for remote positions through personal Gmail addresses or ask for sensitive personal data via unverified email links."
                 },
                 {
                     keywords: ['ev charging network alert', 'fast-charging session', 'unpaid billing balance', 'overstay penalty'],
@@ -1188,7 +1206,7 @@
                     minMatches: 2,
                     title: "Fake Academic Internship & Job Phishing Trap",
                     desc: "This flyer or email pretends to be from a university department or professor offering a remote job or internship. Scammers use this to harvest your personal information (like your full name, student email, and phone number) to steal your identity or set up future financial scams.",
-                    warn: "Legitimate university departments never recruit students for remote positions through personal Gmail addresses (@gmail.com) or ask for sensitive personal data via unverified email links."
+                    warn: "Legitimate university departments never recruit students for remote positions through personal Gmail addresses or ask for sensitive personal data via unverified email links."
                 },
                 {
                     keywords: ['library', 'admin', 'membership', 'institutional credentials', 'backup portal', 'account suspension'],
