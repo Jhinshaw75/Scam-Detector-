@@ -550,7 +550,13 @@
             const lower = text.toLowerCase();
             let topic = "Suspicious Message";
 
-            if (lower.includes('medicare compliance bureau') || lower.includes('part d overpayment') || lower.includes('medicare id')) {
+            if (lower.includes('fbi internet crime') || lower.includes('ic3') || lower.includes('wallet') || lower.includes('release fee')) {
+                topic = "FBI IC3 Re-Victimization / Fake Asset Recovery Scam";
+            } else if (lower.includes('chief executive officer') || lower.includes('cross-border acquisition') || lower.includes('wire') || lower.includes('escrow clearing partner')) {
+                topic = "AI Deepfake Executive Impersonation Scam";
+            } else if (lower.includes('state health benefits') || lower.includes('ppo health plan') || lower.includes('exchange') || lower.includes('subscriber profile')) {
+                topic = "Fake Health Insurance Marketplace Impersonation Scam";
+            } else if (lower.includes('medicare compliance bureau') || lower.includes('part d overpayment') || lower.includes('medicare id')) {
                 topic = "Fake Medicare/Medicaid Enrollment Overpayment Scam";
             } else if (lower.includes('bitcoin atm') || lower.includes('qr code') || lower.includes('safe storage account') || lower.includes('federal marshals')) {
                 topic = "Cryptocurrency ATM & QR Code Asset Transfer Scam";
@@ -585,6 +591,15 @@
 
         function generatePlainEnglishDescription(text) {
             const lower = text.toLowerCase();
+            if (lower.includes('fbi internet crime') || lower.includes('ic3') || lower.includes('wallet') || lower.includes('release fee')) {
+                return "This fraudulent notice pretends to be from the FBI IC3 claiming they have recovered your lost scam funds, but requires an upfront administrative release fee to withdraw them.";
+            }
+            if (lower.includes('chief executive officer') || lower.includes('cross-border acquisition') || lower.includes('wire') || lower.includes('escrow clearing partner')) {
+                return "This message mimics a corporate executive directive or deepfake instruction demanding an urgent wire transfer bypassing normal clearinghouse security controls.";
+            }
+            if (lower.includes('state health benefits') || lower.includes('ppo health plan') || lower.includes('exchange') || lower.includes('subscriber profile')) {
+                return "This fraudulent notice pretends to be from a state health insurance marketplace requiring urgent re-certification of your PPO plan through a phishing link.";
+            }
             if (lower.includes('medicare compliance bureau') || lower.includes('part d overpayment') || lower.includes('medicare id')) {
                 return "This notice claims you received an accidental medical overpayment or qualify for a special health reimbursement that requires verifying your Medicare ID, social security, and banking details.";
             }
@@ -636,6 +651,27 @@
             const isSymbolOnlySpam = text.length > 0 && !hasAlphanumeric;
 
             const threatCategories = [
+                {
+                    keywords: ['fbi', 'internet crime', 'ic3', 'release fee', 'recovered cryptocurrency', 'intercepted your previous scam'],
+                    minMatches: 1,
+                    title: "FBI IC3 Re-Victimization / Fake Asset Recovery Scam",
+                    desc: "This fraudulent notice pretends to be from the FBI IC3 claiming they have recovered your lost scam funds, but requires an upfront administrative release fee to withdraw them.",
+                    warn: "Law enforcement agencies never demand upfront fees, taxes, or retainers to recover lost scam funds or release seized cryptocurrency."
+                },
+                {
+                    keywords: ['chief executive officer', 'cross-border acquisition', 'wire', 'escrow clearing partner'],
+                    minMatches: 1,
+                    title: "AI Deepfake Executive Impersonation Scam",
+                    desc: "This message mimics a corporate executive directive or deepfake instruction demanding an urgent wire transfer bypassing normal clearinghouse security controls.",
+                    warn: "Always verify urgent wire transfers or executive directives through secondary internal channels before authorizing corporate payments."
+                },
+                {
+                    keywords: ['state health benefits', 'ppo health plan', 'exchange', 'subscriber profile'],
+                    minMatches: 1,
+                    title: "Fake Health Insurance Marketplace Impersonation Scam",
+                    desc: "This fraudulent notice pretends to be from a state health insurance marketplace requiring urgent re-certification of your PPO plan through a phishing link.",
+                    warn: "State health insurance marketplaces and exchanges never threaten abrupt policy cancellation or demand re-certification via unverified text links."
+                },
                 {
                     keywords: ['medicare compliance bureau', 'part d overpayment', 'medicare id'],
                     minMatches: 1,
