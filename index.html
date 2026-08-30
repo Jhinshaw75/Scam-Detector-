@@ -566,6 +566,41 @@
 
             const threatCategories = [
                 {
+                    keywords: ['netflix', 'streaming', 'membership', 'subscription'],
+                    minMatches: 1,
+                    title: "Fake Netflix Account Deactivation",
+                    desc: "This phishing alert threatens streaming account closure due to billing card errors to steal your updated payment card credentials.",
+                    warn: "Netflix handles payment updates exclusively within secure signed-in profile pages, never via external text links."
+                },
+                {
+                    keywords: ['fedex', 'customs', 'tariff', 'redelivery', 'sorting facility'],
+                    minMatches: 1,
+                    title: "Fake FedEx Package Delivery Customs Hold",
+                    desc: "This fraudulent courier text demands a tiny customs fee to release an international package, harvesting your credit card data.",
+                    warn: "Major delivery carriers like FedEx never hold packages for random online tariff fee payments via external text links."
+                },
+                {
+                    keywords: ['icloud', 'backup', 'storage plan', 'apple id'],
+                    minMatches: 1,
+                    title: "Fake Apple iCloud Storage Expiration Notice",
+                    desc: "This scam threatens the permanent deletion of personal photos and backups to force you into entering your Apple ID billing data on a fake site.",
+                    warn: "Apple security and storage alerts appear natively on your trusted Apple devices and never demand billing updates through text links."
+                },
+                {
+                    keywords: ['amazon', 'prime', 'unusual login', 'membership locked'],
+                    minMatches: 1,
+                    title: "Fake Amazon Account Suspension Phishing",
+                    desc: "This message claims your Amazon account or Prime membership is locked due to suspicious activity, demanding immediate verification.",
+                    warn: "Amazon customer service will never suspend your account via text or ask you to verify your full password over a link."
+                },
+                {
+                    keywords: ['zelle', 'unauthorized transfer', 'checking account', 'passcode'],
+                    minMatches: 1,
+                    title: "Fake Zelle / Peer-to-Peer Banking Fraud Scam",
+                    desc: "This text claims someone sent money from your Zelle account and asks you to reply with your banking passcode to cancel it.",
+                    warn: "Banks and peer payment apps will never ask for your PIN, password, or security verification code via text message."
+                },
+                {
                     keywords: ['geek squad', 'antivirus', 'renewed', 'refund'],
                     minMatches: 1,
                     title: "Fake Geek Squad Subscription Renewal Scam",
@@ -578,27 +613,6 @@
                     title: "Fake PayPal Invoice Payment Trap",
                     desc: "This fake invoice notification uses high-dollar amounts for crypto hardware to panic you into clicking a malicious dispute link.",
                     warn: "Always check transactions directly inside your official PayPal app rather than clicking links in unexpected invoice emails."
-                },
-                {
-                    keywords: ['netflix billing', 'monthly subscription', 'card expiration', 'deactivated'],
-                    minMatches: 1,
-                    title: "Fake Netflix Account Deactivation",
-                    desc: "This phishing alert threatens streaming account closure due to billing card errors to steal your updated payment card credentials.",
-                    warn: "Netflix handles payment updates exclusively within secure signed-in profile pages, never via external text links."
-                },
-                {
-                    keywords: ['fedex tracking', 'customs clearance', 'import tariff', 'redelivery'],
-                    minMatches: 1,
-                    title: "Fake FedEx Package Delivery Customs Hold",
-                    desc: "This fraudulent courier text demands a tiny customs fee to release an international package, harvesting your credit card data.",
-                    warn: "Major delivery carriers like FedEx never hold packages for random online tariff fee payments via external text links."
-                },
-                {
-                    keywords: ['apple icloud', 'cloud backup', 'storage plan', 'permanently deleted'],
-                    minMatches: 1,
-                    title: "Fake Apple iCloud Storage Expiration Notice",
-                    desc: "This scam threatens the permanent deletion of personal photos and backups to force you into entering your Apple ID billing data on a fake site.",
-                    warn: "Apple security and storage alerts appear natively on your trusted Apple devices and never demand billing updates through text links."
                 },
                 {
                     keywords: ['metamask', 'node validation', 'staking pool', 'secret phrase'],
@@ -1206,7 +1220,7 @@
                     keywords: ['air duct cleaning', 'dryer vent fire hazard', 'hvac system sanitization'],
                     minMatches: 1,
                     title: "Fake Air Duct Cleaning Telemarketing Scam",
-                    desc: "This telemarketing call warns of severe dryer vent fire hazards to pressure you into booking overpriced duct cleaning services.",
+                    desc: "This telemarketing call warns of severe dryer vent fire hazards to pressure you into booking overpriced cleaning services.",
                     warn: "Always verify HVAC maintenance companies independently rather than responding to scare-tactic telemarketing texts."
                 },
                 {
