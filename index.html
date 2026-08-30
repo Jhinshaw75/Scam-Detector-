@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -159,6 +159,34 @@
             color: #1e293b;
             font-size: 14px;
             margin-bottom: 8px;
+        }
+
+        .never-ever-box {
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fef2f2;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .never-ever-box h3 {
+            margin-top: 0;
+            color: #991b1b;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .never-ever-box ul {
+            padding-left: 20px;
+            color: #7f1d1d;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .never-ever-box li {
+            margin-bottom: 8px;
+            font-weight: bold;
         }
 
         .oss-promo-banner {
@@ -372,7 +400,7 @@
         @media print {
             body { background: white; padding: 0; }
             .container { box-shadow: none; padding: 0; margin: 0; max-width: 100%; }
-            .header-top, .instructions-panel, .oss-promo-banner, .permanent-info-box, .upload-dropzone, .form-group, .button-group, .disclaimer-box, .footer-note, .result-box { display: none !important; }
+            .header-top, .instructions-panel, .oss-promo-banner, .permanent-info-box, .never-ever-box, .upload-dropzone, .form-group, .button-group, .disclaimer-box, .footer-note, .result-box { display: none !important; }
             .printable-card { display: block !important; border: 2px dashed #1e3a8a; padding: 20px; border-radius: 8px; margin: 20px; }
             .printable-card h2 { color: #1e3a8a; margin-top: 0; }
         }
@@ -403,8 +431,8 @@
                         <li>If a scam is found, a guidance box will appear right away to walk you through what to do and connect you with external resource channels.</li>
                     </ul>
                 </li>
+                <li><strong>Safe Email Hygiene:</strong> Never click "unsubscribe" links within suspicious emails, as scammers use these links to verify active addresses or trigger malicious downloads. Simply mark them as spam.</li>
                 <li>Click the print reference guide button if you want a paper copy of the emergency numbers and trusted web links to keep by your phone.</li>
-                <li>Open your browser menu on a mobile device and select "Add to Home Screen" if you want to pin the tool to your phone like a regular app.</li>
             </ol>
         </div>
 
@@ -453,6 +481,15 @@
                 <div id="resultContent"></div>
             </div>
 
+            <div class="never-ever-box">
+                <h3>🛡️ The Federal "Never Ever" Rules</h3>
+                <ul>
+                    <li>The government and legitimate banks will NEVER tell you to move your money to protect it.</li>
+                    <li>Official agencies will NEVER threaten to cut off benefits unless you pay immediately.</li>
+                    <li>Legitimate organizations will NEVER demand payment by gift card, wire transfer, cryptocurrency, or payment app.</li>
+                </ul>
+            </div>
+
             <div class="permanent-info-box">
                 <h3>📲 How to Report Scam Text Messages (7726)</h3>
                 <p>If you receive a suspicious text message, you can report it instantly to mobile carriers and security authorities without clicking any links:</p>
@@ -465,10 +502,16 @@
         <div class="printable-card" id="printableCardContainer">
             <h2>Scam Detector &mdash; Reference & Emergency Guide</h2>
             <div id="printDynamicContent">
+                <p><strong>The Federal "Never Ever" Fraud Rules:</strong></p>
+                <ul>
+                    <li>The government and legitimate banks will NEVER tell you to move your money to protect it.</li>
+                    <li>Official agencies will NEVER threaten to cut off benefits unless you pay immediately.</li>
+                    <li>Legitimate organizations will NEVER demand payment by gift card, wire transfer, cryptocurrency, or payment app.</li>
+                </ul>
                 <p><strong>Golden Rules to Remember:</strong></p>
                 <ul>
                     <li>Never call phone numbers listed in suspicious text messages, emails, or pop-up notices.</li>
-                    <li>Never click unfamiliar links or download attachments from unknown senders.</li>
+                    <li>Never click unfamiliar links, download attachments, or click "unsubscribe" links from unknown senders.</li>
                     <li>Always use our verified Operation Senior Shield resource links.</li>
                 </ul>
             </div>
@@ -565,6 +608,20 @@
             const isSymbolOnlySpam = text.length > 0 && !hasAlphanumeric;
 
             const threatCategories = [
+                {
+                    keywords: ['veteran charity fund', 'wounded service member donation', 'military family relief wire', 'active-duty support gift card', 'military charity wire'],
+                    minMatches: 1,
+                    title: "Fake Military & Veteran Charity Scam",
+                    desc: "This message plays on your emotions to solicit donations for fake military or veteran charities using untraceable payment methods.",
+                    warn: "Legitimate charities never demand donations via gift cards, wire transfers, or cryptocurrency."
+                },
+                {
+                    keywords: ['unsubscribe to stop pending charge', 'click to cancel order and unsubscribe', 'unsubscribe to halt payment', 'opt-out of recurring billing'],
+                    minMatches: 1,
+                    title: "Malicious Unsubscribe Billing Trap",
+                    desc: "This message uses a fake invoice and includes an 'unsubscribe' link designed to confirm your contact info or steal credentials when you try to cancel.",
+                    warn: "Never click 'unsubscribe' links in unexpected invoices or suspicious emails; simply mark them as spam or junk."
+                },
                 {
                     keywords: ['municipal power & water', 'unresolved meter balance', 'reloadable card or green dot card'],
                     minMatches: 1,
@@ -1541,9 +1598,9 @@
                 {
                     keywords: ['asphalt driveway sealing', 'crack fill service', 'leftover paving material discount'],
                     minMatches: 1,
-                    title: "Fake Driveway Sealing Paving Scam",
-                    desc: "This traveling scam claims they have leftover asphalt material from a neighbor's job and offers a cheap driveway deal.",
-                    warn: "Reputable paving contractors do not roam neighborhoods offering leftover material discounts; always hire licensed local businesses."
+                    title: "Fake Driveway Paving Scam",
+                    desc: "This traveling contractor scam claims leftover asphalt material allows them to offer cheap driveway sealing services.",
+                    warn: "Never hire door-to-door paving contractors offering leftover materials; verify physical business addresses and licensing."
                 },
                 {
                     keywords: ['ez-pass replenishment notice', 'toll account balance negative', 'express toll violation fee'],
