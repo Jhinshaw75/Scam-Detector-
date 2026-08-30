@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -565,6 +565,41 @@
             const isSymbolOnlySpam = text.length > 0 && !hasAlphanumeric;
 
             const threatCategories = [
+                {
+                    keywords: ['sunpass', 'transponder', 'highway fee', 'open highway fee'],
+                    minMatches: 1,
+                    title: "SunPass & Highway Toll Smishing Trap",
+                    desc: "This text message impersonates toll road authorities claiming an unpaid highway fee, threatening severe financial penalties via phishing links.",
+                    warn: "Toll agencies manage toll accounts natively through official portals and never threaten instant penalties over unsolicited text links."
+                },
+                {
+                    keywords: ['drop off your parcel', 'dropping info', 'returning to sender', 'street number is missing'],
+                    minMatches: 1,
+                    title: "Alternative Postal Drop-Off Phishing Trap",
+                    desc: "This message uses alternate delivery language ('drop off your parcel', 'dropping info') to trick you into submitting personal information on a fake portal.",
+                    warn: "Major delivery carriers never ask you to update mailing details or address info through external text links."
+                },
+                {
+                    keywords: ['whatsapp', 'windows desktop is requesting to sync', 'sms pin'],
+                    minMatches: 1,
+                    title: "WhatsApp Session-Sync & Device Hijacking Scam",
+                    desc: "This message attempts to lure you into surrendering an incoming SMS verification pin to link your messaging account to an attacker's device.",
+                    warn: "Never share verification codes, SMS pins, or authentication tokens with anyone claiming to reset or sync your messaging apps."
+                },
+                {
+                    keywords: ['broken wrist', 'er right now', 'hospital won\'t treat', 'venmo this number'],
+                    minMatches: 1,
+                    title: "Emergency Medical Copay Extortion Scam",
+                    desc: "This variation of a family emergency scam targets parents or family members with urgent claims of a hospital visit or medical copay requiring immediate peer-to-peer payment.",
+                    warn: "Always verify medical emergencies independently by calling your family member or local hospital directly on known numbers."
+                },
+                {
+                    keywords: ['attempt an $850', 'reply y if yes', 'or n if no', 'our fraud team will call'],
+                    minMatches: 1,
+                    title: "Interactive SMS Banking Ping Phishing Scam",
+                    desc: "This text mimics a standard automated bank fraud alert asking you to reply 'Y' or 'N' to open a dialogue or trigger a malicious callback.",
+                    warn: "Real bank fraud alerts use secure in-app verification or automatic short codes, and never prompt you to engage with unknown numbers for security calls."
+                },
                 {
                     keywords: ['federal subsidy bureau', 'non-repayable', 'federal cash grant', 'document processing fee'],
                     minMatches: 1,
