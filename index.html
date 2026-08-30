@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -586,7 +586,29 @@
                         fileInfo.textContent = file.name + " (Error reading image text)";
                     });
                 } else {
-                    textArea.value = "[Uploaded File: " + file.name + "]";
+                    reader.onload = function(e) {
+                        const img = new Image();
+                        img.onload = function() {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0);
+                            Tesseract.recognize(
+                                canvas,
+                                'eng',
+                                { logger: m => {} }
+                            ).then(({ data: { text } }) => {
+                                textArea.value = text.trim();
+                                fileInfo.textContent = file.name + " (Text extracted successfully)";
+                            }).catch(err => {
+                                textArea.value = "";
+                                fileInfo.textContent = file.name + " (Error reading image text)";
+                            });
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
                 }
             } else {
                 fileInfo.textContent = "No file chosen (Supports Images, PDFs, Text files)";
@@ -1341,8 +1363,8 @@
                 {
                     keywords: ['air duct cleaning special', 'dryer vent hazard warning', 'neighborhood HVAC discount'],
                     minMatches: 1,
-                    title: "HVAC Duct Cleaning Scam",
-                    desc: "This telemarketing call warns of severe fire hazards in your air ducts to pressure you into booking overpriced cleaning services.",
+                    title: "Fake Air Duct Cleaning Telemarketing Scam",
+                    desc: "This telemarketing call warns of severe dryer vent fire hazards to pressure you into booking overpriced cleaning services.",
                     warn: "Always verify HVAC maintenance companies with local consumer protection agencies before hiring uninvited contractors."
                 },
                 {
@@ -1773,7 +1795,7 @@
                     warn: "Power of attorney documents are executed and revoked through formal legal channels and licensed attorneys."
                 },
                 {
-                    keywords: ['living trust amendment filing', 'estate asset transfer fee', 'trustee administration charge'],
+                    keywords: ['living trust amendment filing', 'estate asset transfer file', 'trustee administration charge'],
                     minMatches: 1,
                     title: "Fake Living Trust Amendment Fee Scam",
                     desc: "This scam targets estate trusts, claiming an amendment filing file is overdue to prevent trust asset freezing.",
