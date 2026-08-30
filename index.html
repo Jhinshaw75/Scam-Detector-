@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -566,11 +566,25 @@
 
             const threatCategories = [
                 {
-                    keywords: ['dad, it\'s me', 'mom, it\'s me', 'car accident', 'bail', 'held at a police station'],
+                    keywords: ['federal subsidy bureau', 'non-repayable', 'federal cash grant', 'document processing fee'],
                     minMatches: 1,
-                    title: "AI Voice Clone & Parent Emergency Scam",
-                    desc: "Scammers use AI voice cloning or audio deepfakes to impersonate your son, daughter, or child claiming a sudden emergency and demanding immediate wire transfers or bail money.",
-                    warn: "Always hang up and call your child or family member directly on their known phone number, and use a pre-established family password to verify emergencies."
+                    title: "Government Grant Impersonation Scam",
+                    desc: "This call or message claims you were awarded thousands of dollars in free government grants, requiring a processing fee to release it.",
+                    warn: "Government agencies never award grants to individuals who did not apply for them, nor do they charge fees to release grant funds."
+                },
+                {
+                    keywords: ['airbnb trust', 'hosting account', 'guest payouts', 'verification mismatch'],
+                    minMatches: 1,
+                    title: "Airbnb Hosting Account Suspension Scam",
+                    desc: "This fake safety alert targets short-term rental hosts, claiming accounts are frozen or suspended to steal banking credentials.",
+                    warn: "Airbnb manages host accounts and payouts securely inside your official signed-in host dashboard, never via text links."
+                },
+                {
+                    keywords: ['norton security billing', 'cybershield', 'antivirus protection has automatically renewed', 'customer support helpline right now'],
+                    minMatches: 1,
+                    title: "Antivirus / Software Auto-Renewal Trap",
+                    desc: "This phishing notice claims an expensive software subscription renewed automatically, trapping you into calling a fake support number.",
+                    warn: "Legitimate software providers manage subscription billing entirely inside your secure online account profile."
                 },
                 {
                     keywords: ['ai voice', 'voice cloning', 'audio deepfake', 'family password'],
@@ -578,6 +592,13 @@
                     title: "AI Voice Clone & Family Emergency Scam",
                     desc: "Scammers use short audio clips or AI voice generation to simulate a relative in sudden distress, demanding immediate money transfers.",
                     warn: "Always verify emergency claims by calling your family member directly on a trusted phone number and using a pre-established family password."
+                },
+                {
+                    keywords: ['dad, it\'s me', 'mom, it\'s me', 'car accident', 'bail', 'held at a police station'],
+                    minMatches: 1,
+                    title: "AI Voice Clone & Parent Emergency Scam",
+                    desc: "Scammers use AI voice cloning or audio deepfakes to impersonate your son, daughter, or child claiming a sudden emergency and demanding immediate wire transfers or bail money.",
+                    warn: "Always hang up and call your child or family member directly on their known phone number, and use a pre-established family password to verify emergencies."
                 },
                 {
                     keywords: ['move your money', 'secure government account', 'safe wallet', 'asset protection'],
