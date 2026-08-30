@@ -557,6 +557,14 @@
             const isSymbolOnlySpam = text.length > 0 && !hasAlphanumeric;
 
             const threatCategories = [
+                // 179 - Placed higher up to catch credit limit increase phishing precisely
+                {
+                    keywords: ['cardmember services', 'credit limit increase', 'claim your new credit tier'],
+                    minMatches: 1,
+                    title: "Fake Credit Card Limit Increase Phishing",
+                    desc: "This notice offers unrequested credit limit increases to harvest personal identification and social security data.",
+                    warn: "Legitimate credit card issuers manage credit limit increases directly within your secure account dashboard."
+                },
                 // 1
                 {
                     keywords: ['microchip recovery database', 'microchip registration', 'gps tracking', 'annual membership renewal fee'],
@@ -623,7 +631,7 @@
                 },
                 // 9
                 {
-                    keywords: ['social security administration', 'social security number', 'asset-freeze', 'felony money-laundering', 'senior investigator'],
+                    keywords: ['asset-freeze', 'felony money-laundering', 'senior investigator'],
                     minMatches: 1,
                     title: "Fake Social Security Arrest Scam",
                     desc: "This message falsely claims your Social Security Number is linked to crimes and threatens immediate asset seizure or arrest unless you call them.",
@@ -1980,14 +1988,6 @@
                     title: "Fake Debit Card Deactivation Warning",
                     desc: "This message claims your debit card is locked due to PIN attempts, directing you to call a fake hotline.",
                     warn: "Call the official phone number printed on the back of your debit card to check account status."
-                },
-                // 179
-                {
-                    keywords: ['chase cardmember services', 'pre-approved for an automatic', 'credit limit increase'],
-                    minMatches: 1,
-                    title: "Fake Credit Card Limit Increase Phishing",
-                    desc: "This notice offers unrequested credit limit increases to harvest personal identification and social security data.",
-                    warn: "Legitimate credit card issuers manage credit limit increases directly within your secure account dashboard."
                 },
                 // 180
                 {
