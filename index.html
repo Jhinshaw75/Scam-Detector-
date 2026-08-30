@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -565,6 +565,34 @@
             const isSymbolOnlySpam = text.length > 0 && !hasAlphanumeric;
 
             const threatCategories = [
+                {
+                    keywords: ['ai voice', 'voice cloning', 'audio deepfake', 'family password'],
+                    minMatches: 1,
+                    title: "AI Voice Clone & Family Emergency Scam",
+                    desc: "Scammers use short audio clips or AI voice generation to simulate a relative in sudden distress, demanding immediate money transfers.",
+                    warn: "Always verify emergency claims by calling your family member directly on a trusted phone number and using a pre-established family password."
+                },
+                {
+                    keywords: ['move your money', 'secure government account', 'safe wallet', 'asset protection'],
+                    minMatches: 1,
+                    title: "Protective Transfer Bank Impersonation Scam",
+                    desc: "Fraudsters impersonate bank security or government agents, claiming accounts are compromised and instructing you to move funds to a 'safe' account or crypto ATM.",
+                    warn: "Real banks and government agencies never instruct you to transfer money to separate accounts or bitcoin ATMs for protection."
+                },
+                {
+                    keywords: ['search ad', 'bill pay ad', 'payment portal ad', 'search engine bill'],
+                    minMatches: 1,
+                    title: "Bill-Pay Search Ad Impersonation Scam",
+                    desc: "Dishonest actors buy top search engine ads mimicking utility, mortgage, or credit card payment portals to intercept bill-pay funds.",
+                    warn: "Never click on sponsored search ads to pay bills; always type the company's verified web address directly into your browser."
+                },
+                {
+                    keywords: ['verification code', 'two-factor', 'authentication code', 'share code'],
+                    minMatches: 1,
+                    title: "Synthetic Identity & Account Takeover Trap",
+                    desc: "Attackers trick victims into disclosing text-message verification codes or multi-factor authentication pins to hijack control of primary online portals.",
+                    warn: "Never share multi-factor authentication (2FA) codes or SMS verification pins with anyone over phone or text."
+                },
                 {
                     keywords: ['netflix', 'streaming', 'membership', 'subscription'],
                     minMatches: 1,
