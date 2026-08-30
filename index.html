@@ -566,39 +566,74 @@
 
             const threatCategories = [
                 {
-                    keywords: ['geek squad billing', 'antivirus and computer security protection', 'automatically renewed today', 'full refund, call'],
+                    keywords: ['geek squad', 'antivirus', 'renewed', 'refund'],
                     minMatches: 1,
                     title: "Fake Geek Squad Subscription Renewal Scam",
                     desc: "This message claims a hefty antivirus subscription automatically renewed, trapping you into calling a fake support line to steal your financial details.",
                     warn: "Geek Squad never automatically charges hundreds of dollars over text notifications or asks you to call random phone numbers for refunds."
                 },
                 {
-                    keywords: ['paypal invoice alert', 'invoice for', 'cryptocurrency hardware purchase', 'dispute link'],
+                    keywords: ['paypal invoice', 'invoice for', 'cryptocurrency', 'dispute link'],
                     minMatches: 1,
                     title: "Fake PayPal Invoice Payment Trap",
                     desc: "This fake invoice notification uses high-dollar amounts for crypto hardware to panic you into clicking a malicious dispute link.",
                     warn: "Always check transactions directly inside your official PayPal app rather than clicking links in unexpected invoice emails."
                 },
                 {
-                    keywords: ['netflix billing notice', 'unable to process your monthly subscription', 'card expiration error', 'streaming account will be deactivated'],
+                    keywords: ['netflix billing', 'monthly subscription', 'card expiration', 'deactivated'],
                     minMatches: 1,
                     title: "Fake Netflix Account Deactivation",
                     desc: "This phishing alert threatens streaming account closure due to billing card errors to steal your updated payment card credentials.",
                     warn: "Netflix handles payment updates exclusively within secure signed-in profile pages, never via external text links."
                 },
                 {
-                    keywords: ['fedex tracking update', 'customs clearance facility', 'unpaid import tariff fee', 'schedule redelivery'],
+                    keywords: ['fedex tracking', 'customs clearance', 'import tariff', 'redelivery'],
                     minMatches: 1,
                     title: "Fake FedEx Package Delivery Customs Hold",
                     desc: "This fraudulent courier text demands a tiny customs fee to release an international package, harvesting your credit card data.",
                     warn: "Major delivery carriers like FedEx never hold packages for random online tariff fee payments via external text links."
                 },
                 {
-                    keywords: ['apple icloud alert', 'cloud backup storage plan has expired', 'permanently deleted in 48 hours', 'update your billing details'],
+                    keywords: ['apple icloud', 'cloud backup', 'storage plan', 'permanently deleted'],
                     minMatches: 1,
                     title: "Fake Apple iCloud Storage Expiration Notice",
                     desc: "This scam threatens the permanent deletion of personal photos and backups to force you into entering your Apple ID billing data on a fake site.",
                     warn: "Apple security and storage alerts appear natively on your trusted Apple devices and never demand billing updates through text links."
+                },
+                {
+                    keywords: ['metamask', 'node validation', 'staking pool', 'secret phrase'],
+                    minMatches: 1,
+                    title: "Web3 Hardware Wallet Synchronization Scam",
+                    desc: "This fake crypto alert claims your decentralized wallet needs node validation, capturing your secret recovery phrase.",
+                    warn: "Decentralized wallets never require online seed phrase entry or external node synchronization."
+                },
+                {
+                    keywords: ['microsoft security', 'unusual login', 'security token', 'inbox suspension'],
+                    minMatches: 1,
+                    title: "Fake Microsoft Outlook Security Token Phishing",
+                    desc: "This email claims your corporate or personal Outlook login token expired, aiming to hijack your email inbox.",
+                    warn: "Microsoft handles authentication security natively through secure login prompts without external link requirements."
+                },
+                {
+                    keywords: ['google workspace', 'cloud drive storage', 'purge', 'storage tier'],
+                    minMatches: 1,
+                    title: "Google Workspace Storage Purge Phishing",
+                    desc: "This fake Google alert threatens total account file deletion unless you enter credit card details for storage upgrades.",
+                    warn: "Google sends storage warnings directly inside your native application banner, not via external billing links."
+                },
+                {
+                    keywords: ['county property tax', 'tax lien', 'foreclosure', 'tax arrears'],
+                    minMatches: 1,
+                    title: "Municipal Property Tax Lien Extortion Scam",
+                    desc: "This letter or text threatens immediate tax foreclosure on your home unless you wire funds to an unauthorized account.",
+                    warn: "County tax collectors issue notices via formal mailed tax certificates, never demanding instant peer wire transfers."
+                },
+                {
+                    keywords: ['jury duty', 'bench warrant', 'failure to appear', 'cash bond'],
+                    minMatches: 1,
+                    title: "Fake Jury Duty Bench Warrant Extortion",
+                    desc: "This call or text claims you missed court and must pay an immediate cash bond over the phone to avoid arrest.",
+                    warn: "Courts never issue bench warrants over phone calls or text messages, nor do they accept bond payments via gift cards or apps."
                 },
                 {
                     keywords: ['cardmember services', 'credit limit increase', 'claim your new credit tier'],
@@ -802,13 +837,6 @@
                     title: "Veterans Benefit Advisory Scam",
                     desc: "This postcard or message targets veterans offering fee-based advisory for VA pension benefits that are actually provided free by the government.",
                     warn: "Never pay upfront fees for veterans pension assistance; official VA accredited programs provide help free of charge."
-                },
-                {
-                    keywords: ['jury duty', 'bench warrant', 'failure to appear'],
-                    minMatches: 1,
-                    title: "Jury Duty Arrest Threat Scam",
-                    desc: "This urgent call or message claims you missed jury duty and face immediate arrest unless you pay a fine over the phone.",
-                    warn: "Courts and law enforcement never contact citizens by phone demanding immediate fine payments or threatening arrest for missed jury service."
                 },
                 {
                     keywords: ['flight itinerary', 'airline', 'reservation recovery'],
