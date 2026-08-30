@@ -426,10 +426,10 @@
                     </ul>
                 </li>
                 <li>Click the analyze button to check the message for multi-word threat patterns or scam indicators.</li>
-                <li>Review the result:
+                <li>Review what is found:
                     <ul>
-                        <li>If no multi-word scam patterns show up, the tool will let you know.</li>
-                        <li>If a scam is found, a guidance box will appear right away to walk you through what to do and connect you with external resource channels.</li>
+                        <li>If the message looks safe, the tool will let you know right away.</li>
+                        <li>If a scam is detected, a helpful message will appear immediately to guide you step-by-step on what to do and connect you with trusted helper phone numbers.</li>
                     </ul>
                 </li>
                 <li>Click the print action plan button if you want a paper copy of the emergency numbers and steps to keep by your phone.</li>
@@ -1063,7 +1063,7 @@
                     minMatches: 1,
                     title: "Puppy & Pet Delivery Scam",
                     desc: "This message claims an adopted pet is stuck in shipping quarantine and demands unexpected veterinary or delivery fees before it can be delivered.",
-                    warn: "Pet adoption agencies never demand sudden emergency cash or gift card payments for unexpected cargo quarantines."
+                    warn: "Pet adoption agencies never demand sudden emergency cash or wire payments for unexpected cargo quarantines."
                 },
                 {
                     keywords: ['timeshare resale', 'closing fee', 'buyer escrow', 'attorney filing deposit', 'sell your timeshare'],
@@ -1638,6 +1638,251 @@
                     title: "Fake Driveway Paving Scam",
                     desc: "This traveling contractor scam claims leftover asphalt material allows them to offer cheap driveway sealing services.",
                     warn: "Never hire door-to-door paving contractors offering leftover materials; verify physical business addresses and licensing."
+                },
+                {
+                    keywords: ['ez-pass replenishment notice', 'toll account balance negative', 'express toll violation fee'],
+                    minMatches: 1,
+                    title: "Fake Toll EZ-Pass Replenishment Phishing",
+                    desc: "This message claims your toll account balance is negative and demands an immediate payment link to avoid violation fees.",
+                    warn: "Check your state's official toll management app directly rather than clicking links in text alerts."
+                },
+                {
+                    keywords: ['municipal parking citation', 'unpaid parking meter fine', 'vehicle boot warning notice'],
+                    minMatches: 1,
+                    title: "Fake Parking Ticket Citation Scam",
+                    desc: "This fake alert claims you have an unpaid parking meter fine and threatens a vehicle boot unless you pay online.",
+                    warn: "Verify parking citations directly through your city or municipality's official government web portal."
+                },
+                {
+                    keywords: ['speed camera violation photo', 'red light traffic fine', 'dmv penalty assessment'],
+                    minMatches: 1,
+                    title: "Fake Traffic Camera Speed Violation Scam",
+                    desc: "This notice claims a red light camera or speed trap recorded a violation, directing you to pay an external fine link.",
+                    warn: "Official traffic camera citations are delivered through mail by local law enforcement or authorized municipal courts."
+                },
+                {
+                    keywords: ['fasttrak toll invoice', 'unpaid lane toll balance', 'expresspass violation alert'],
+                    minMatches: 1,
+                    title: "Fake FastTrak Toll Violation Phishing",
+                    desc: "This message claims an outstanding toll lane balance requires urgent settlement to prevent account suspension.",
+                    warn: "Log into your official FastTrak or toll account portal manually to verify if any legitimate charges exist."
+                },
+                {
+                    keywords: ['airport parking fee overdue', 'terminal garage storage balance', 'long-term parking lien'],
+                    minMatches: 1,
+                    title: "Fake Airport Parking Fee Expiration Scam",
+                    desc: "This text claims your vehicle left in an airport garage has an overdue fee and is facing a storage lien.",
+                    warn: "Airport authorities do not demand storage payments or threaten vehicle liens via text message links."
+                },
+                {
+                    keywords: ['dmv vehicle registration expired', 'state license plate renewal notice', 'tag sticker suspension warning'],
+                    minMatches: 1,
+                    title: "Fake Vehicle Registration Renewal Phishing",
+                    desc: "This text warns that your vehicle registration or license plate tag is expired, prompting you to pay a renewal fee via a link.",
+                    warn: "Always renew vehicle registrations through official state government portals ending in .gov."
+                },
+                {
+                    keywords: ['driver license suspended notice', 'dmv administrative revocation', 'driving privilege restriction'],
+                    minMatches: 1,
+                    title: "Fake Driver License Suspension Alert",
+                    desc: "This message claims your driver license has been administratively suspended and requires immediate verification online.",
+                    warn: "State motor vehicle departments notify drivers of license suspensions by official mail, not text message links."
+                },
+                {
+                    keywords: ['auto insurance policy lapsed', 'liability coverage termination notice', 'unpaid premium cancellation'],
+                    minMatches: 1,
+                    title: "Fake Auto Insurance Cancellation Warning",
+                    desc: "This warning claims your auto liability policy has lapsed due to unpaid premiums and demands immediate card updates.",
+                    warn: "Call your insurance provider using the verified number on your insurance card to check policy status."
+                },
+                {
+                    keywords: ['roadside assistance expired', 'tow truck membership renewal', 'automotive club billing failure'],
+                    minMatches: 1,
+                    title: "Fake Roadside Assistance Membership Renewal",
+                    desc: "This notice claims your roadside assistance or towing club membership failed billing and requires immediate renewal.",
+                    warn: "Log into your auto club account directly rather than clicking links in membership expiration emails."
+                },
+                {
+                    keywords: ['dmv electronic title transfer', 'vehicle ownership assignment fee', 'pink slip registration hold'],
+                    minMatches: 1,
+                    title: "Fake DMV Electronic Title Transfer Scam",
+                    desc: "This scam claims an electronic title transfer or pink slip assignment requires an unexpected fee release.",
+                    warn: "Title transfers and vehicle ownership transactions must be completed physically at official DMV office locations."
+                },
+                {
+                    keywords: ['federal student loan default', 'navient loan repayment alert', 'mohela account delinquency'],
+                    minMatches: 1,
+                    title: "Fake Student Loan Servicer Payment Default",
+                    desc: "This alert claims your federal student loan is in default status, requiring immediate payment to collection links.",
+                    warn: "Manage federal student loans exclusively through official Department of Education portals like StudentAid.gov."
+                },
+                {
+                    keywords: ['university tuition payment portal', 'semester bursar balance due', 'student account hold notice'],
+                    minMatches: 1,
+                    title: "Fake Tuition Payment Gateway Phishing",
+                    desc: "This email claims your university tuition payment failed or a bursar balance hold requires immediate settlement.",
+                    warn: "Access your student account securely through your official university portal dashboard."
+                },
+                {
+                    keywords: ['campus parking ticket unpaid', 'university police citation fine', 'student vehicle immobilization'],
+                    minMatches: 1,
+                    title: "Fake Campus Parking Citation Scam",
+                    desc: "This message claims a campus parking ticket is unpaid and threatens vehicle booting or towing via an external link.",
+                    warn: "Verify campus parking fines directly with your university's parking and transportation services office."
+                },
+                {
+                    keywords: ['library book overdue fee', 'municipal library fine notice', 'borrower card suspension'],
+                    minMatches: 1,
+                    title: "Fake Library Book Overdue Fine Extortion",
+                    desc: "This notice claims you owe municipal library overdue fees and threatens borrower card suspension.",
+                    warn: "Public libraries do not use external text links or aggressive collection threats for overdue book fees."
+                },
+                {
+                    keywords: ['public school fee balance', 'student activity fund payment', 'district registration portal'],
+                    minMatches: 1,
+                    title: "Fake School District Fee Phishing",
+                    desc: "This message requests payment for public school activity funds or district registration fees through a suspicious portal.",
+                    warn: "Contact your local school district or child's school office directly to verify any required fee payments."
+                },
+                {
+                    keywords: ['child support enforcement warrant', 'family court contempt citation', 'arrears wage garnishment order'],
+                    minMatches: 1,
+                    title: "Fake Child Support Enforcement Arrest Threat",
+                    desc: "This urgent notice claims an active arrest warrant has been issued for child support arrears, demanding phone payment.",
+                    warn: "Courts and child support enforcement agencies never demand immediate payment over the phone or threaten instant arrest."
+                },
+                {
+                    keywords: ['alimony payment discrepancy', 'domestic relations court order', 'spousal support disbursement hold'],
+                    minMatches: 1,
+                    title: "Fake Alimony Payment Processing Scam",
+                    desc: "This message claims an alimony disbursement is on hold due to court order discrepancies requiring a release fee.",
+                    warn: "Consult your family law attorney or court clerk directly regarding any official spousal support matters."
+                },
+                {
+                    keywords: ['adoption placement fee deposit', 'child welfare legal retainer', 'home study clearance cost'],
+                    minMatches: 1,
+                    title: "Fake Adoption Agency Placement Fee Scam",
+                    desc: "This scam adopts adoption processes by demanding unexpected legal retainers or placement fee deposits via wire.",
+                    warn: "Work exclusively with licensed adoption agencies and verify all fee structures through formal legal contracts."
+                },
+                {
+                    keywords: ['foster care stipend deposit', 'state family services payment', 'child placement subsidy hold'],
+                    minMatches: 1,
+                    title: "Fake Foster Care Stipend Phishing",
+                    desc: "This message claims a foster care stipend or family services payment is on hold, asking for bank login details.",
+                    warn: "State family services agencies manage subsidies through established secure state payment systems, not text links."
+                },
+                {
+                    keywords: ['probate court inheritance release', 'deceased estate administrative fee', 'surrogate court probate tax'],
+                    minMatches: 1,
+                    title: "Probate Court Inheritance Release Fee",
+                    desc: "This message claims an inheritance is waiting in probate court but requires an administrative tax fee before release.",
+                    warn: "Probate courts deduct fees directly from estate funds during formal proceedings, never requesting upfront wire fees."
+                },
+                {
+                    keywords: ['last will testament registry', 'estate planning document storage', 'legal document renewal fee'],
+                    minMatches: 1,
+                    title: "Fake Will & Testament Registry Renewal",
+                    desc: "This notice claims your last will and testament document registry storage is expiring unless you pay a renewal fee.",
+                    warn: "Keep estate planning documents with your attorney or in secure personal safe storage, ignoring registry renewal mailers."
+                },
+                {
+                    keywords: ['power of attorney revocation', 'legal representation termination', 'attorney-in-fact cancellation'],
+                    minMatches: 1,
+                    title: "Fake Power of Attorney Revocation Notice",
+                    desc: "This message claims a power of attorney agreement has been revoked and requires immediate legal filing fees.",
+                    warn: "Power of attorney documents are executed and revoked through formal legal channels and licensed attorneys."
+                },
+                {
+                    keywords: ['living trust amendment filing', 'estate asset transfer file', 'trustee administration charge'],
+                    minMatches: 1,
+                    title: "Fake Living Trust Amendment Fee Scam",
+                    desc: "This scam targets estate trusts, claiming an amendment filing file is overdue to prevent trust asset freezing.",
+                    warn: "Direct all inquiries regarding living trusts to the estate planning attorney who drafted the original agreement."
+                },
+                {
+                    keywords: ['property deed recording fee', 'county clerk conveyance tax', 'land records filing notice'],
+                    minMatches: 1,
+                    title: "Fake Deed Recording Fee Extortion",
+                    desc: "This official-looking letter claims a property deed recording fee or conveyance tax is due immediately to avoid liens.",
+                    warn: "Check with your county clerk of court directly before responding to any unverified property deed notices."
+                },
+                {
+                    keywords: ['real estate escrow wire instruction', 'title company bank change notice', 'closing funds routing update'],
+                    minMatches: 1,
+                    title: "Fake Real Estate Escrow Wire Fraud Alert",
+                    desc: "This email claims your title company or escrow agent changed their bank routing instructions for closing funds.",
+                    warn: "Never change wire transfer instructions based on an email; always call your title agent directly using a verified phone number."
+                },
+                {
+                    keywords: ['emergency special assessment', 'property parcel roof repairs', 'avoid lien filing'],
+                    minMatches: 1,
+                    title: "Fake Homeowners Association Special Assessment Scam",
+                    desc: "This notice claims an emergency HOA assessment fee has been levied against your property for roof repairs to force wire transfers.",
+                    warn: "Verify HOA assessments directly with your property management company or association board president."
+                },
+                {
+                    keywords: ['residential solar panel tax credit', 'approved federal cash refund', 'secure portal link to deposit'],
+                    minMatches: 1,
+                    title: "Fake Solar Panel Tax Credit Rebate Phishing",
+                    desc: "This message claims your solar panel tax credit rebate has been approved and prompts you to log into a fake portal.",
+                    warn: "Tax credit rebates are claimed directly through official federal tax returns with the IRS, never via external text portals."
+                },
+                {
+                    keywords: ['cellular security communicator', 'obsolete panel hardware', 'alarm monitoring will be disconnected'],
+                    minMatches: 1,
+                    title: "Fake Home Security System Upgrade Extortion",
+                    desc: "This message claims your home alarm communicator is obsolete and threatens disconnection unless you upgrade immediately.",
+                    warn: "Security monitoring providers notify customers through official billing statements and verified customer service lines."
+                },
+                {
+                    keywords: ['tankless water heater annual', 'anode rod inspection', 'voids your manufacturer warranty'],
+                    minMatches: 1,
+                    title: "Fake Water Heater Maintenance Warranty Scam",
+                    desc: "This notice claims your water heater warranty is void unless you pay for an immediate unauthorized inspection.",
+                    warn: "Read your specific manufacturer warranty booklet regarding maintenance requirements rather than trusting unsolicited service texts."
+                },
+                {
+                    keywords: ['termite bond re-certification', 'structural damage guarantee', 'pay the renewal invoice'],
+                    minMatches: 1,
+                    title: "Fake Termite Bond Annual Re-Certification",
+                    desc: "This scam notice claims your termite bond inspection has lapsed and threatens to drop your structural damage guarantee.",
+                    warn: "Verify pest control contract renewal dates directly with your licensed local exterminator company."
+                },
+                {
+                    keywords: ['pest control vector', 'mosquito barrier spray', 'municipal vector control'],
+                    minMatches: 1,
+                    title: "Fake Municipal Vector Control Spray Scam",
+                    desc: "This message impersonates local vector control offering mandatory paid mosquito or pest barrier treatments.",
+                    warn: "Municipal vector control spray programs are provided free by county public health departments without direct residential billing."
+                },
+                {
+                    keywords: ['lawn care fertilization', 'weed control prepayment', 'seasonal turf package'],
+                    minMatches: 1,
+                    title: "Fake Lawn Care Prepayment Scam",
+                    desc: "This scam locks homeowners into full seasonal prepayments for lawn care services that are never fully delivered.",
+                    warn: "Pay for landscaping services incrementally after work is completed rather than paying full seasons upfront to unverified vendors."
+                },
+                {
+                    keywords: ['residential window replacement', 'double-pane window upgrade', 'energy tax credit rebate'],
+                    minMatches: 1,
+                    title: "Fake Window Replacement Scam",
+                    desc: "This high-pressure sales pitch uses fake energy tax credits to push overpriced residential window replacements.",
+                    warn: "Obtain multiple quotes from established local contractors before committing to major home window replacement projects."
+                },
+                {
+                    keywords: ['seamless gutter guard', 'leaf filter protection', 'clogged downspout warranty'],
+                    minMatches: 1,
+                    title: "Fake Gutter Guard Installation Scam",
+                    desc: "This aggressive marketing pitch claims your gutters require immediate leaf filter installations to prevent structural rot.",
+                    warn: "Clean and inspect your gutters manually or hire a trusted local handyman rather than responding to aggressive ads."
+                },
+                {
+                    keywords: ['asphalt driveway sealing', 'crack fill service', 'leftover paving material discount'],
+                    minMatches: 1,
+                    title: "Fake Driveway Paving Scam",
+                    desc: "This traveling contractor scam claims leftover asphalt material allows them to offer cheap driveway sealing services.",
+                    warn: "Never hire door-to-door paving contractors offering leftover materials; verify physical business addresses and licensing."
                 }
             ];
 
@@ -1671,7 +1916,6 @@
                 const step3Custom = "Even if you did not lose money, report this attempted scam to help authorities track emerging threats: file a report with the <a href='https://reportfraud.ftc.gov' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Federal Trade Commission (FTC)</a>, contact your local law enforcement or the <a href='https://www.fdle.state.fl.us/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>FDLE</a> for criminal matters, file a deceptive trade complaint with the <a href='https://www.myfloridalegal.com' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>Florida Attorney General</a>, or forward scam text messages to <strong>7726</strong>.";
                 const step4Custom = "To review general security guidelines, scam trends, and educational resources, explore the <a href='https://elderaffairs.org/programs-and-services/elder-protection-programs-fraud-trends/' target='_blank' rel='noopener' style='color: #991b1b; font-weight: bold; text-decoration: underline;'>DOEA Fraud Protection Programs</a> hub.";
 
-                // Check if email related to include Safe Email Hygiene guidance in results
                 const isEmailContent = text.includes('@') || text.toLowerCase().includes('email') || text.toLowerCase().includes('unsubscribe') || text.toLowerCase().includes('inbox') || text.toLowerCase().includes('mail');
                 let emailHygieneStep = '';
                 if (isEmailContent) {
@@ -1715,7 +1959,7 @@
                 let safeMessage = '<strong>This looks okay. No common scam patterns or threat combinations found.</strong>';
                 
                 if (hasWeirdSymbols) {
-                    safeMessage += '<br><span style="font-size: 14px; color: #166534; display: block; margin-top: 6px;"><em>Caution:</em> This message contains unusual characters or symbols. If you have questions or want to review general awareness materials, please explore the <data href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
+                    safeMessage += '<br><span style="font-size: 14px; color: #166534; display: block; margin-top: 6px;"><em>Caution:</em> This message contains unusual characters or symbols. If you have questions or want to review general awareness materials, please explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
                 } else {
                     safeMessage += '<br>Even so, if you ever want to check educational guides, you can explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
                 }
