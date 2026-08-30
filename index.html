@@ -462,7 +462,7 @@
             </div>
 
             <div class="upload-dropzone">
-                <label for="imageUpload">📁 Select Screenshot or Email File</label>
+                <label for="imageUpload">Select Screenshot or Email File</label>
                 <input type="file" id="imageUpload" accept="image/*,.pdf,.txt" onchange="updateFileName()">
                 <p class="file-info" id="fileInfo">No file chosen (Supports Images, PDFs, Text files)</p>
             </div>
@@ -481,7 +481,7 @@
             </div>
 
             <div class="never-ever-box">
-                <h3>🛡️ The Federal "Never Ever" Rules</h3>
+                <h3>The Federal "Never Ever" Rules</h3>
                 <ul>
                     <li>The government and legitimate banks will NEVER tell you to move your money to protect it.</li>
                     <li>Official agencies will NEVER threaten to cut off benefits unless you pay immediately.</li>
@@ -490,7 +490,7 @@
             </div>
 
             <div class="permanent-info-box">
-                <h3>📲 How to Report Scam Text Messages (7726)</h3>
+                <h3>How to Report Scam Text Messages (7726)</h3>
                 <p>If you receive a suspicious text message, you can report it instantly to mobile carriers and security authorities without clicking any links:</p>
                 <p><strong>1. Copy or Screenshot:</strong> Do not tap any links inside the message.</p>
                 <p><strong>2. Forward to 7726:</strong> Open your text message app, press and hold the suspicious text message, select "Forward", and send it to the short code <strong>7726</strong> (spells "SPAM").</p>
@@ -1894,12 +1894,12 @@
 
                 resultContent.innerHTML = 
                     emergencyBanner +
-                    '<div class="warning-title">⚠️ ' + title + '</div>' +
+                    '<div class="warning-title">' + title + '</div>' +
                     '<div class="warning-desc">' + desc + '</div>' +
                     '<div class="warning-title" style="margin-top: 15px; border-top: 1px solid #f87171; padding-top: 15px;">What you should do right now:</div>' +
                     '<ol class="action-list">' + steps + '</ol>' +
                     '<div style="margin-top: 20px;">' +
-                    '<button type="button" class="secondary-btn" onclick="printActionPlan()">🖨️ Print Action Plan</button>' +
+                    '<button type="button" class="secondary-btn" onclick="printActionPlan()">Print Action Plan</button>' +
                     '</div>';
                 
                 document.getElementById('printDynamicContent').innerHTML = 
@@ -1911,10 +1911,10 @@
                 resultBox.className = 'result-box safe';
                 
                 const hasWeirdSymbols = /[^a-zA-Z0-9\s]/.test(text);
-                let safeMessage = '<strong>✅ This looks okay. No common scam patterns or threat combinations found.</strong>';
+                let safeMessage = '<strong>This looks okay. No common scam patterns or threat combinations found.</strong>';
                 
                 if (hasWeirdSymbols) {
-                    safeMessage += '<br><span style="font-size: 14px; color: #166534; display: block; margin-top: 6px;">⚠️ <em>Caution:</em> This message contains unusual characters or symbols. If you have questions or want to review general awareness materials, please explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
+                    safeMessage += '<br><span style="font-size: 14px; color: #166534; display: block; margin-top: 6px;"><em>Caution:</em> This message contains unusual characters or symbols. If you have questions or want to review general awareness materials, please explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
                 } else {
                     safeMessage += '<br>Even so, if you ever want to check educational guides, you can explore the <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener">Operation Senior Shield Resource Hub</a>.';
                 }
