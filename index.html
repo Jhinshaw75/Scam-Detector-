@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,7 @@
     <title>Operation Senior Shield - Check-A-Scam</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e3a8a">
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <style>
         :root {
             --primary: #1e3a8a;
@@ -421,7 +422,7 @@
                 <li>Choose how to check the suspicious message:
                     <ul>
                         <li><strong>Option A:</strong> Copy the text from the suspicious email, text message, or letter and paste it right into the box below.</li>
-                        <li><strong>Option B:</strong> Take a picture or screenshot of the message and upload the image file using the upload button.</li>
+                        <li><strong>Option B:</strong> Take a picture or screenshot of the message and upload the image file using the upload button. The tool will automatically read the text from your screenshot.</li>
                     </ul>
                 </li>
                 <li>Click the analyze button to check the message for multi-word threat patterns or scam indicators.</li>
@@ -559,17 +560,33 @@
             const input = document.getElementById('imageUpload');
             const file = input.files[0];
             const fileInfo = document.getElementById('fileInfo');
+            const textArea = document.getElementById('scamInput');
             
             if (file) {
                 fileInfo.textContent = file.name;
                 const reader = new FileReader();
                 if (file.type === 'text/plain' || file.name.endsWith('.txt')) {
                     reader.onload = function(e) {
-                        document.getElementById('scamInput').value = e.target.result;
+                        textArea.value = e.target.result;
                     };
                     reader.readAsText(file);
+                } else if (file.type.startsWith('image/')) {
+                    fileInfo.textContent = file.name + " (Scanning image text...)";
+                    textArea.value = "Scanning image text, please wait...";
+                    
+                    Tesseract.recognize(
+                        file,
+                        'eng',
+                        { logger: m => {} }
+                    ).then(({ data: { text } }) => {
+                        textArea.value = text.trim();
+                        fileInfo.textContent = file.name + " (Text extracted successfully)";
+                    }).catch(err => {
+                        textArea.value = "";
+                        fileInfo.textContent = file.name + " (Error reading image text)";
+                    });
                 } else {
-                    document.getElementById('scamInput').value = "[Uploaded File: " + file.name + "]";
+                    textArea.value = "[Uploaded File: " + file.name + "]";
                 }
             } else {
                 fileInfo.textContent = "No file chosen (Supports Images, PDFs, Text files)";
