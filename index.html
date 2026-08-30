@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scam Detector</title>
+    <title>Operation Senior Shield - Check-A-Scam</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e3a8a">
     <style>
@@ -432,7 +432,7 @@
                     </ul>
                 </li>
                 <li><strong>Safe Email Hygiene:</strong> Never click "unsubscribe" links within suspicious emails, as scammers use these links to verify active addresses or trigger malicious downloads. Simply mark them as spam.</li>
-                <li>Click the print reference guide button if you want a paper copy of the emergency numbers and trusted web links to keep by your phone.</li>
+                <li>Click the print action plan button if you want a paper copy of the emergency numbers and steps to keep by your phone.</li>
             </ol>
         </div>
 
@@ -441,13 +441,13 @@
                 <a href="https://elderaffairs.org" target="_blank" rel="noopener"><img src="doea-logo.png" alt="Florida Department of Elder Affairs"></a>
                 <a href="https://opseniorshieldfl.com/" target="_blank" rel="noopener"><img src="oss-logo.png" alt="Operation Senior Shield"></a>
             </div>
-            <h1>Scam Detector</h1>
-            <p class="subtitle">Instant Scam & Fraud Protection Analyzer</p>
+            <h1>Check-A-Scam</h1>
+            <p class="subtitle">Operation Senior Shield Fraud Protection Analyzer</p>
         </div>
 
         <div id="disclaimerView" class="disclaimer-box" style="display: block;">
             <h3>Legal & Educational Disclaimer</h3>
-            <p>Please review before accessing the Senior Digital Safeguard tool:</p>
+            <p>Please review before accessing the Check-A-Scam tool:</p>
             <p><strong>1. Educational Purpose:</strong> Provided free for awareness under Operation Senior Shield as a quick first check.<br>
             <strong>2. How It Works:</strong> Paste suspicious texts or upload screenshots to check for common scam indicators.<br>
             <strong>3. No Guarantee:</strong> Always proceed with caution, consult our trusted resources, and verify through official channels.<br>
@@ -474,7 +474,6 @@
             <div class="button-group">
                 <button type="button" class="primary-btn" onclick="analyzeContent()">Analyze Message</button>
                 <button type="button" class="secondary-btn" onclick="clearForm()">Clear</button>
-                <button type="button" class="secondary-btn" onclick="printGuide()">Print Reference Guide</button>
             </div>
 
             <div id="resultBox" class="result-box">
@@ -500,7 +499,7 @@
         </main>
 
         <div class="printable-card" id="printableCardContainer">
-            <h2>Scam Detector &mdash; Reference & Emergency Guide</h2>
+            <h2>Operation Senior Shield &mdash; Check-A-Scam Action Plan</h2>
             <div id="printDynamicContent">
                 <p><strong>The Federal "Never Ever" Fraud Rules:</strong></p>
                 <ul>
@@ -1937,10 +1936,6 @@
             document.getElementById('fileInfo').textContent = "No file chosen (Supports Images, PDFs, Text files)";
             document.getElementById('resultBox').style.display = 'none';
             document.getElementById('resultContent').innerHTML = '';
-        }
-
-        function printGuide() {
-            window.print();
         }
 
         if ('serviceWorker' in navigator) {
